@@ -1,0 +1,15 @@
+@import '../../../../_theme/helpers/variables';
+.radio-container {
+  display: inline-block;
+  margin: 0 1rem;
+  &.disabled {
+    color: $gray;
+  }
+  input {
+    margin-right: 5px;
+  }
+
+  label {
+    user-select: none;
+  }
+}

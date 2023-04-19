@@ -1,0 +1,15 @@
+<div *ngIf="activeMeetings.length > 0 && showActiveMeetings" class="active-meetings">
+  <div class="active-meetings-title">
+    <div class="text-center">Trwające spotkania</div>
+    <div class="minimalize-action">
+      <i *ngIf="!isMinimalized" class="fas fa-window-minimize" (click)="isMinimalized = !isMinimalized"></i>
+      <i *ngIf="isMinimalized" class="fas fa-window-maximize" (click)="isMinimalized = !isMinimalized"></i>
+    </div>
+  </div>
+  <div class="active-meetings-content" [class.d-none]="isMinimalized">
+    <div *ngFor="let meeting of activeMeetings" class="active-meeting">
+      <div class="active-meeting-name">Spotkanie: {{ meeting.event.title }}</div>
+      <button class="btn btn-primary" (click)="connectToSession(meeting)">Dołącz</button>
+    </div>
+  </div>
+</div>

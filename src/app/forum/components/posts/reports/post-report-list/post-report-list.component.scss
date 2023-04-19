@@ -1,0 +1,28 @@
+@import "../../../../../_theme/helpers/variables";
+.reported-posts {
+  background-color: #f9fdfb;
+  padding: 1rem;
+  min-height: 10rem;
+  margin: 1rem 0;
+
+  .loader-container {
+    min-height: 10rem;
+  }
+
+  .report {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $gray;
+    background-color: $white;
+    margin: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    &.clickable {
+      cursor: pointer;
+    }
+
+    .message {
+      padding: 1rem;
+    }
+  }
+}

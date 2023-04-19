@@ -1,0 +1,7 @@
+<div class="chat-search">
+  <app-input-text [formControl]="searchControl" [addMargin]="false" [name]="'chat-search'" class="search-control" [id]="'chat-search'" [placeholder]="'SZUKAJ UŻYTKOWNIKA ' " ></app-input-text>
+  <div class="image"><img src="../../../../assets/images/magnifying-glass-solid.svg" alt="glass" /></div> 
+</div>
+<div [appLoader]="isLoading">
+  <app-chat-search-results *ngIf="chatUsers && chatUsers.length > 0" [moreResultsLoading]="moreResultsLoading"  [chatUsers]="chatUsers" (searchResultClicked$)="onSearchResultClick($event)" (scrollBottom$)="onScrollBottom()"></app-chat-search-results>
+</div>

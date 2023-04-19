@@ -1,0 +1,9 @@
+<div [appLoader]="isLoading" [background]="true" [opacity]="0.5">
+  <mwl-calendar-week-view *ngIf="viewMode && viewDate" [viewDate]="viewDate" [events]="calendarEvents" [locale]="locale"
+    [dayStartHour]="8" [weekStartsOn]="1" [eventTemplate]="customEvent"></mwl-calendar-week-view>
+</div>
+
+<ng-template #customEvent let-weekEvent="weekEvent">
+  <app-calendar-event [calendarEvent]="weekEvent.event" (showEventDetails$)="showEventDetails($event)">
+  </app-calendar-event>
+</ng-template>

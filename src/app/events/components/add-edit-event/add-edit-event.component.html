@@ -1,0 +1,87 @@
+<button class="btn btn-link" routerLink="/events">Powrót</button>
+<div class="add-edit-event">
+  <div class="add-edit-event-title">
+    <span *ngIf="!event">Utwórz nowe wydarzenie</span>
+    <span *ngIf="event">Edytuj wydarzenie</span>
+  </div>
+  <form [formGroup]="form" class="form" (ngSubmit)="submit()">
+    <app-alert-message></app-alert-message>
+    <div class="form-section">
+      <div class="form-section-title">Ogólne</div>
+      <div class="form-section-content">
+        <div class="centerize">
+          <div class="event-thumbnail center-background-image centerize"
+            [class.hoverable-action]="this.eventThumbnailUrl"
+            [style.background-image]="this.eventThumbnailUrl ? this.eventThumbnailUrl : 'url(../../../../../assets/images/default-image.jpg)'">
+            <div class="event-thumbnail-action">
+              <div (click)="file.click()">
+                {{ !this.eventThumbnailUrl ? 'Dodaj zdjęcie' : 'Zmień zdjęcie' }}
+              </div>
+              <input #file class="d-none" type="file" accept="image/*" (change)="onInputFileChange($event)">
+            </div>
+          </div>
+        </div>
+        <div class="text-center text-small">Wymagany format obrazka to PNG/JPG. Rozmiar nie powinien przekraczać 4MB.
+          Proporcje 4:5 (np. 400x500).</div>
+        <app-input-text formControlName="title" [placeholder]="'Tytuł wydarzenia'"></app-input-text>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">Data i godzina</div>
+      <div class="form-section-content">
+        <div>
+          <div>Data rozpoczęcia</div>
+          <app-datepicker formControlName="startDate"></app-datepicker>
+        </div>
+        <div>
+          <div>Godzina rozpoczęcia</div>
+          <app-timepicker formControlName="startTime" [placeholder]="'Data rozpoczęcia'" [hourSplitter]="4"
+            [beginningTime]="'07:45'">
+          </app-timepicker>
+        </div>
+        <div>
+          <div>Godzina zakończenia</div>
+          <app-timepicker formControlName="endTime" [placeholder]="'Data zakończenia'"
+            [beginningTime]="this.form.controls.startTime.value" [hourSplitter]="4">
+          </app-timepicker>
+        </div>
+
+        <div class="event-recurrence">
+          <div>Wydarzenie cykliczne</div>
+          <app-dropdown [options]="recurrenceOptions" formControlName="recurrence"></app-dropdown>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">Organizatorzy</div>
+      <div class="form-section-content">
+        <app-organizers [organizers]="organizers" (organizers$)="onOrganizersChange($event)"></app-organizers>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">Grupa odbiorców</div>
+      <div class="form-section-content">
+        <div class="mb-2">Dla kogo jest skierowane to wydarzenie?</div>
+        <app-answer-button formControlName="targetGroupId" [name]="'target-id-button'" [id]="'target-id-button'"
+          [value]="null" [message]="'Grupa otwarta'">
+        </app-answer-button>
+        <app-answer-button formControlName="targetGroupId" [name]="'target-id-button'" [id]="'target-id-button'"
+          [value]="6" [message]="'Grupa zamknięta (psychologiczna)'">
+        </app-answer-button>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">O wydarzeniu</div>
+      <div class="form-section-content form-section-content-textarea">
+        <app-textarea formControlName="description"
+          [placeholder]="'To jest opis Twojego wydarzenia. W tym miejscu dodaj krótkie podsumowanie i dodatkowe informacje, tak by uczestnicy mogli przygotować się na wydarzenie.\nRozważ dodanie szczegółów, takich jak program wydarzenia i inne informacje, które mogą być przydatne dla gości. \nJeśli wydarzenie jest ukierunkowane na konkretną grupę odbiorców, upewnij się, że jest to zaznaczone.\nMasz szansę zainteresować innych swoim wydarzeniem, więc nie wahaj się pokazać swojej osobowości i entuzjazmu!\nZachęć gości do potwierdzenia przybycia już dziś, aby mieli zapewnione miejsce.'"
+          [wordsLimit]="500"></app-textarea>
+      </div>
+    </div>
+    <div class="text-center">
+      <button [disabled]="form.invalid || isSending" class="btn btn-primary" type="submit">
+        {{ this.event ? 'Zapisz' : 'Dodaj wydarzenie' }}
+      </button>
+    </div>
+  </form>
+</div>

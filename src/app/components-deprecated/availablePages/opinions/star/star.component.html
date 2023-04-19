@@ -1,0 +1,10 @@
+<label>
+    <i
+    (mouseenter)="onStarEnter()"
+    (mouseleave)="onStarLeave()"
+    (click)="onStarClicked()"
+    class="fas fa-star"
+    [ngClass]="{'gold': rating >= starId, '': rating < starId}"
+    ></i>
+    <input type="radio" ngModel name="score" [value]="rating">
+</label>

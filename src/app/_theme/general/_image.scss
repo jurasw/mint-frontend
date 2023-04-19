@@ -1,0 +1,22 @@
+.image-with-filter {
+  filter: sepia(21%) brightness(110%) hue-rotate(17deg) saturate(102%)
+    contrast(102%) invert(6%);
+  -webkit-filter: sepia(21%) brightness(110%) hue-rotate(17deg) saturate(102%)
+    contrast(102%) invert(6%);
+  -moz-filter: sepia(21%) brightness(110%) hue-rotate(17deg) saturate(102%)
+    contrast(102%) invert(6%);
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.shadow {
+  -webkit-box-shadow: 0 8px 6px -6px grey;
+  -moz-box-shadow: 0 8px 6px -6px grey;
+  box-shadow: 0 8px 6px -6px grey;
+}
+
+.center-background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

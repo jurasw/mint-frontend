@@ -1,0 +1,14 @@
+<div *ngIf="question && questionControl" class="question">
+  <div class="question-title"><span *ngIf="questionCounter">{{ questionIndex + 1 }}. </span>{{ question.question }}
+  </div>
+  <div class="answers">
+    <div class="btn-group" data-toggle="buttons">
+      <div *ngFor="let answer of question.answers; let i = index" class="answer">
+        <app-answer-button [formControl]="questionControl" [value]="answer.answerId" (click)="setValue(answer.answerId)"
+          [name]="question.questionId.toString()" [id]="answer.answerId.toString()" [message]="answer.answer"
+          [messageCounter]="answerCounter" [messageIndex]="i">
+        </app-answer-button>
+      </div>
+    </div>
+  </div>
+</div>

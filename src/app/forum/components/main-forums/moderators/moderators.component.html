@@ -1,0 +1,16 @@
+<div class="moderators">
+  <span>Moderatorzy: </span>
+  <span *ngIf="moderators.length > 0">
+    <span *ngFor="let moderator of moderators; let i = index">
+      {{ moderator.nickName }}<span *ngIf="i !== moderators.length - 1">, </span>
+    </span>
+  </span>
+  <span *ngIf="moderators.length === 0">Brak moderatorów w tym forum</span>
+  <p *ngIf="moderators.length >= 100"> Osiągnięto limit moderatorów tego forum (100)</p>
+</div>
+
+<app-alert-message></app-alert-message>
+<button *ngIf="isUserModerator && !isUserAdmin" class="btn btn-link" (click)="resign()">Zrezygnuj z bycia
+  moderatorem</button>
+<div *ngIf="!isUserModerator && !isUserAdmin && forum.title !== 'Psychologiczne'">Żeby zostać moderatorem, trzeba
+  napisać minimum 50 postów na tym forum.</div>

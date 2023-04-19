@@ -1,0 +1,57 @@
+@import '../../../_theme/helpers/variables';
+
+.month-event {
+  position: relative;
+  margin: 0.5rem;
+  color: $dark-gray;
+
+  .events {
+    margin-top: 2rem;
+    max-height: 10rem;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+  }
+
+  .day {
+    font-size: 1.2rem;
+    top: 0;
+    right: 0;
+    color: $dark-gray;
+    height: 0.5rem;
+
+    &.weekend {
+      color: $primary;
+    }
+  }
+}
+
+::ng-deep {
+  .cal-month-view {
+    .cal-header .cal-cell {
+      text-transform: capitalize;
+      font-weight: 400;
+      font-style: italic;
+      color: $dark-gray;
+    }
+
+    .cal-day-cell.cal-today {
+      background-color: $mint-400  !important;
+    }
+
+    .cal-day-cell.cal-today:hover {
+      background-color: $light-gray  !important;
+    }
+
+    .cal-out-month {
+      background-image: url("../../../../assets/images/calendar_background.png");
+      background-size: cover;
+    }
+
+    .cal-day-cell.cal-weekend {
+      background-color: $mint-200;
+    }
+  }
+}

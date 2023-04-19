@@ -1,0 +1,26 @@
+<div *ngIf="message" class="message-container">
+  <div class="d-flex align-items-center">
+    <div class="message" [class.own-message]="ownMessage">
+      <div class="message-sender">
+        <div class="message-date">
+          {{ message.sent | dateTime}}
+        </div>
+      </div>
+      <div class="message-content">
+        <div [innerText]="message.message"></div>
+        <div *ngIf="message.attachments && message.attachments.length > 0" class="message-attachments">
+          <span>Załączniki: </span>
+          <button *ngFor="let file of message.attachments" class="btn-file btn btn-link" (click)="downloadFile(file)">
+            {{ file.type | fileType }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="room.isGroup && !ownMessage && isUserWorker" class="message-options">
+      <app-chat-message-options [message]="message"></app-chat-message-options>
+    </div>
+  </div>
+  <app-chat-message-reactions *ngIf="!room.isGroup" class="reactions"
+    [class.own-reactions]="ownMessage && message.reactions.length === 0" [message]="message" [ownMessage]="ownMessage">
+  </app-chat-message-reactions>
+</div>

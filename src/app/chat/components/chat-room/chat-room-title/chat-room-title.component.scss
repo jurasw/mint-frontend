@@ -1,0 +1,97 @@
+@import "../../../../_theme/helpers/variables";
+.chat-room-title {
+  padding: 0.5rem;
+  min-height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .single-chat-room {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .recipient {
+    display: flex;
+    flex-wrap: column;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+
+    .recipient-info {
+      display: flex;
+      align-items: center;
+
+      .user-image {
+        cursor: pointer;
+        padding-right: 1rem;
+        ::ng-deep .user-image {
+          width: 5rem;
+          height: 5rem;
+        }
+      }
+
+      .recipient-nickname {
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        color: $dark-gray;
+        justify-content: left;
+        text-align: left;
+        justify-items: left;
+        font-weight: 500;
+
+        .user-info{
+          padding-bottom: 0.5rem;
+        }
+
+        .recipient-last-seen {
+          font-weight: normal;
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+
+  .recipient-status {
+    display: inline;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: $red;
+    border-radius: 50%;
+    &.active {
+      background-color: $green-status;
+    }
+  }
+
+  .group-chat-room {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    .group-chat-image {
+      border: 1px solid $mint-700;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      margin-right: 1rem;
+    }
+    .group-chat-room-title {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+
+    }
+    .group-chat-users {
+      display: flex;
+      flex-wrap: wrap;
+      .group-chat-user {
+        padding: 0 5px;
+      }
+    }
+  }
+}
+
+

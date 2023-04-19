@@ -1,0 +1,125 @@
+@import "../../../../../app/_theme/helpers/variables";
+
+.contact {
+  width: 100%;
+  margin: 10rem 0 auto auto;
+  padding-top: 2rem;
+
+  @media only screen and (max-width: 1000px) {
+    margin: 15rem 0 0 0;
+  }
+
+  .title {
+    padding: auto;
+    color: $dark-gray;
+
+    .text-center {
+      padding-top: 1rem;
+      text-align: justify;
+    }
+  }
+
+  .contact-container {
+    padding: 3rem 10rem;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem auto 0 auto;
+
+    @media only screen and (max-width: 1200px) {
+      padding: 3rem 0rem;
+      margin: auto;
+    }
+
+    @media only screen and (max-width: 700px) {
+      padding: 1rem 0;
+      width: 90%;
+      flex-direction: column;
+      margin: 0;
+    }
+
+    .container {
+      padding: 0.5rem;
+      text-align: center;
+
+      @media only screen and (max-width: 900px) {
+        padding: 0;
+        margin: 1rem;
+      }
+    }
+  }
+
+  h1 {
+    font-weight: 500;
+  }
+
+  .info-panel {
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem 25rem 1rem 25rem;
+    width: 100%;
+    background-color: $green;
+    color: $white;
+    box-shadow: 10px 50px 100px 10px #74e29e inset;
+
+    @media only screen and (max-width: 1200px) {
+      padding: 2rem 1rem;
+    }
+  }
+
+  .contact-info {
+    width: 100%;
+    line-height: 1.5rem;
+
+    p {
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+
+    .links {
+      cursor: pointer;
+      color: $white;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: 20px;
+      padding-top: 1rem;
+    }
+
+    .text-checkbox {
+      font-size: 15px;
+      text-align: justify;
+      display: flex;
+      flex-direction: row;
+    }
+
+    ::ng-deep {
+
+      .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+      .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+        background-color: transparent;
+      }
+
+      .mat-checkbox-frame {
+        border: 0.5px solid $white;
+      }
+
+      .mat-checkbox {
+        margin-right: 1em;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: $white;
+      cursor: pointer;
+
+      &:hover {
+        transition: 0.3s;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>
+  <span>Powiadomienia <span class="notification-type-text">{{ data.type | uppercase}}</span></span>
+</h1>
+<mat-dialog-content (scroll)="onScrollBottom($event)">
+  <div *ngFor="let notification of paginatedNotifications" class="notification" [class.is-read]="notification.isRead"
+    (click)="readNotification(notification)">
+    <div class="notification-image center-background-image"
+      [style.background-image]="'url(assets/images/default-image.jpg)'"></div>
+    <div class="notification-info">
+      <div class="notification-message">
+        {{ notification.message }}
+      </div>
+      <div *ngIf="notification.redirectTo" class="notification-action">
+        <button class="btn btn-secondary" (click)="navigateTo(notification)">Szczegóły</button>
+      </div>
+      <div *ngIf="notification.message === 'Chcemy Ci pomóc, zapraszamy Cię do grupy psychologicznej.'"
+        class="notification-action">
+        <button class="btn btn-secondary" (click)="myProfileNavigate(notification)">Przejdź do profilu</button>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

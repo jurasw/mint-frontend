@@ -1,0 +1,35 @@
+@import "../../../../_theme/helpers/variables";
+
+.header-container {
+  width: 100%;
+  position: relative;
+
+  .title-image-container {
+    width: 100%;
+    position: relative;
+    height: 33rem;
+    background-size: cover;
+
+    .logo-container {
+      position: absolute;
+      bottom: 15%;
+      left: 8%;
+      text-align: left;
+
+      img {
+        width: 15rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: $white;
+        text-shadow: 1px 1px $dark-gray;
+
+        @media only screen and (max-width: 768px) {
+          line-height: 2.5rem;
+        }
+      }
+    }
+  }
+
+}

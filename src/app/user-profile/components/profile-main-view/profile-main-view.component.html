@@ -1,0 +1,69 @@
+<div [appLoader]="isLoading" class="profile-container">
+  <div *ngIf="user" class="inside-profile-container">
+    <div class="top-container">
+      <div class="user-info-box profile-section">
+        <div class="profile-image">
+          <app-user-image [user]="user"></app-user-image>
+          <div *ngIf="user.status" class="recipient-status" [class.active]="user.status.status"></div>
+        </div>
+        <div class="profile-data">
+          <div class="nickName"><label>NAZWA UŻYTKOWNIKA</label><br /> {{ user.nickName || '-' }}</div>
+          <div class="firstName"><label>IMIĘ</label><br /> {{ user.firstName || '-' }}</div>
+          <div class="lastName"><label>NAZWISKO</label><br /> {{ user.lastName || '-' }}</div>
+          <div *ngIf="user.forumRole"><br> {{ user.forumRole }} </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="bottom-container">
+      <div class="user-about profile-section">
+        <label>OPIS</label><br />
+        <span class="span-text-about" [innerText]="user.about ? user.about : 'Brak opisu'"></span>
+      </div>
+      <div *ngIf="userRole === 'Admin' && !ownProfile" class="admin-buttons">
+        <button class="admin-button" (click)="openDialogWithHistoryOfPosts()">
+          Aktywność na forum i status moderatora
+        </button>
+        <button class="admin-button" (click)="openDialogWithHistoryOfEvents()">
+          Uczestnictwo w wydarzeniach
+        </button>
+        <button class="admin-button" (click)="openDialogWithHistoryOfWarnings()">
+          Historia ostrzeżeń
+        </button>
+      </div>
+      <div *ngIf="ownProfile && hasInvite" class="psycho-invite-box">
+        <h2 class="invite-title">Dostałeś zaproszenie do forum grupy <span class="diffrent-color">Psychologicznej</span>
+        </h2>
+        <button class="accept-invite-button btn btn-primary me-2" (click)="acceptInvite()">
+          Zaakceptuj zaproszenie
+        </button>
+        <button class="reject-invite-button btn btn-danger" (click)="rejectInvite()">
+          Odrzuć zaproszenie
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <div *ngIf="!isLoading">
+      <button *ngIf="ownProfile" class="btn btn-primary edit-profile-button"
+        [routerLink]="'/user-profile/edit-profile'">
+        <i class="fas"></i> Edytuj swój profil
+      </button>
+      <button *ngIf="!ownProfile && hasChatWith === true" class="btn btn-primary chat-button"
+        (click)="openChatWithRecipient()">Napisz wiadomość
+      </button>
+      <button *ngIf="!ownProfile && hasChatWith === false" class="btn btn-primary chat-button"
+        (click)="openChatWithRecipient()">Napisz wiadomość
+      </button>
+    </div>
+    <button *ngIf="userRole === 'Admin' && !ownProfile && !isAlreadyInvited" class="send-invite-button"
+      (click)="sendReqToPsychGroup()">
+      Wyślij zaproszenie do grupy psychologicznej
+    </button>
+    <app-admin-options options *ngIf="userRole === 'Admin' && !ownProfile" [user]="user"></app-admin-options>
+    <div class="options">
+      <ng-content select="[options]"></ng-content>
+    </div>
+  </div>
+</div>

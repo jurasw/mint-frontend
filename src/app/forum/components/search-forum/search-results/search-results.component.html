@@ -1,0 +1,32 @@
+<div [appLoader]="isLoading" [background]="true" class="results" (scroll)="onSearchScroll($event)">
+  <div *ngIf="searchResults && numberOfResults > 0; else resultsNoFound">
+    <div class="text-center p-2">
+      Znaleziono {{ numberOfResults }} wyników
+    </div>
+
+    <div *ngIf="searchResults.threads.items.length > 0">
+      <div *ngFor="let threadResult of searchResults.threads.items" class="result-item thread-result"
+        (click)="onResultClick('thread', threadResult.subforumId, threadResult.id)">
+        <div class="forum-info">{{ threadResult.subforum.title }}</div>
+        <span class="result-title">Wątek #{{ threadResult.id}}</span> Temat: <span
+          [innerHTML]="threadResult.title | highlight: searchValue"></span>
+      </div>
+    </div>
+    <div *ngIf="searchResults.posts.items.length > 0">
+      <div *ngFor="let postResult of searchResults.posts.items" class="result-item post-result"
+        (click)="onResultClick('post', postResult.forumThread.subforumId, postResult.forumThreadId, postResult.id, postResult.postRef)">
+        <div class="forum-info">{{ postResult.forumThread.subforum.title }}</div>
+        <span class="result-title">Komentarz #{{postResult.postRef}} (wątek #{{postResult.forumThread.id}})</span>
+        użytkownika {{postResult.author.nickName }}: <span
+          [innerHTML]="postResult.body | highlight: searchValue"></span>
+      </div>
+    </div>
+    <div *ngIf="moreResultsLoading" [appLoader]="moreResultsLoading" [minHeight]="50">
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<ng-template #resultsNoFound>
+  <div class="text-center p-2">Nie znaleziono wyników</div>
+</ng-template>

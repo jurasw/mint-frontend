@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="back-button">
+        <button class="btn btn-link" routerLink="../">Powrót</button>
+    </div>
+    <div class="box">
+        <div [appLoader]="isLoading">
+            <h2>Prośby o zostanie moderatorem</h2>
+            <div *ngIf="(moderatorRequests$ | async) as moderatorRequests" class="container">
+                <ng-container *ngIf="moderatorRequests.length > 0; else noData">
+                    <div *ngFor="let request of moderatorRequests" class="list-item" (click)="openDialog(request)">
+                        {{ request.user.nickName }} <span
+                            *ngIf="request.user.firstName && request.user.lastName">({{request.user.firstName}}
+                            {{request.user.lastName}})</span> wysłał(a) prośbę o zostanie moderatorem
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noData>
+    <div class="text-center">
+        Brak nowych próśb
+    </div>
+</ng-template>

@@ -1,0 +1,24 @@
+<div>
+  <div *ngIf="showAddEventButton" class="text-center mb-5">
+    <button class="btn btn-primary" [routerLink]="'/events/add-event'">+ Utwórz nowe wydarzenie</button>
+  </div>
+  <app-alert-message></app-alert-message>
+  <app-pagination (pageChanged$)="onPageChange($event)"></app-pagination>
+  <div [appLoader]="isLoading" class="events">
+    <div *ngIf="eventsWithSessions$ | async as events; else noData">
+      <ng-container *ngIf="events.length > 0; else noData">
+        <app-event *ngFor="let event of events | paginate
+        : {
+            itemsPerPage: pagination.limit,
+            currentPage: pagination.page,
+            totalItems: events.length
+          }" [event]="event" (eventDeleted$)="onEventDelete($event)"></app-event>
+      </ng-container>
+    </div>
+  </div>
+  <app-pagination (pageChanged$)="onPageChange($event)"></app-pagination>
+</div>
+
+<ng-template #noData>
+  <div *ngIf="!isLoading" class="text-center"> Brak zbliżających się wydarzeń.</div>
+</ng-template>

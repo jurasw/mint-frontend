@@ -1,0 +1,30 @@
+<div class="confirm-container page-background">
+  <div *ngIf="verificationMethod === 'email'">
+    <div class="page-title">SPRAWDŹ SKRZYNKĘ</div>
+    <div class="text-center">
+      <app-alert-message></app-alert-message>
+      <div>Wysłaliśmy link aktywacyjny na podany przez Ciebie e-mail podczas rejestracji konta.</div>
+      <div class="p-2">Kliknij w link, aby potwierdzić konto!</div>
+      <div>Jeżeli nie dostałeś kodu na podany e-mail sprawdź dodatkowo folder spam / kosz.</div>
+      <button *ngIf="!codeIsSentAgain" [disabled]="codeIsSending" type="button" class="btn-outline-success"
+        (click)="sendCode(true)">Wyślij link ponownie</button>
+      <div *ngIf="codeIsSentAgain" class="text-bold my-2">Link został wysłany</div>
+    </div>
+  </div>
+  <div *ngIf="verificationMethod === 'sms'">
+    <div class="page-title">Wprowadź kod potwierdzający</div>
+    <form class="form" [formGroup]="form">
+      <div class="text-center">
+        <app-alert-message></app-alert-message>
+        <div>Wprowadź 4-cyfrowy kod potwierdzający wysłany na numer telefonu komórkowego.</div>
+        <br />
+        <button *ngIf="!codeIsSentAgain" [disabled]="codeIsSending" type="button" class="btn-outline-success"
+          (click)="sendCode(true)">Wyślij kod ponownie</button>
+        <div *ngIf="codeIsSentAgain" class="text-bold my-2">Kod został wysłany</div>
+        <app-input-text class="code-input" formControlName="code" name="code" id="code" [placeholder]="'Wpisz kod'">
+        </app-input-text>
+        <button (click)="submit()" class="btn btn-secondary" [disabled]="form.invalid">Rozpocznij przygodę z MINT</button>
+      </div>
+    </form>
+  </div>
+</div>

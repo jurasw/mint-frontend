@@ -1,0 +1,45 @@
+<div class="row close-button-div">
+  <button class="close-button" mat-button (click)="close(false)">
+    Zamknij
+  </button>
+</div>
+
+<h2 class="text-center">Obserwowane przez Ciebie wątki w danym forum</h2>
+
+<div class="forum-threads">
+  <div [appLoader]="isThreadLoading" [background]="true">
+    <div
+      #thread
+      *ngFor="let thread of threads"
+      class="forum-thread"
+      [id]="thread.id"
+      [routerLink]="['/forums/' + data.forumId + '/' + thread.id]"
+      (click)="closeDialog(false)"
+    >
+      <div class="section-cell section-cell-large">
+        <div *ngIf="thread.isSubscribed">
+          <i class="fas fa-star"></i>
+          {{ thread.title }}
+        </div>
+        <div *ngIf="!thread.isSubscribed" class="thread-not-watched">
+          {{ thread.title }}
+        </div>
+      </div>
+      <div class="section-cell section-cell-small">
+        {{ thread.postCount }}
+      </div>
+      <div class="section-cell section-cell-medium">
+        <div>
+          {{ thread.latestPost.body | isQuotePost | slice: 0:10 }}
+          {{ thread.latestPost.body.length < 9 ? "" : "..." }}
+        </div>
+        <div class="section-date-format">
+          {{ thread.latestPost.createdAt | dateTime }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="threads.length === 0 && !isThreadLoading" class="text-center p-3">
+    Brak wątków w tym forum.
+  </div>
+</div>

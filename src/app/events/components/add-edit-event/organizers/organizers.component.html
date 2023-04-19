@@ -1,0 +1,23 @@
+<div class="mb-1">Główny organizator</div>
+<app-badge *ngIf="organizers[0]" [id]="organizers[0].id" [message]="organizers[0].nickName"
+  (badgeClosed$)="deleteOrganizer($event)"></app-badge>
+<span *ngIf="!organizers[0]">Nie ustawiono</span>
+<div class="mb-1 mt-2"> Pozostali organizatorzy</div>
+<app-badge *ngFor="let organizer of organizers | slice:1" [id]="organizer.id" [message]="organizer.nickName"
+  [classColor]="'secondary'" (badgeClosed$)="deleteOrganizer($event)">
+</app-badge>
+<span *ngIf="organizers.length <= 1">Nie ustawiono</span>
+
+<app-input-text [formControl]="searchUserControl" [placeholder]="'Wyszukaj organizatora (login)'"></app-input-text>
+<div [appLoader]="isLoading">
+  <app-organizer-results *ngIf="searchUsers && searchUsers.length > 0; else noResults" [searchUsers]="searchUsers"
+    [organizers]="organizers" [moreResultsLoading]="moreResultsLoading" (scrollBottom$)="onScrollBottom()"
+    (resultClicked$)="onResultClick($event)">
+  </app-organizer-results>
+</div>
+
+<ng-template #noResults>
+  <div *ngIf="!isLoading && this.searchUserControl.value" class="text-center py-4">
+    Brak wyników wyszukiwania
+  </div>
+</ng-template>

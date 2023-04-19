@@ -1,0 +1,4 @@
+<router-outlet></router-outlet>
+<app-chat-bubbles-view *ngIf="authService.currentUser && showChatBubbles"></app-chat-bubbles-view>
+<app-active-meetings *ngIf="authService.currentUser"></app-active-meetings>
+<app-cookies-info></app-cookies-info>

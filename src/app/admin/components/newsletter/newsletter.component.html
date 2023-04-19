@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="back-button">
+        <button class="btn btn-link" routerLink="../">Powrót</button>
+    </div>
+    <div class="box">
+        <div [appLoader]="isLoading">
+            <h2>Nowe artykuły</h2>
+            <div *ngIf="(articles$ | async) as articles" class="container">
+                <ng-container *ngIf="articles.items.length > 0; else noData">
+                    <div *ngFor="let article of articles.items" class="list-item" (click)="openDialog(article)">
+                        {{ article.title }}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" mat-button (click)="sendNewsletter()">Wyślij newsletter</button>
+</div>
+
+<ng-template #noData>
+    <div class="text-center">
+        Brak nowych artykułów
+    </div>
+</ng-template>

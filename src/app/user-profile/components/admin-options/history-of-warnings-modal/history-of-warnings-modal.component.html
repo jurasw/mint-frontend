@@ -1,0 +1,25 @@
+<div class="row close-button-div">
+  <button class="close-button" mat-button (click)="close(false)">
+    Zamknij
+  </button>
+</div>
+
+<h2 class="text-center">Historia ostrzeżeń</h2>
+
+<div class="warns">
+  <div [appLoader]="isWarnLoading" [background]="true">
+    <div #thread *ngFor="let warn of warns" class="warn" [id]="thread.id">
+      <div class="section-cell section-cell-small">
+        <div class="date-time">
+          {{ warn.createdAt | dateTime }}
+        </div>
+      </div>
+      <div class="section-cell section-cell-large">
+        {{ warn.message }}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="warns.length === 0 && !isWarnLoading" class="text-center warn-not-found">
+    Brak ostrzeżeń dla tego użytkownika.
+  </div>
+</div>

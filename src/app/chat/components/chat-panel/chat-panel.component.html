@@ -1,0 +1,12 @@
+<div class="chat-panel">
+  <app-chat-search class="chat-search" *ngIf="!isNewChat && !isBubble"
+    (createChatConfirmed$)="onCreateChatRoomConfirm($event)"></app-chat-search>
+  <div #chatPanels class="chat-panels">
+    <div *ngIf="isNewChat" class="new-chat">
+      Nowy czat
+    </div>
+    <app-chat-panel-item *ngFor="let room of chatRooms" class="chat-panel-item"
+      [active]="currentChatRoom && room.id === currentChatRoom.id" [room]="room" [id]="room.id"
+      (roomClicked$)="onRoomClick($event)" (messageReceived$)="onMessageReceive($event)"></app-chat-panel-item>
+  </div>
+</div>

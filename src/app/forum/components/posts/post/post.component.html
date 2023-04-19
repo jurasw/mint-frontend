@@ -1,0 +1,8 @@
+<app-comment [forumPost]="post" [commentTitle]="title" [showQuoteButton]="showQuoteButton"
+  [isQuoteFormOpen]="isQuoteFormOpen" [isFirstComment]="isFirstPost" [isReported]="isReported"
+  [reactionNumbers]="reactionNumbers" [reactionState]="reactionState" [reactions]="reactions"
+  (quoteButtonClicked$)="quoteButtonClick()" (reactionClicked$)="reactionClick($event)"
+  (reportButtonClicked$)="reportButtonClick()">
+  <app-post-options options *ngIf="isUserAdmin || isUserModerator" [post]="post" [forumId]="forumId"
+    [isFirstPost]="isFirstPost" (refresh$)="refreshThread()"></app-post-options>
+</app-comment>

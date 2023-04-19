@@ -1,0 +1,84 @@
+@import '../../../../_theme/helpers/variables';
+
+:host {
+  width: 100%;
+  color: $dark-gray;
+}
+
+.article-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .article-thumbnail {
+    margin-bottom: 1rem;
+    width: 100%;
+
+    video {
+      width: auto;
+      height: 80vh;
+    }
+  }
+
+  .article-title {
+    font-weight: 300;
+    padding-bottom: 0.5rem;
+  }
+
+  .article-info {
+    text-align: left;
+    width: 100%;
+    padding: 0 1rem;
+
+    .article-info-title {
+      font-weight: 500;
+      padding: 1rem 0;
+    }
+
+    ::ng-deep {
+
+      .ql-editor {
+        padding: 0;
+        margin: 0;
+        font-size: 0.95rem;
+        color: $dark-gray;
+      }
+
+      .ql-container {
+        border: none;
+      }
+    }
+
+    hr {
+      height: 2px;
+      width: 100%;
+    }
+  }
+}
+
+.add-article-comment {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.button-container {
+  display: flex;
+  margin: auto;
+  justify-content: right;
+
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+  }
+
+  button {
+    width: fit-content;
+  }
+}
+
+.article-buttons {
+  display: flex;
+  margin: 1rem auto 2rem auto;
+  justify-content: space-between;
+  padding: 0 1rem;
+}

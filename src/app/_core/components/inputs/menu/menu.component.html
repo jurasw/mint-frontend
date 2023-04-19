@@ -1,0 +1,18 @@
+<div [dir]="direction">
+  <div class="menu-icon" [matMenuTriggerFor]="menu" (click)="menuIconClick()">
+    <i class="fas fa-ellipsis-v"></i>
+  </div>
+  <mat-menu #menu="matMenu" [xPosition]="xPosition" [yPosition]="yPosition">
+      <ng-container *ngIf="isLoading">
+        <div [appLoader]="isLoading" [minHeight]="50">
+          <div></div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!isLoading">
+        <button *ngFor="let item of menuItems" mat-menu-item (click)="menuItemClicked(item)">
+          <i *ngIf="item.icon" [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </button>
+      </ng-container>
+  </mat-menu>
+</div>

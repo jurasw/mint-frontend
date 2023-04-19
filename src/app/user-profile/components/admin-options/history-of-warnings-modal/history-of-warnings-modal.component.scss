@@ -1,0 +1,51 @@
+@import "../../../../_theme/helpers/variables";
+
+.close-button-div {
+  float: right;
+  margin-bottom: 1rem;
+}
+.close-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: $light-blue;
+}
+
+.section-cell {
+  display: flex;
+  padding: 1rem;
+  overflow-wrap: anywhere;
+  &:not(:last-child) {
+    border-right: 1px solid $black;
+  }
+  &.section-cell-large {
+    width: 70%;
+  }
+
+  &.section-cell-small {
+    width: 30%;
+  }
+}
+
+.warns {
+  margin-top: 2rem;
+  .warn {
+    border: 1px solid $black;
+    border-radius: 10px;
+    margin: 1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.warn-not-found {
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .warns {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,27 @@
+@import "../../../../../_theme/helpers/variables";
+.reactions {
+  .reaction {
+    i {
+      margin: 0.2rem 0.5rem 0 0;
+      font-size: 1rem;
+      &.show {
+        visibility: visible;
+      }
+      &.active {
+        color: $primary;
+      }
+      &.clickable {
+        cursor: pointer;
+      }
+      &:not(.clickable) {
+        cursor: default;
+        user-select: none;
+        &:hover {
+          &:not(.active) {
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+}

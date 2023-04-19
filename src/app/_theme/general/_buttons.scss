@@ -1,0 +1,105 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.btn-secondary.btn-secondary {
+  border: 2px solid $white;
+  color: $white;
+  box-shadow: none;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: $white;
+    color: $green;
+  }
+}
+
+.btn-group {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-link.btn-link,
+.btn-icon {
+  text-decoration: none;
+  color: $dark-gray;
+  font-size: 0.9em;
+  font-weight: 600;
+  padding: 0;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.btn-link-add.btn-link-add {
+  text-decoration: none;
+  height: 40px;
+  width: 220px;
+  border-radius: 7px;
+  border: 2px solid $green;
+  background-color: $white;
+  color: $green;
+  box-shadow: none;
+
+  &:hover {
+    transition: 0.1s;
+    background-color: $green;
+    color: $white;
+  }
+}
+
+.btn-primary.btn-primary,
+.btn-danger.btn-danger {
+  background-color: $green;
+  border-color: $green;
+  color: $white;
+  box-shadow: none;
+  border-radius: 7px;
+
+  &:active,
+  &.active,
+  &:focus,
+  &:hover {
+    color: $white;
+  }
+}
+
+.btn-primary-add.btn-primary-add {
+  background-color: $green;
+  color: $white;
+  box-shadow: none;
+  border-radius: 7px;
+  
+  &:active,
+  &.active,
+  &:focus,
+  &:hover {
+    transition: 0.1s;
+    background-color: $white;
+    color: $green;
+    border: 2px solid $green;  }
+}
+
+.btn-outline-success.btn-outline-success {
+  color: $green;
+  border: 2px solid $green;
+  box-shadow: none;
+  border-radius: 7px;
+
+  &.active,
+  &:active,
+  &:focus,
+  &:hover {
+    color: $white;
+    border: 2px solid $white;
+  }
+}
+
+.btn-icon.btn-icon {
+  padding: 0;
+
+  i {
+    padding: 0;
+    font-size: 2rem;
+  }
+}

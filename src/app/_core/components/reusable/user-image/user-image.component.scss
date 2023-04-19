@@ -1,0 +1,11 @@
+@import '../../../../_theme/helpers/variables';
+.user-image {
+  position: relative;
+  border: 6px solid $green;
+  width: 7rem;
+  height: 7rem;
+  filter: none;
+  &.rounded {
+    border-radius: 50% !important;
+  }
+}

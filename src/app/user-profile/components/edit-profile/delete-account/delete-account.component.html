@@ -1,0 +1,10 @@
+<div class="delete-account">
+    <h1>USUŃ KONTO</h1>
+    <p>Czy na pewno chcesz usunąć konto? Jeśli usuniesz konto,<br> nie będziesz mógł/mogła korzystać z portalu Mint. <br>Ta decyzja jest nieodwracalna. </p>
+    <button mat-raised-button class="btn-secondary" name="logIn" routerLink="/user-profile/edit-profile/general">
+        Nie, anuluj
+    </button>
+    <button mat-raised-button class="btn-outline-success" name="logIn" (click)="deleteAccount()">
+        Tak, chcę usunąć konto
+    </button>
+</div>

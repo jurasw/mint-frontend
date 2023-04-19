@@ -1,0 +1,13 @@
+<div class="info-panel">
+    <h1>POTRZEBUJESZ WSPARCIA?</h1>
+    <p>Psychoterapci MINT zapewnią Ci profesjonalną i kompleksową pomoc oraz nauczą jak zadbać
+        o swój dobrostan psychiczny, niezależnie od wieku. </p>
+    <button *ngIf="router.url != '/landing-page/contact'" mat-raised-button class="btn-secondary" name="logIn"
+        routerLink="/landing-page/contact">
+        Zapisz się teraz
+    </button>
+    <button *ngIf="router.url != '/landing-page/main-page'" mat-raised-button class="btn-outline-success" name="logIn"
+        routerLink="/landing-page/main-page">
+        Dowiedz się więcej
+    </button>
+</div>

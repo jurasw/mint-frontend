@@ -1,0 +1,23 @@
+<div class="activities">
+  <div class="activities-title">
+    <h1>JAKIE MOŻLIWOŚCI DAJE MINT?</h1>
+    <p>
+      Oferujemy także możliwość
+      indywidualnego czatu z innymi użytkownikami oraz wymianę swoich spostrzeżeń na grupach wsparcia na
+      tematy związane m.in. z uczestnictwem w życiu kulturalnym, podróżami, rozwijaniem swoich pasji oraz
+      pozytywnych relacji z innymi. </p>
+  </div>
+
+  <div class="activities-content">
+    <div *ngFor="let activity of activities" class="activity">
+      <img [src]="activity.image" alt="ikona aktywności">
+      <div class="activity-title">{{ activity.title }}</div>
+      <div class="activity-description">{{ activity.description }}</div>
+    </div>
+  </div>
+
+  <button *ngIf="router.url != '/landing-page/contact'" mat-raised-button class="btn-primary-add" name="logIn"
+    routerLink="/landing-page/contact">
+    Dowiedz się więcej
+  </button>
+</div>

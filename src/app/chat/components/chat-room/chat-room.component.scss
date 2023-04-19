@@ -1,0 +1,22 @@
+@import "../../../_theme/helpers/variables";
+:host {
+  width: 100%;
+  min-height: 100%;
+}
+
+.chat-response {
+  ::ng-deep {
+    textarea {
+      height: 8rem;
+    }
+  }
+}
+
+.chat-search {
+  height: 40rem;
+}
+
+.roomNotSelectedInfo {
+  text-align: center;
+  padding: 2rem;
+}

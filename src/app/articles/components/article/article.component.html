@@ -1,0 +1,32 @@
+<div class="article" *ngIf="article">
+  <div class="article-info">
+    <div class="article-date">{{ article.createdAt | date: 'dd.MM.YYYY HH:mm'}}</div>
+    <span *ngIf="ownArticle" class="own-article">(Twój artykuł) </span>
+  </div>
+  <div>
+    <div class="article-thumbnail center-background-image" title="{{article.imageDescription}}">
+      <img [src]="'../../../../../assets/images/default-image.jpg'" *ngIf="!this.article.thumbnail" alt="default image">
+      <img [src]="article.thumbnail.filePath" *ngIf="format==='image'" alt="thumbnail image">
+      <video [src]="article.thumbnail.filePath" *ngIf="format==='video'" alt="thumbnail video" width="125" height="75"
+        #videoPlayer></video>
+      <div class="video-tag" *ngIf="format==='video'">
+        <i class="fa-solid fa-circle-play"></i>
+      </div>
+    </div>
+    <div class="article-details">
+      <div class="article-details-title">
+        <div class="article-details-options">
+          <div class="article-details-title-text">{{ article.title}}</div>
+          <div class="article-options">
+            <app-article-options [articleId]="article.id" (articleDeleted$)="onArticleDelete()"></app-article-options>
+          </div>
+        </div>
+      </div>
+      <div class="article-details-description">
+        <quill-editor [(ngModel)]="article.body" [readOnly]="true" [modules]="{toolbar:false}"></quill-editor>
+      </div>
+      <button class="btn btn-link" (click)="showArticleDetails()">Czytaj więcej <i
+          class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+</div>

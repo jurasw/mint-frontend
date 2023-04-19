@@ -1,0 +1,80 @@
+<div class="showbox-body">
+    <div class="showbox">
+        <app-image-slider [images]="sliderImages" [imageTitles]="sliderTitles"></app-image-slider>
+    </div>
+</div>
+<div class="welcome-home-container">
+    <div class="welcome-text">
+        <div class="welcome-text-title">
+            <h1>CZYM JEST MINT?</h1>
+        </div>
+        <p>To projekt społeczno-psychologiczny, który powstał, aby nauczyć ludzi jak dbać o swoje
+            zdrowie psychiczne. Emocje, radzenie sobie z trudnościami czy podejście do życia są tak samo ważne jak
+            zdrowie fizyczne, a niestety często w dzisiejszych czasach bagatelizowane. </p>
+        <button *ngIf="router.url != '/landing-page/contact'" mat-raised-button class="btn-outline-success" name="logIn"
+            routerLink="/landing-page/contact">
+            Umów się na terapię
+        </button>
+    </div>
+
+    <app-info-panel *ngIf="isLoggedUser; else registrationPanel"></app-info-panel>
+    <ng-template #registrationPanel>
+        <app-registration-panel></app-registration-panel>
+    </ng-template>
+
+    <div class="elements-body">
+
+        <app-mint-activities></app-mint-activities>
+
+        <app-user-recommends class="w-100"></app-user-recommends>
+
+        <div class="mt-5 graphs">
+
+            <div class="data-items-title">
+                <h1>ZAUFAJ MINT!</h1>
+            </div>
+            <ul class="data-items">
+                <li class="data-item item item-82">
+                    <div class="graph">
+                        <img src="../../../../assets/images/graphs/82_percent.png" alt="wykres 82 procent"
+                            class="img" />
+                    </div>
+                    <div class="item-text item-text-82">
+                        Osób w wieku 50+ ceni sobie zdrowie fizyczne oraz psychiczne jako najważniejszą wartość w życiu
+                        <br>
+                        <strong>MINT im w tym pomaga!</strong>
+                    </div>
+                </li>
+                <li class="data-item item item-66">
+                    <div class="graph">
+                        <img src="../../../../assets/images/graphs/66_percent.png" alt="wykres 66 procent"
+                            class="img" />
+                    </div>
+
+                    <div class="item-text">
+                        Osób w wieku 50+ korzysta przynajmniej kilka razy w miesiącu z video rozmów z innymi osobami<br>
+                        <strong>- internet stał się bezpiecznym środkiem komunikacji z innymi osobami, dzięki MINT
+                            możesz zawierać nowe znajomości! </strong>
+                    </div>
+                </li>
+                <li class="data-item item item-64">
+                    <div class="graph">
+                        <img src="../../../../assets/images/graphs/64_percent.png" alt="wykres 64 procent"
+                            class="img" />
+                    </div>
+                    <div class="item-text">
+                        Osób starszych odczuwa trudne emocje: niepokój, przygnębienie, złość, tęsknotę<br>
+                        <strong>- dzięki specjalistom MINT dowiesz się jak sobie poradzić z nieprzyjemnymi emocjami i
+                            cieszyć się życiem!</strong>
+                    </div>
+                </li>
+            </ul>
+
+            <button *ngIf="router.url != '/landing-page/contact'" mat-raised-button class="btn-primary-add" name="logIn"
+                routerLink="/landing-page/contact">
+                Dowiedz się więcej
+            </button>
+
+        </div>
+    </div>
+</div>

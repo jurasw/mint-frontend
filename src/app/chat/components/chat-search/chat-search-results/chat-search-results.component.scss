@@ -1,0 +1,27 @@
+@import "../../../../_theme/helpers/variables";
+.chat-results {
+  padding: 0.5rem;
+  height: 35rem;
+  overflow: auto;
+  align-items: center;
+  .chat-result {
+    margin: 1rem 0;
+    background-color: $mint-100;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .chat-recipient {
+      display: flex;
+      align-items: center;
+      ::ng-deep .user-image {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+  }
+}

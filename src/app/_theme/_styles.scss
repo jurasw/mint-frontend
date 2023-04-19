@@ -1,0 +1,19 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~@angular/material/theming";
+@import "helpers/variables";
+@import "general/global";
+@import "general/typography";
+@import "general/bootstrap";
+@import "general/global";
+@import "general/buttons";
+@import "general/material";
+@import "general/animations";
+@import "general/image";
+@import "layout/page.scss";
+@import "layout/input.scss";
+
+$fa-font-path: "font-awesome/font";
+$custom-typography: mat-typography-config(
+  $font-family: "Roboto, sans-serif",
+);
+@include angular-material-typography($custom-typography);

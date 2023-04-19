@@ -1,0 +1,5 @@
+<div class="container">
+    <div *ngFor="let subpage of subpages" class="list-item" (click)="navigateToSubpage(subpage.path)">
+        {{subpage.name}}
+    </div>
+</div>

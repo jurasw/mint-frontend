@@ -1,0 +1,33 @@
+@import '../../../../_theme/helpers/variables';
+
+.about-us-section {
+  width: 100%;
+  padding: 2rem 15%;
+  margin-top: 10rem;
+  color: $dark-gray;
+
+  @media only screen and (max-width: 1000px) {
+    padding: 1rem 5%;
+    margin: 17rem 0 0 0;
+  }
+
+  .title {
+    padding: auto;
+
+    .text-center {
+      padding-top: 1rem;
+      text-align: justify;
+    }
+  }
+}
+
+p,
+a {
+  letter-spacing: 1px;
+  text-align: justify;
+  font-size: 14px;
+}
+
+h2 {
+  font-size: 20px;
+}

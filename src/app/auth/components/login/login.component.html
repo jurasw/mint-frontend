@@ -1,0 +1,26 @@
+<div class="login-container">
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <app-alert-message></app-alert-message>
+        <app-input-text formControlName="login" [type]="'text'" [placeholder]="'E-MAIL LUB NUMER TELEFONU'">
+        </app-input-text>
+        <app-input-text [type]="hidePassword ? 'password' : 'text'"
+            [icon]="hidePassword ? 'fas fa-eye-slash' : 'fas fa-eye'" formControlName="password" [type]="'password'"
+            [placeholder]="'HASŁO'" (iconClicked$)="hidePassword = !hidePassword"></app-input-text>
+
+        <div>
+            <app-checkbox formControlName="rememberPassword" name="rememberPassword" [label]="'Zapamiętaj hasło'">
+            </app-checkbox>
+            <a routerLink="/auth/forgot-password">Zapomniałeś hasła?</a>
+        </div>
+
+        <div class="submit-button">
+            <button [disabled]="form.invalid || isSending" type="submit" class="btn btn-primary btn-block">Zaloguj
+                się</button>
+        </div>
+        <hr>
+    </form>
+    <div class="register-redirection">
+        <span class="m-2">NIE MASZ KONTA?</span>
+        <a [routerLink]="'/auth/register/form'">ZAREJESTRUJ SIĘ TERAZ</a>
+    </div>
+</div>

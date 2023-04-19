@@ -1,0 +1,79 @@
+<nav class="navbar" [class.sticky]="sticky">
+  <div class="navbar-mobile">
+    <div class="actions-mobile">
+      <ng-container *ngTemplateOutlet="actions"></ng-container>
+      <button #navbarMobileToggler class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <div #navbarToggleExternalContent class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-primary p-4">
+        <ng-container *ngTemplateOutlet="navigationMainTab"></ng-container>
+        <ng-container *ngTemplateOutlet="navigationAdditionalTab"></ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar-main">
+    <div class="logo">
+      <img class="navbar-brand logo" src="../../../../assets/images/mint_logo_cut.png" alt="logo" routerLink="/" />
+    </div>
+
+    <div class="navigation-main">
+      <ng-container *ngTemplateOutlet="navigationMainTab"></ng-container>
+      <div class="actions-desktop">
+        <ng-container *ngTemplateOutlet="actions"></ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar-additional" *ngIf="authService.currentUser">
+    <div class="navigation-additional">
+      <ng-container *ngTemplateOutlet="navigationAdditionalTab"></ng-container>
+    </div>
+    <div class="contact-button" *ngIf="!authService.isUserWorker">
+      <a href="/landing-page/contact"
+        matTooltip="Potrzebujesz wsparcia? Psychoterapeuci MINT zapewnią Ci profesjonalną, kompleksową pomoc oraz nauczą jak zadbać o swój dobrostan psychiczny, niezależnie od wieku."
+        class="btn btn-link-add" target="_blank">Zapisz się na terapię</a>
+    </div>
+  </div>
+</nav>
+
+<ng-template #navigationMainTab>
+  <div class="navigationMainTab">
+    <div *ngFor="let tab of mainTabs" class="nav-element" [routerLink]="tab.url" routerLinkActive="active"
+      (click)="navbarMobileToggler.click()">
+      {{ tab.name }}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #navigationAdditionalTab>
+  <div class="navigationAdditionalTab">
+    <div *ngFor="let tab of additionalTabs" class="nav-element" [routerLink]="tab.url" routerLinkActive="active"
+      (click)="navbarMobileToggler.click()">
+      {{ tab.name }}
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #actions>
+  <div class="navbar-actions">
+    <div *ngIf="authService.currentUser" class="nickName">
+      {{ authService.currentUser.nickName }}
+    </div>
+    <div *ngIf="authService.currentUserValue" (click)="logout()">
+      <button class="btn btn-secondary">Wyloguj się</button>
+    </div>
+    <div *ngIf="!authService.currentUserValue">
+      <a class="btn btn-link-add" [routerLink]="'/auth/login'">
+        Zaloguj się
+      </a>
+      <button class="btn btn-primary" [routerLink]="'/auth/register/form'">
+        Utwórz konto
+      </button>
+    </div>
+  </div>
+</ng-template>

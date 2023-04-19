@@ -1,0 +1,53 @@
+@import "../../../../_theme/helpers/variables";
+.blocked-users-container {
+  width: 100%;
+  display: flex;
+  border: 1px solid $black;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  justify-content: center;
+  flex-direction: column;
+  h4 {
+    padding: 1rem;
+    text-align: center;
+  }
+  .blocked-users {
+    padding: 0 1rem;
+    margin: 1rem;
+    .section-cell {
+      padding: 1rem;
+      border: 1px solid $black;
+      border-radius: 1rem;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      .nick-name {
+        padding-left: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button-div {
+        padding: 0 1rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .blocked-users-container {
+    .blocked-users {
+      padding: 0 5px;
+      .section-cell {
+        padding: 5px;
+        margin-top: 10px;
+        .nick-name {
+          padding-left: 1.5rem;
+        }
+        .button-div {
+          padding: 0 1rem;
+        }
+      }
+    }
+  }
+}

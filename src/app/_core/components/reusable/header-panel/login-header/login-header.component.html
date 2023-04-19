@@ -1,0 +1,16 @@
+<div class="header-container">
+    <div class="title-image-container">
+        <div class="logo-container">
+            <img src="../../../../../assets/images/mint-logo-white-edit.png" alt="" class="logo" />
+            <div [ngSwitch]="router.url.includes('')">
+                <div *ngSwitchCase="router.url.includes('auth/login')">
+                    <h1>LOGOWANIE</h1>
+                </div>
+                <div *ngSwitchCase="router.url.includes('auth/forgot-password')">
+                    <h1>ODZYSKIWANIE HASŁA</h1>
+                </div>
+                <div *ngSwitchDefault></div>
+            </div>
+        </div>
+    </div>
+</div>

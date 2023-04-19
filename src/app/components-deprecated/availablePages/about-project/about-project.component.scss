@@ -1,0 +1,57 @@
+@import '../../../_theme/helpers/variables';
+
+p {
+    color: $dark-gray;
+}
+
+.text-container {
+    margin: 3rem 4rem auto 4rem;
+
+    @media only screen and (max-width: 700px) {
+        margin: 1rem;
+    }
+}
+
+.additional-text-container {
+    display: flex;
+    margin: 2rem 10rem;
+
+    @media only screen and (max-width: 700px) {
+        flex-direction: column;
+        margin: 1rem;
+        align-items: center;
+    }
+
+    .additional-text {
+        box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+        border-radius: 0.5rem;
+        width: 50%;
+        margin: 1rem;
+        padding: 3rem;
+        text-align: center;
+
+        @media only screen and (max-width: 700px) {
+            width: 100%;
+            margin: 0.5rem;
+            padding: 1rem;
+        }
+
+        p {
+            font-weight: 500;
+        }
+
+        span {
+            color: $primary;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+
+    button {
+        width: 300px;
+    }
+}

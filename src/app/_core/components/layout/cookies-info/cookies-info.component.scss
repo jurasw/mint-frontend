@@ -1,0 +1,28 @@
+@import '../../../../_theme/helpers/variables';
+.cookie-info {
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  background-color: $mint-200;
+  padding: 1rem;
+  border-bottom: 1px solid $primary;
+  .cookie-info-actions {
+    text-align: right;
+  }
+  .cookie-info-content {
+    padding: 1rem 2rem;
+  }
+  .cookie-info-images {
+    text-align: center;
+    .cookie-image {
+      width: 10rem;
+      margin: 1rem;
+      border: 1px solid $primary;
+      border-radius: 1rem;
+      padding: 2rem;
+    }
+  }
+
+}

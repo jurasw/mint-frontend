@@ -1,0 +1,96 @@
+@import "../../../_theme/helpers/variables";
+
+:host {
+  width: 75%;
+}
+
+.search {
+  display: flex;
+  justify-items: center;
+  margin-top: 1rem;
+  position: relative;
+
+  .search-panel {
+    width: 100%;
+    box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+    border-radius: 0.5rem;
+    color: $dark-gray;
+
+    .search-panel-form {
+      display: flex;
+      overflow: hidden;
+
+      .search-button {
+        box-shadow: none;
+        cursor: default;
+        border: none;
+        border-top-left-radius: 0%;
+        border-bottom-left-radius: 0%;
+        font-size: 0.9rem;
+
+        @media only screen and (max-width: 991px) {
+          border-top-right-radius: 0;
+        }
+      }
+
+      ::ng-deep {
+        select {
+          width: auto;
+
+          @media only screen and (max-width: 991px) {
+            width: 100%;
+          }
+        }
+
+        input {
+          height: 3.5rem;
+        }
+
+        .input-div {
+          box-shadow: none;
+          border-right: 2px solid $light-gray;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+
+          @media only screen and (max-width: 991px) {
+            border-top-right-radius: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  .search-results {
+    position: absolute;
+    transform: translateY(3rem);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .search {
+    .search-panel {
+      .search-panel-form {
+        flex-wrap: wrap;
+        border-radius: none;
+
+        .filter-dropdown {
+          width: 80%;
+          border-left: none;
+          border-top: 1px solid $gray;
+
+          ::ng-deep select {
+            border-bottom-left-radius: 0.5rem;
+          }
+        }
+        .search-button {
+          width: 20%;
+          font-size: 0.6rem;
+          padding: 0.1rem;
+        }
+      }
+    }
+    .search-results {
+      transform: translateY(7rem);
+    }
+  }
+}

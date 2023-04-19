@@ -1,0 +1,139 @@
+@import "../../../_theme/helpers/variables";
+
+.forum-container {
+  margin-top: 5rem;
+  min-height: 500px;
+  font-size: 0.9rem;
+  color: $dark-gray;
+
+  @media (max-width: 991px) {
+    margin: 0.5rem 1rem;
+  }
+
+  .forum {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    border-radius: 1rem;
+    width: 100%;
+    min-height: 8rem;
+    box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+    @media (max-width: 991px) {
+      padding: 0.75rem;
+    }
+
+    cursor: pointer;
+
+    &.inactive {
+      border-color: lighten($gray, 10);
+      color: lighten($gray, 10);
+      cursor: default;
+      user-select: none;
+
+      .forum-section.info {
+        border: none;
+        width: 65%;
+      }
+    }
+
+    .forum-section {
+
+      &.thumbnail {
+        width: 25%;
+        min-width: 25%;
+        padding: 0;
+
+        .image {
+          max-width: 250px;
+          max-height: 250px;
+          padding: 4rem;
+          opacity: 85%;
+
+          @media (max-width: 991px) {
+            overflow: hidden;
+            display: none;
+          }
+        }
+
+        @media (max-width: 991px) {
+          visibility: hidden;
+          display: none;
+        }
+      }
+
+      &.info {
+        width: 50%;
+        margin: auto 0;
+        align-content: center;
+
+        .title {
+          display: block;
+          margin-bottom: 1rem;
+          font-size: 1.3rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          color: $green;
+          @media (max-width: 991px) {
+            font-size: 1rem;
+          }
+        }
+
+        .description {
+          font-size: 1rem;
+          width: 75%;
+        }
+      }
+
+      &.join-button-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+          padding: 0.5rem 2rem;
+        }
+      }
+
+      .no-post {
+        color: red;
+        text-align: center;
+        padding: 1rem 0;
+      }
+
+      &.details {
+        width: 25%;
+        min-width: 25%;
+        margin: auto 1rem;
+        font-size: 0.8rem;
+      }
+
+      &.numbers {
+        display: flex;
+        margin-bottom: 2rem;
+
+        .number-of-threads {
+          width: 50%;
+        }
+
+        .number-of-users {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+p {
+  color: $green;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+.vertical-line {
+  border-left: 0.3px;
+  margin: 3rem 1rem;
+  align-items: center;
+  box-shadow: 0px 0px 1px 1px rgba($dark-gray, 0.3);
+}

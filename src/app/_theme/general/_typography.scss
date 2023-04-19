@@ -1,0 +1,27 @@
+.text-small {
+  font-size: 0.75rem;
+}
+
+.text-big {
+  font-size: 1.5rem;
+}
+
+.text-gray {
+  color: $gray;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-secondary {
+  color: $secondary;
+}
+
+.text-bold {
+  font-weight: 600;
+}
+
+.gray-out {
+  opacity: 0.5;
+}

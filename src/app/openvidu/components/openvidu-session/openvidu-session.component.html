@@ -1,0 +1,23 @@
+<div *ngIf="connection && connection.sessionId">
+  <div class="session-topbar">
+    <div *ngIf="ovSession" class="general-options">
+      <button class="btn btn-link" (click)="sessionLeft()">Powrót</button>
+      <div *ngIf="isPublisher && enableRecording" [appLoader]="isRecordingLoading" [minHeight]="1" [background]="true"
+        [backgroundColor]="'#333'" class="recording" (click)="isRecording ? stopRecording() : startRecording()">
+        <div *ngIf="!isRecording"><i class="fas fa-video"></i> Rozpocznij nagrywanie</div>
+        <div *ngIf="isRecording"><i class="fas fa-video-slash"></i> Zakończ nagrywanie</div>
+      </div>
+      <div></div>
+    </div>
+    <app-alert-message class="event-minutes-info" *ngIf="minutesUntilEventEnds <= 10" [type]="'info'"
+      [message]="minutesUntilEventEnds > 0 ? 'Do końca wydarzenia zostało minut:  ' + minutesUntilEventEnds : 'Zaplanowany czas wydarzenia dobiegł końca'">
+    </app-alert-message>
+  </div>
+  <div class="session" [class.recording]="isRecording">
+    <opv-session [class.subscriber-session]="!isPublisher" #ovSessionComponent
+      [sessionName]="event ? event.title : (chatRoom ? chatRoom.name: 'wideorozmowa')" [user]="userNickName"
+      [tokens]="tokens" [ovSettings]="ovSettings" (sessionCreated)="handlerSessionCreatedEvent($event)"
+      (error)="handlerErrorEvent($event)" (leaveSession)="sessionLeft()">
+    </opv-session>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div [appLoader]="isLoading" [background]="true" [opacity]="0.5">
+  <mwl-calendar-month-view *ngIf="viewMode && viewDate" [weekStartsOn]="1" [cellTemplate]="customMonthShift"
+    [viewDate]="viewDate" [events]="calendarEvents" [locale]="locale"></mwl-calendar-month-view>
+</div>
+
+<ng-template #customMonthShift let-day="day">
+  <div class="month-event">
+    <div class="day" [ngClass]="{ 'gray-out': !day.inMonth, 'weekend': day.isWeekend}">
+      {{ day.date.getDate() }}
+    </div>
+    <div class="events">
+      <div *ngFor="let dayEvent of day.events">
+        <app-calendar-event [calendarEvent]="dayEvent" [monthDay]="day" (showEventDetails$)="showEventDetails($event)">
+        </app-calendar-event>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,22 @@
+.add-comment {
+  text-align: center;
+  flex-direction: column;
+  width: 100%;
+
+  .input-file {
+    padding-top: 1rem;
+  }
+
+  .submit-button {
+    display: flex;
+    justify-content: right;
+
+    button {
+      margin: 1rem 0;
+    }
+  }
+
+  .app-textarea {
+    border-radius: 1rem;
+  }
+}

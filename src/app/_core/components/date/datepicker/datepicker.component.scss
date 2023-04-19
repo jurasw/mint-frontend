@@ -1,0 +1,63 @@
+@import "../../../../_theme/helpers/variables";
+
+:host {
+  width: 100%;
+}
+
+.add-margin {
+  margin: 1rem 0;
+}
+
+.hide-picker {
+  visibility: hidden;
+  margin-top: -2rem;
+}
+
+.datepicker-container {
+  ::ng-deep {
+    .mat-form-field .mat-form-field-flex {
+      border-radius: 0.5rem;
+      border-style: none;
+      box-shadow: 0px 0px 9px 1px rgba($dark-gray, 0.3);
+      background-color: $white;
+      border: 0ch;
+    }
+
+    input.ng-touched.ng-invalid,
+    textarea.ng-touched.ng-invalid {
+      box-shadow: none;
+    }
+
+    input.ng-valid,
+    textarea.ng-valid {
+      box-shadow: none;
+    }
+
+    .mat-form-field.ng-touched.ng-invalid .mat-form-field-flex {
+      box-shadow: 0px 0px 9px 1px rgba($red, 0.5);
+    }
+
+    .mat-form-field-underline {
+      display: none;
+    }
+
+    .mat-form-field.mat-focused {
+      .mat-form-field-label {
+        font-size: 1rem;
+        font-weight: 500;
+        color: $primary;
+        text-transform: uppercase;
+      }
+    }
+
+    .mat-form-field {
+      .mat-form-field-label.mat-empty {
+        text-transform: lowercase;
+      }
+
+      .mat-form-field-label.mat-empty::first-letter {
+        text-transform: capitalize;
+      }
+    }
+  }
+}

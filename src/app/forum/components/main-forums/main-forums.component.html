@@ -1,0 +1,38 @@
+<div [appLoader]="isLoading" class="forum-container">
+  <div *ngFor="let forum of forums$ | async let i = index " class="forum" [class.inactive]="!forum.isAttendee"
+    [routerLink]="forum.isAttendee ? [forum.id] : []">
+    <div class="forum-section thumbnail">
+      <img class="image" [src]="imageForum[i].pictureUrl" alt="image" />
+    </div>
+    <div class="forum-section info">
+      <div class="title">{{ forum.title }}</div>
+      <div class="description">
+        {{ forum.description || "Brak opisu" }}
+      </div>
+    </div>
+
+    <div class="vertical-line"></div>
+
+    <div class="forum-section details">
+      <ng-container *ngIf="forum.isAttendee">
+        <div class="forum-section numbers">
+          <div class="forum-section number-of-threads">
+            Wątki:<br> <p>{{ forum.threadCount }}</p>
+          </div>
+        </div>
+        <div class="forum-section last-thread" (click)="onLatestPostClick(forum)">
+            <span *ngIf="forum.latestPost">
+              <b>Ostatni post:</b> <br>
+              Dodał(a) {{ forum.latestPost.author.nickName }}
+              dnia {{ forum.latestPost.updatedAt | date: "dd-MM-yyy" }} 
+            </span>
+        </div>
+      </ng-container>
+      <div *ngIf="!forum.isAttendee && forum.title !== 'Psychologiczne'" class="forum-section join-button-section">
+        <button class="btn btn-primary" (click)="joinToForum(forum.id)">
+          Dołącz
+        </button>
+      </div> 
+    </div>
+  </div>
+</div>

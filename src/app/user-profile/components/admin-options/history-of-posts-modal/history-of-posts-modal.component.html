@@ -1,0 +1,35 @@
+<div class="row close-button-div">
+  <button class="close-button" mat-button (click)="close(false)">
+    Zamknij
+  </button>
+</div>
+
+<h2 class="text-center">Historia postów użytkownika</h2>
+
+<div class="accordion posts" [appLoader]="isDataLoading" [background]="true">
+  <app-accordion-card *ngFor="let posts of userPostsGroupedByForum | keyvalue; let i = index"
+    [title]="posts.value[0].forumThread.subforum.title" [id]="posts.key" class="post">
+    <button *ngIf="moderators[+posts.key]" class="btn btn-primary" header
+      (click)="deleteMod(posts.value[0].forumThread.subforumId, moderators[+posts.key])">Odbierz moderatora
+      forum</button>
+    <div class="body" body>
+      <div *ngFor="let post of posts.value" class="post">
+        <div class="section-cell section-cell-small">
+          <div class="date-time">
+            <strong>Forum:</strong> {{post.forumThread.subforum.title}}
+            <br />
+            <strong>Wątek:</strong> {{post.forumThread.title}}
+            <br />
+            {{ post.createdAt | dateTime }}
+          </div>
+        </div>
+        <div class="section-cell section-cell-large">
+          <p>{{ post.body }}</p>
+        </div>
+      </div>
+    </div>
+  </app-accordion-card>
+  <div *ngIf="!userPostsGroupedByForum && !isDataLoading" class="text-center warn-not-found">
+    Użytkownik nie napisał jeszcze żadnych postów na forum.
+  </div>
+</div>

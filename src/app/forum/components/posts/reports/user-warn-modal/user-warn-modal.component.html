@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>
+  <span>{{data.label}}</span>
+</h1>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <app-alert-message></app-alert-message>
+    <app-textarea formControlName="warningMessage" name="warning-textarea" id="warning-textarea" [wordsLimit]="100"></app-textarea>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" class="btn btn-secondary" mat-button mat-dialog-close>Anuluj</button>
+  <button [disabled]="form.invalid || isSending" type="submit" class="btn btn-primary" mat-button cdkFocusInitial (click)="send()">Wyślij</button>
+</mat-dialog-actions>

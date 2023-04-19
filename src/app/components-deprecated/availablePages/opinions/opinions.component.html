@@ -1,0 +1,23 @@
+<div class="form-box">
+    <h3 class="title">Uwagi i opinie</h3>
+    <form [formGroup]="opinionForm" (ngSubmit)="onSubmit()" class="form" *ngIf="!isSend">
+        <app-alert-message></app-alert-message>
+        <div class="textarea-box">
+            <!-- <span class="textarea-length">{{(role.length)}}/{{maxChars}}</span> -->
+            <textarea class="form-text" name="message" formControlName="text" [maxlength]="maxChars" cols="30" rows="10"
+                placeholder="Treść..."></textarea>
+            <div class="d-flex mb-1 stars">
+                <ng-container *ngFor="let star of stars;">
+                    <app-star (starEnter)="onStarEnter($event)" (starLeave)="onStarLeave()"
+                        (starClicked)="onStarClicked($event)" [starId]="star" [rating]="hoverState || rating">
+                    </app-star>
+                </ng-container>
+            </div>
+        </div>
+        <button class="form-button" [class.form-button__disabled]="!rating" [disabled]="!rating" type="submit">
+            Wyślij</button>
+    </form>
+    <div class="success" *ngIf="isSend">
+        Wiadomość została wysłana
+    </div>
+</div>

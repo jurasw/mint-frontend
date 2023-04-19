@@ -1,0 +1,37 @@
+<div *ngIf="room && recipient" (click)="roomClick()" class="panel-item" [class.active]="active"
+  [class.not-read]="room.unseenMessagesCount > 0">
+  <div class="recipient-info">
+    <app-user-image *ngIf="!room.isGroup" [user]="recipient"></app-user-image>
+    <img *ngIf="room.isGroup" class="group-chat-image" src="assets/images/group-chat.svg" alt="group-chat">
+    <div class="message-info">
+      <div class="recipient-name">
+        <div class="d-flex align-items-center">
+          <div class="me-2"> {{ room.isGroup ? 'Czat grupowy: ' + (room.name | slice: 0:10) : recipient.nickName }}
+            <span *ngIf="room.unseenMessagesCount > 0">({{
+              room.unseenMessagesCount }})</span>
+          </div>
+          <div *ngIf="recipient.status && !room.isGroup" class="recipient-status"
+            [class.active]="recipient.status.status"></div>
+        </div>
+      </div>
+      <div class="last-message">
+        <span
+          *ngIf="room.latestMessage && authenticationService.currentUser && room.latestMessage.senderId === +authenticationService.currentUser.id">Ty:
+        </span>
+        <span *ngIf="room.latestMessage">
+          {{ room.latestMessage.message.length > 10 ? ((room.latestMessage.message | slice:0:10) + '...') :
+          room.latestMessage.message }}
+        </span>
+        <span *ngIf="!room.latestMessage">
+          Brak wiadomości
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="message-info">
+    <div *ngIf="room.latestMessage" class="message-date">{{ room.latestMessage.sent | dateTime}}</div>
+    <div *ngIf="room.unseenMessagesCount !== 0"> 
+      <img [src]="'/assets/images/forum-images/email-2.png'" alt="ikona">
+    </div>
+  </div>
+</div>

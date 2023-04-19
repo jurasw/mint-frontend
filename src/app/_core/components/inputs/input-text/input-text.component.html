@@ -1,0 +1,32 @@
+<div class="input-div form-floating">
+  <input [formControl]="control" [type]="type" class="form-control floating-label" [ngClass]="{
+    'form-control-lg': large,
+    'input-right-space': icon,
+    'no-border': hideBorder,
+    'add-margin': addMargin,
+    'hide-error-border':!showErrors
+  }" [name]="name" [placeholder]="placeholder" [autocomplete]="autocomplete" />
+  <label for="floating-label" class="form-label">{{placeholder}}</label>
+  <i [class]="icon" (click)="iconClick()"></i>
+</div>
+
+<div class="validation-error" *ngIf="showErrors && control.invalid && control.touched">
+  <div *ngFor="let error of control.errors | keyvalue">
+    <div [ngSwitch]="error.key">
+      <div *ngSwitchCase="'pattern'">
+        <div>{{customValidationText}}</div>
+        <span></span>{{ error.value | validationInfo }}
+      </div>
+      <div *ngSwitchCase="'matching'">Hasła powinny być identyczne.</div>
+      <div *ngSwitchCase="'required'" hidden>To pole jest wymagane.</div>
+      <div *ngSwitchCase="'email'">Niepoprawny email.</div>
+      <div *ngSwitchCase="'minlength'">
+        To pole powinno zawierać minimum {{ control.errors.minlength.requiredLength }} znaki(ów).
+      </div>
+      <div *ngSwitchCase="'maxlength'">
+        To pole może zawierać maksymalnie {{ control.errors.maxlength.requiredLength }} znaki(ów).
+      </div>
+      <div *ngSwitchCase="'phone'">Niepoprawny numer telefonu.</div>
+    </div>
+  </div>
+</div>

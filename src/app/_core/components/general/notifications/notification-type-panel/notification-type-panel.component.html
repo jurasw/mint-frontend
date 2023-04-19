@@ -1,0 +1,14 @@
+<div class="notification-panel">
+  <div class="notification-panel-info">
+    <div class="notification-type">
+      <span>{{ translatedType }} </span>
+      <span> ({{ notifications.length }})</span>
+    </div>
+    <div class="notification-action">
+      <button class="btn btn-secondary" (click)="showNotifications()">Zobacz <span *ngIf="unreadNotifications"
+          class="badge badge-danger">{{
+          unreadNotifications }}</span></button>
+    </div>
+  </div>
+</div>
+

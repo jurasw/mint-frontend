@@ -1,0 +1,26 @@
+<div [appLoader]="connectionLoading" [background]="true">
+    <app-chat-search class="chat-search" *ngIf="isNewChat && !isBubble"
+        (createChatConfirmed$)="onCreateChatRoomConfirm($event)"></app-chat-search>
+    <div *ngIf="!isNewChat">
+        <div *ngIf="currentChatRoom; else roomNotSelected">
+            <app-chat-room-title *ngIf="currentRecipient && showTitle" [recipient]="currentRecipient"
+                [room]="currentChatRoom"></app-chat-room-title>
+            <div class="chat-conversation" [appLoader]="isMessageLoading && !connectionLoading" [background]="true"
+                [backgroundColor]="'#fafffe'">
+                <app-chat-conversation [messages]="messages"
+                    [moreResultsLoading]="moreResultsLoading && !connectionLoading" [room]="currentChatRoom"
+                    (scrollTop$)="onConversationScrollTop()"></app-chat-conversation>
+            </div>
+            <div *ngIf="showError" class="text-danger text-center">Jesteś zablokowany</div>
+            <app-chat-response [isBubble]="isBubble" [enableAttachments]="enableAttachments" class="chat-response"
+                (messageSent$)="sendMessage($event)">
+            </app-chat-response>
+        </div>
+    </div>
+
+    <ng-template #roomNotSelected>
+        <div class="roomNotSelectedInfo">
+            Nie wybrano pokoju.
+        </div>
+    </ng-template>
+</div>

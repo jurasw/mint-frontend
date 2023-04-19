@@ -1,0 +1,2 @@
+<app-menu *ngIf="!isActionLoading" [menuItems]="chatOptions" [isLoading]="isLoading" [xPosition]="'before'"
+  (menuItemClicked$)="onOptionClick($event)" (menuIconClicked$)="onOptionsIconClick()"></app-menu>

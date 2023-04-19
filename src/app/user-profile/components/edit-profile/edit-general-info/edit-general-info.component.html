@@ -1,0 +1,41 @@
+<div [appLoader]="isLoading" [minHeight]="100" [background]="true">
+  <div *ngIf="user" class="edit-profile-container">
+    <div class="text-center">
+      <app-alert-message></app-alert-message>
+      <app-alert-message *ngIf="showSuccessMessage" [type]="'primary'" [message]="'Zapisano zmiany'">
+      </app-alert-message>
+    </div>
+    <div class="image-section">
+      <div class="profile-image">
+        <app-user-image [user]="user"></app-user-image>
+        <button class="edit-image-button" routerLink="/user-profile/edit-profile/user-pictures"></button>
+      </div>
+    </div>
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-section">
+
+        <div class="form-section-title">
+          Poniższe dane nie są obowiązkowe do wypełnienia. Informacje, które tu
+          umieścisz będą widoczne dla pozostałych użytkowników MINT.
+        </div>
+        <hr>
+        <app-input-text formControlName="firstName" [name]="'first-name-input'" [type]="'text'" [placeholder]="'Imię'"
+          autocomplete="firstName"></app-input-text>
+        <app-input-text formControlName="lastName" [name]="'last-name-input'" [type]="'text'" [placeholder]="'Nazwisko'"
+          autocomplete="lastName"></app-input-text>
+        <div class="form-section-date">
+            <app-datepicker formControlName="dateOfBirthday" class="date-picker" [placeholder]="'DATA URODZENIA'"
+          [name]="'birth-date-picker'" [startAt]="defaultDayOfBirthday" [maxDate]="maxDateOfBirthday" [addMargin]="false"></app-datepicker>
+        </div>
+        <app-textarea [wordsLimit]="1000" formControlName="about" [name]="'user-description-input'"
+          [placeholder]="'Zmień opis'" autocomplete="about"></app-textarea>
+        <div>
+          <button class="btn btn-primary" type="submit">Zapisz zmiany</button>
+        </div>
+      </div>
+    </form>
+    <app-change-email-phone></app-change-email-phone>
+    <app-change-password></app-change-password>
+    <app-edit-profile-panel></app-edit-profile-panel>
+  </div>
+</div>

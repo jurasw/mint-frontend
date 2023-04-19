@@ -1,0 +1,221 @@
+@import "../../../../app/_theme/helpers/variables";
+
+:host {
+  width: 100%;
+}
+
+label {
+  color: $green;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+hr {
+  height: 2px;
+  margin: 0 1em 0 1em;
+}
+
+.elements-body {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: auto;
+}
+
+.inside-profile-container {
+  border-radius: 0.5rem;
+  color: $dark-gray;
+  box-shadow: 0px 0px 9px 1px rgba($dark-gray, 0.3);
+  padding: 3rem;
+  margin-top: 2rem;
+}
+
+.profile-section {
+  padding: 2rem;
+}
+
+.profile-container {
+  width: 60%;
+  margin: auto;
+  align-items: center;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
+
+  .buttons {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 2rem;
+
+    .send-invite-button {
+      margin-left: 1rem;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      border: 1px solid $primary;
+      background-color: $white;
+      color: $primary;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: $primary;
+        color: $white;
+      }
+    }
+  }
+
+  .inside-profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    .top-container {
+
+      .user-info-box {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        flex-direction: wrap;
+
+        .profile-image {
+          margin-bottom: 1rem;
+          position: relative;
+          align-items: center;
+
+          .recipient-status {
+            position: absolute;
+            bottom: 0.1rem;
+            right: 0.1rem;
+            min-width: 1.5rem;
+            min-height: 1.5rem;
+            background-color: $red;
+            border-radius: 50%;
+
+            &.active {
+              background-color: $green-status;
+            }
+          }
+        }
+
+        .profile-data {
+          width: 100%;
+          text-align: left;
+          margin-left: 3rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          grid-column-gap: 0px;
+          grid-row-gap: 0px;
+          grid-row-gap: 0.5em;
+
+          .nickName {
+            grid-area: 1 / 1 / 2 / 3;
+          }
+
+          .firstName {
+            grid-area: 2 / 1 / 3 / 2;
+          }
+
+          .lastName {
+            grid-area: 2 / 2 / 3 / 3;
+          }
+        }
+      }
+
+      .additional-info-box {
+        text-align: left;
+      }
+    }
+
+    .bottom-container {
+      .user-about {
+        text-align: left;
+        margin-top: 1rem;
+        max-width: 40rem;
+        min-height: 5rem;
+        min-width: 100%;
+        display: inline-block;
+        overflow: auto;
+      }
+
+      .admin-buttons {
+        width: 100%;
+
+        .admin-button {
+          margin-bottom: 1rem;
+          height: 2.5rem;
+          width: 70%;
+          border-radius: 1rem;
+          border: 1px solid $primary;
+          background-color: $white;
+          color: $primary;
+          transition: 0.2s;
+
+          &:hover {
+            background-color: $primary;
+            color: $white;
+          }
+        }
+      }
+
+      .psycho-invite-box {
+        width: 100%;
+
+        .invite-title {
+          .diffrent-color {
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .inside-profile-container {
+    padding: 0rem;
+    margin-top: 1rem;
+  }
+  
+  .profile-section {
+    padding: 1rem;
+  }
+  
+  .profile-container {
+    .inside-profile-container {
+      .top-container {
+        .user-info-box {
+          flex-direction: column;
+  
+          .profile-image {
+            margin-bottom: 1rem;
+          }
+          .profile-data {
+            margin-left: 0rem;
+
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 404px) {
+  .profile-container {
+    .inside-profile-container {
+      .bottom-container {
+        .psycho-invite-box {
+          .accept-invite-button {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+}

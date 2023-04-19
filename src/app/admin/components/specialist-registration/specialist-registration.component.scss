@@ -1,0 +1,9 @@
+select {
+    padding: 1rem;
+    &.no-border {
+      border: none;
+    }
+    &.add-margin {
+      margin: 1rem 0;
+    }
+}

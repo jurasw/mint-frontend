@@ -1,0 +1,5 @@
+<div *ngIf="message" class="reactions">
+  <div *ngFor="let reaction of reactions; let i = index" class="reaction">
+    <i [class]="reaction.icon" [ngClass]="{ 'active': reactionState[i].state, 'show': isReactionActive, 'clickable': !ownMessage}" (click)="reactionClick(reaction)"></i>
+  </div>
+</div>

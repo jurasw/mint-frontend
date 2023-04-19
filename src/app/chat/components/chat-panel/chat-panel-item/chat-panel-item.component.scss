@@ -1,0 +1,93 @@
+@import "../../../../_theme/helpers/variables";
+
+.panel-item {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 0.1s;
+
+  &:hover {
+    background-color: darken($mint-100, 3);
+  }
+
+  &.active {
+    background-color: $mint-200;
+  }
+
+  &.not-read {
+    font-weight: bold;
+  }
+
+  .recipient-info {
+    display: flex;
+    align-items: center;
+
+    ::ng-deep .user-image {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .recipient-name {
+      color: $green;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .group-chat-image {
+      border: 1px solid $mint-700;
+      border-radius: 50%;
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .recipient-status {
+      display: inline;
+      min-width: 10px;
+      min-height: 10px;
+      background-color: $red;
+      border-radius: 50%;
+
+      &.active {
+        background-color: $green-status;
+      }
+    }
+
+    .message-info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.5rem;
+
+      .recipient-name {
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+      }
+
+      .last-message {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  .message-info {
+    text-align:justify;
+    .message-date {
+      text-align: right;
+      font-size: 0.75rem;
+    }
+    img {
+      width: 1rem;
+      float: right;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .message-date {
+    display: none;
+  }
+}

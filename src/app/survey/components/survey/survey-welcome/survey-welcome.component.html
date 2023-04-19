@@ -1,0 +1,27 @@
+<div class="welcome">
+  <div *ngIf="isRetest">
+    <div class="welcome-text">
+      Przez ostatnie miesiące tworzyli Państwo z nami społeczność MINT, gdzie wraz ze specjalistami dbaliśmy o
+      polepszenie samopoczucia i dobrostanu psychicznego naszych użytkowników.
+      Prosimy o wypełnienie dwóch kwestionariuszy, które pomogą ocenić pozytywne zmiany, jakie zaszły w Państwa życiu.
+    </div>
+    <div class="welcome-text">
+      Badanie zajmie około 2 minut.
+    </div>
+    <div class="welcome-text">
+      Dziękujemy za poświęcony czas!
+    </div>
+  </div>
+  <div *ngIf="!isRetest">
+    <div class="welcome-text">
+      Zanim rozpoczniesz, zadamy Ci kilka dodatkowych pytań. Chcemy poznać Twoje potrzeby i oczekiwania, aby dokładniej
+      dopasować przedstawiane Ci treści naszego portalu.
+    </div>
+    <div class="welcome-text">
+      Całość badania zajmie około 20 minut.
+    </div>
+  </div>
+  <div>
+    <button matStepperNext class="btn btn-primary">Rozpocznij</button>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+@import "../../../../_theme/helpers/variables";
+
+.welcome {
+  margin: 2rem 1rem;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0px 0px 4px 0px;
+  border-radius: 0.5rem;
+  color: $dark-gray;
+  .welcome-text {
+    padding: 1rem 0;
+  }
+  button {
+    margin-top: 1rem;
+  }
+}
+
+h1 {
+  font-weight: 500;
+  color: $green;
+}

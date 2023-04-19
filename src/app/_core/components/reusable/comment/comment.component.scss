@@ -1,0 +1,190 @@
+@import "../../../../_theme/helpers/variables";
+
+.comment {
+  width: 100%;
+  display: flex;
+  background-color: $white;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+  color: $dark-gray;
+
+  @media only screen and (max-width: 768px) {
+    padding: 0.5rem;
+  }
+
+  &.own-comment {
+    border: 4px solid $green;
+  }
+
+  .author,
+  .content {
+    padding: 1rem;
+  }
+
+  .author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 20%;
+
+    .name {
+      font-weight: 500;
+      cursor: pointer;
+      word-break: break-word;
+    }
+
+    .photo {
+      margin: 3rem auto 1rem auto;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+      }
+    }
+
+    .forum-role {
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    @media only screen and (max-width: 768px) {
+      ::ng-deep .user-image {
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+
+  }
+
+  .vertical-line {
+    border-left: 0.3px;
+    margin: 2rem 0;
+    align-items: center;
+    box-shadow: 0px 0px 1px 1px rgba($dark-gray, 0.3);
+  }
+
+  .content-container {
+    width: 80%;
+    display: flex;
+  }
+
+  .content {
+    width: 100%;
+    padding: 2rem;
+    padding-right: 0;
+
+    .title,
+    .description {
+      width: auto;
+      padding-top: 1rem;
+      word-break: break-word;
+      border-radius: 0.5rem;
+    }
+
+    .title {
+      margin-bottom: 2rem;
+    }
+
+    .description {
+      min-height: 10rem;
+
+      .answer {
+        word-break: break-word;
+        margin-bottom: 1rem;
+      }
+
+      .quote-answer {
+        font-style: italic;
+
+        blockquote {
+          padding: 1rem;
+        }
+      }
+    }
+
+    .attachments {
+      margin-top: 1rem;
+
+      img {
+        max-width: 100%;
+      }
+
+      .btn-file {
+        padding: 0;
+        margin-right: 0.5rem;
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      @media only screen and (max-width: 768px) {
+        flex-wrap: nowrap;
+      }
+
+      .buttons {
+        height: 2.5rem;
+
+        .quote-button {
+          margin-right: 1rem;
+        }
+
+      }
+
+      .reactions {
+        margin-left: 2rem;
+        justify-content: right;
+
+      }
+    }
+  }
+
+  .options {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+
+    .comment-number {
+      padding: 1rem;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: $primary;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .comment {
+
+    .author,
+    .content {
+      padding: 1rem 5px;
+    }
+
+    .options {
+      padding: 5px;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+
+      .comment-number {
+        padding: 5px;
+      }
+    }
+
+    .content-container {
+      flex-direction: column-reverse;
+    }
+
+    .content {
+      padding: 10px 5px;
+    }
+  }
+}

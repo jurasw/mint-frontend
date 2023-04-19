@@ -1,0 +1,19 @@
+<div class="picture center-background-image" [class.main]="isMain"
+  [style.background-image]="pictureUrl ? pictureUrl : 'none'">
+  <div *ngIf="editable">
+    <div *ngIf="!picture" class="add-picture-info">
+      <button class="btn btn-primary" (click)="file.click()">Dodaj zdjęcie</button>
+      <input #file class="d-none" type="file" accept="image/*" (change)="onInputFileChange($event)">
+    </div>
+    <div *ngIf="picture" class="picture-options">
+      <div *ngIf="!isMain" class="picture-option" (click)="setAsMainPicture()">Ustaw jako profilowe</div>
+      <div class="picture-option">
+        <div (click)="file.click()">Zmień zdjęcie</div>
+        <input #file class="d-none" type="file" accept="image/*" (change)="onInputFileChange($event)">
+      </div>
+      <div class="picture-option" (click)="deletePicture()">Usuń zdjęcie</div>
+    </div>
+  </div>
+  <div *ngIf="!pictureUrl && !editable">Brak zdjęcia</div>
+</div>
+<div [class.hidden]="!isMain" class="text-center">Zdjęcie profilowe</div>

@@ -1,0 +1,9 @@
+<div class="answer-button-container">
+  <label class="btn btn-outline-success" [class.active]="radio.checked">
+    <div *ngIf="messageCounter">
+      {{ messageIndex + 1 }}
+    </div>
+    <input #radio [formControl]="control" [value]="value" class="answer-button" type="radio" [name]="name" [id]="id">
+    {{ message }}
+  </label>
+</div>

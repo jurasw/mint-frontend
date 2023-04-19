@@ -1,0 +1,20 @@
+@import '../../../../_theme/helpers/variables';
+.emoticons-container {
+  border: 1px solid $gray;
+}
+emoji-mart {
+  ::ng-deep {
+    .emoji-mart {
+      .emoji-mart-emoji {
+        user-select: none;
+      }
+    }
+    .emoji-mart-scroll {
+      overflow-x: hidden;
+    }
+
+    .emoji-mart-preview {
+      display: none;
+    }
+  }
+}

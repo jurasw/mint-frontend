@@ -1,0 +1,13 @@
+
+@import '../../../../_theme/helpers/variables';
+.in-progress-container {
+  width: 100%;
+  text-align: center;
+  .in-progress-image {
+    max-width: 75%;
+    margin: 1rem;
+    border: 1px solid $primary;
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+}

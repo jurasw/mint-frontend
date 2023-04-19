@@ -1,0 +1,48 @@
+@import '../../../../../_theme/helpers/variables';
+:host {
+  margin: 0.5rem;
+}
+.notification-panel {
+  width: 100%;
+  box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+  border-radius: 0.5rem;
+  display: flex;
+
+  .notification-panel-info {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    .notification-type {
+      font-weight: 500;
+    }
+  
+    .notification-action {
+      button {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .notification-panel {
+    .notification-panel-image {
+      display: none;
+    }
+  
+    .notification-panel-info {
+      .notification-type {
+        font-size: 1rem;
+      }
+      .notification-action {
+        button {
+          width: 8rem;
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+  }
+}

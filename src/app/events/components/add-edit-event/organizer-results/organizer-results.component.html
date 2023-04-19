@@ -1,0 +1,11 @@
+<div *ngIf="showLimitInformation" class="info-limit-exceeded">Osiągnięto limit organizatorów (10 osób)</div>
+<div class="results" (scroll)="onScrollBottom($event)">
+  <div *ngFor="let organizer of organizerResults" class="result" (click)="onClickResult(organizer.user)">
+    <div> {{ organizer.user.nickName }} <span *ngIf="organizer.selected" class="ms-2"><i class="fas fa-check"></i>
+        Dodano</span>
+    </div>
+  </div>
+  <div *ngIf="moreResultsLoading" [appLoader]="moreResultsLoading" [minHeight]="50">
+    <div></div>
+  </div>
+</div>

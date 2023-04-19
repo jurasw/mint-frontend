@@ -1,0 +1,38 @@
+@import "../../../../_theme/helpers/variables";
+
+h1 {
+    font-weight: 500;
+}
+
+.deactivate-account {
+    text-align: center;
+    font-size: 1rem;
+    padding: 4rem 18rem 4rem 18rem;
+    width: 100%;
+    background-color: $green;
+    color: $white;
+    box-shadow: 10px 50px 100px 10px #74e29e inset;
+    font-weight: 400;
+    margin-top: 5rem;
+    margin: auto;
+
+    @media only screen and (max-width: 1400px) {
+        padding: 2rem 1rem;
+    }
+
+    @media only screen and (max-width: 768px) {
+        padding: 1rem;
+    }
+}
+
+.btn-outline-success {
+    height: 40px;
+    width: 220px;
+    margin: 10px 10px 0 0;
+}
+
+.btn-secondary.btn-secondary {
+    height: 40px;
+    width: 220px;
+    margin: 10px 10px 0 0;
+}

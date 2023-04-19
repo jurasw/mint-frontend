@@ -1,0 +1,23 @@
+.badge {
+  padding: 0.5rem;
+  margin: 0.25rem;
+  font-weight: normal;
+  font-size: 1rem;
+  display: inline-flex;
+  justify-content: space-between;
+  &:hover {
+    .badge-close {
+      width: 1rem;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  .badge-close {
+    transition: all 0.2s;
+    opacity: 0;
+    width: 0;
+    margin-left: 5px;
+    visibility: hidden;
+    cursor: pointer;
+  }
+}

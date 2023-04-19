@@ -1,0 +1,15 @@
+<form [formGroup]="calendarTypeForm" name="calendarTypeForm" class="form">
+  <div class="calendar-header-title">
+    <i class="fas fa-chevron-left" mwlCalendarPreviousView [view]="calendarTypeForm.controls.type.value"
+      [viewDate]="calendarTypeForm.controls.date.value" (viewDateChange)="viewDateChanged($event)"></i>
+    
+      <div class="calendar-icon-info">{{ calendarTypeForm.controls.date.value |
+      calendarDate:(calendarTypeForm.controls.type.value +
+      'ViewTitle'):'pl':1:undefined:undefined}}
+    </div>
+    
+    <i class="fas fa-chevron-right" mwlCalendarNextView [view]="calendarTypeForm.controls.type.value"
+      [viewDate]="calendarTypeForm.controls.date.value" (viewDateChange)="viewDateChanged($event)"></i>
+  </div>
+  <div class="empty-box"></div>
+</form>

@@ -1,0 +1,15 @@
+<div class="openvidu-view-container">
+    <div class="openvidu-view" [class.show-chat]="showChat">
+        <div class="session-container">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="chat-container">
+            <div class="slider-button" (click)="showChat = !showChat">
+                <i *ngIf="!showChat" class="fas fa-comments"></i>
+                <i *ngIf="showChat" class="fas fa-chevron-right"></i>
+            </div>
+            <app-chat-view [showPanel]="false" [enableAttachments]="false" [isBubble]="true" [showRoomTitle]="false">
+            </app-chat-view>
+        </div>
+    </div>
+</div>

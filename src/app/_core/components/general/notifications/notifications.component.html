@@ -1,0 +1,11 @@
+<div [appLoader]="isLoading" [background]="true" [minHeight]="10" class="notifications">
+  <ng-container *ngIf="showNotifications">
+    <app-notification-type-panel *ngFor="let notifications of groupedNotifications | keyvalue"
+      [type]="notifications.key" [notifications]="notifications.value" (refresh$)="getNotifications()">
+    </app-notification-type-panel>
+    <div class="notifications-read-all">
+      <button class="btn btn-secondary ms-2" matTooltip="Przeczytaj wszystkie" (click)="readAllNotifications()"><i
+          class="fas fa-check-double"></i></button>
+    </div>
+  </ng-container>
+</div>

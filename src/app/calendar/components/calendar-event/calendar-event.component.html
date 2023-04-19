@@ -1,0 +1,16 @@
+<div *ngIf="!hideEvent" class="event" (click)="showEventDetails(calendarEvent.meta.event)"
+  [class.past-event]="calendarEvent.meta.isPastEvent" [class.active-event]="calendarEvent.meta.isEventActive">
+  
+  <div class="event-general-info">
+    {{ calendarEvent.meta.event.startDate | date: 'HH:mm' }} - {{ calendarEvent.meta.event.endDate |
+    date: 'HH:mm'
+    }}
+  </div>
+  
+  <div class="event-title">
+    "{{
+    calendarEvent.title | slice: 0:10
+    }}<span *ngIf="calendarEvent.title.length > 10">...</span>"
+  </div>
+
+</div>

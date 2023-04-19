@@ -1,0 +1,18 @@
+<div class="summary">
+  <div class="page-title">Podsumowanie</div>
+  <div [appLoader]="isLoading">
+    <div *ngIf="registrationSummaryData">
+      <div *ngFor="let psychologicalResult of registrationSummaryData.descriptionPsychological" class="summary-text">
+        {{ psychologicalResult.description }}
+      </div>
+
+      <div *ngFor="let groupResult of registrationSummaryData.descriptionGroups" class="summary-text">
+        {{ groupResult }}
+      </div>
+    </div>
+  </div>
+</div>
+<app-alert-message></app-alert-message>
+<div class="w-100 text-center">
+  <button [disabled]="isLoading" class="btn btn-primary" (click)="finishSurvey()">Zakończ ankietę</button>
+</div>

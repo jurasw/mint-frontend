@@ -1,0 +1,30 @@
+@import "../../../../_theme/helpers/variables";
+.reported-posts {
+  background-color: #f9fdfb;
+  padding: 1rem;
+  min-height: 10rem;
+  margin: 1rem 0;
+  .title {
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+  }
+
+  .report {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $gray;
+    background-color: $white;
+    margin: 0.5rem 1rem;
+    border-radius: 0.5rem;
+
+    .message {
+      padding: 1rem;
+      .status {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

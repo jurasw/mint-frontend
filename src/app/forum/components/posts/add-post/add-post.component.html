@@ -1,0 +1,22 @@
+<form [formGroup]="addPostForm">
+  <div class="add-post">
+    <div class="container">
+      <app-chat-emoticons *ngIf="showEmoticons" class="chat-emoticons" appClickOutside
+        [parentElement]="emoticonButtonElement" (clickOutside)="clickOutsideEmoticons()"
+        (emojiSelect$)="onEmojiSelect($event)"></app-chat-emoticons>
+      <div class="container-textarea">
+        <app-textarea class="app-textarea" formControlName="answer" [name]="'post-description'"
+          [placeholder]="placeholder" [wordsLimit]="2200" [showErrors]="false"></app-textarea>
+        <div class="emoticon-button"> <span #emoticonButton (click)="showEmoticons = !showEmoticons"
+            class="emoticon-button-icon">😀</span></div>
+      </div>
+    </div>
+    <div class="container-button">
+      <input *ngIf="authenticationService.currentUser && authenticationService.currentUser.role === 'Admin'"
+        class="input-file" type="file" multiple #file />
+      <button class="btn btn-primary" (click)="sendAnswer()" [disabled]="addPostForm.invalid || isSending">
+        Opublikuj
+      </button>
+    </div>
+  </div>
+</form>

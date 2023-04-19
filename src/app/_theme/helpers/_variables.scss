@@ -1,0 +1,34 @@
+$primary: #34bc96;
+$secondary: #49acb6;
+$danger: #ed9f9f;
+$light-green: #bbe5e1;
+$green: #6dcca2;
+$dark-green: #617335;
+$gray: #a1a1a1;
+$yellow: #ffd700;
+$red: #f44336;
+$light: #f7f7f7;
+$light-gray: #ced4da;
+$black: #000000;
+$white: #ffffff;
+$green-status: #3bcb08;
+$light-blue: #069;
+$dark-gray: #3a3939;
+$blue: #84D7F4;
+$disabled: rgba(0,0,0,.02);
+
+$mint: #fafffe;
+$mint-100: #f9fdfb;
+$mint-200: #eaf7f2;
+$mint-400: #dbf1ef;
+$mint-700: #a3d9c9;
+$mint-900: #52c6a6;
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $green,
+  "success": $green,
+  "danger": $red,
+  "warning": $yellow,
+  "info": $blue
+);

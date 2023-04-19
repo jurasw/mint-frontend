@@ -1,0 +1,10 @@
+<div [appLoader]="isLoading">
+  <app-alert-message *ngIf="showErrors"></app-alert-message>
+  <div class="chat-view">
+    <app-chat-panel *ngIf="showPanel" class="chat-panel"></app-chat-panel>
+    <div class="vertical-line"></div>
+    <app-chat-room [isBubble]="isBubble" [enableAttachments]="enableAttachments" [showTitle]="showRoomTitle"
+      class="chat-room" [class.w-100]="!showPanel">
+    </app-chat-room>
+  </div>
+</div>

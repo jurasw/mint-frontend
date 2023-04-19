@@ -1,0 +1,15 @@
+@import "../../../../../app/_theme/helpers/variables";
+.close-button-div {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.close-button {
+  margin: 0 0 0 auto;
+  width: 20%;
+  background: none;
+  border: none;
+  padding: 0;
+  color: $light-blue;
+  cursor: pointer;
+}

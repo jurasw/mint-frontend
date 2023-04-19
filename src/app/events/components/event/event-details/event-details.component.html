@@ -1,0 +1,32 @@
+<button *ngIf="showBackButton" class="btn btn-link" routerLink="/events">Powrót</button>
+<app-alert-message></app-alert-message>
+<h1 class="text-center">Szczegóły wydarzenia</h1>
+<div class="event-details">
+  <div class="event-thumbnail center-background-image"
+    [style.background-image]="event.thumbnail && event.thumbnailUrl ? event.thumbnailUrl : 'url(../../../../../assets/images/default-image.jpg)'">
+  </div>
+  <div class="event-info">
+    <div class="event-info-title">"{{ event.title }}"</div>
+    <div>Data rozpoczęcia: {{ event.startDate | date: 'dd.MM.YYYY HH:mm'}} </div>
+    <div>Data zakończenia: {{ event.endDate | date: 'dd.MM.YYYY HH:mm'}}</div>
+    <div>Organizator: {{ event.organizer.nickName }}</div>
+    <div>Pozostali organizatorzy: <span *ngFor="let suborganizer of event.suborganizers; let i = index">{{
+        suborganizer.nickName
+        }}<span *ngIf="i !== event.suborganizers.length - 1">, </span></span> <span
+        *ngIf="!event.suborganizers.length">brak</span></div>
+    <div>Wydarzenie cykliczne: {{ recurrenceOptions[event.recurrence][0].displayName}}</div>
+    <div>Grupa docelowa: {{ event.targetGroupId === 6 ? 'psychologiczna' : 'dla wszystkich' }}</div>
+    <div>Zapisane osoby ({{event.attendees.length}}): <span *ngFor="let attendee of event.attendees; let i = index">{{
+        attendee.nickName
+        }}<span *ngIf="i !== event.attendees.length - 1">, </span></span> <span *ngIf="!event.attendees.length">brak
+        zapisanych osób</span></div>
+    <div class="event-info-description" [innerText]="'Opis: ' + event.description"></div>
+  </div>
+</div>
+<div class="event-actions">
+  <app-event-actions [event]="event" [showDetailsAction]="false" [isEventTimeActive]="isEventTimeActive"
+    [isOwnEvent]="isOwnEvent" [isPastEvent]="isPastEvent" [isUserAdmin]="isUserAdmin"
+    [isUserRegistered]="isUserRegistered" [eventStateAlignment]="'center'" (addSession$)="addSession()"
+    (closeEvent$)="closeEvent()" (startEvent$)="startEvent()" (joinToEvent$)="joinToEvent()"
+    (registerToEvent$)="registerToEvent()" (unregisterFromEvent$)="unregisterFromEvent()"></app-event-actions>
+</div>

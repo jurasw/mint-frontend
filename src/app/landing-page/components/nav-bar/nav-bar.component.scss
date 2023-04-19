@@ -1,0 +1,149 @@
+@import "../../../../app/_theme/helpers/variables";
+
+.nav-bar-section {
+  width: 100%;
+  background-color: $white;
+  color: $dark-gray;
+  letter-spacing: 0.8px;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+
+  .navbar-main {
+    padding: 0 2rem 0 5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+    flex-wrap: wrap;
+    grid-gap: 3rem;
+    box-shadow: 0px 17px 16px -19px rgba($dark-gray, 0.3);
+
+    .logo-div {
+      .logo {
+        max-height: 5rem;
+        cursor: pointer;
+      }
+    }
+
+    .header-contact {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: right;
+
+      .phonePar {
+        margin: auto 1.5rem auto auto;
+
+        a {
+          text-decoration: none;
+          color: $black;
+          cursor: pointer;
+
+          &:hover {
+            transition: 0.3s;
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+
+  .navbar-additional {
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 5rem;
+    flex-wrap: wrap;
+    grid-gap: 3rem;
+    justify-content: right;
+  }
+
+  .navbar-box {
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 3rem;
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      grid-gap: 3rem;
+      margin: auto;
+      font-weight: 500;
+
+      .nav-element {
+        cursor: pointer;
+
+        &.active {
+          text-decoration: underline solid $primary 0.2rem;
+          text-underline-offset: 0.6em;
+          font-weight: 600;
+        }
+
+        &:hover {
+          transition: 0.3s;
+          color: $green;
+        }
+      }
+    }
+  }
+}
+
+p,
+a {
+  letter-spacing: 1px;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .nav-bar-section {
+    .navbar-main {
+      grid-gap: 0.5rem;
+      justify-content: center;
+      padding: 0;
+      height: 11rem;
+
+      .logo-div {
+        width: 100%;
+        text-align: center;
+      }
+
+      .header-contact {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    }
+
+    .navbar-additional {
+      justify-content: center;
+      height: auto;
+    }
+
+    .navbar-box {
+      padding: 1rem 0;
+      grid-gap: 1rem;
+
+      .menu {
+        grid-gap: 0.5rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .nav-bar-section {
+
+    .navbar-additional {
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-box {
+      justify-content: center;
+
+    }
+  }
+}

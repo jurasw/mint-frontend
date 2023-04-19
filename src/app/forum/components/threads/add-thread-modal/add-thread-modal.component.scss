@@ -1,0 +1,24 @@
+@import "../../../../../app/_theme/helpers/variables";
+
+.close-button-div {
+  float: right;
+  margin-bottom: 10px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: $light-blue;
+  cursor: pointer;
+}
+
+.form-add-thread-reason {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.input-file {
+  padding-top: 1rem;
+}

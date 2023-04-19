@@ -1,0 +1,6 @@
+<div class="emoticons-container" [appLoader]="isLoading" [background]="true">
+  <emoji-mart #emojis [isNative]="true" [emojiSize]="24" [hideObsolete]="true"
+    [i18n]="{ search: 'Wyszukaj', categories: { search: 'Wyniki wyszukiwania', recent: 'Ostatnie' } }"
+    (emojiSelect)="onEmojiSelect($event)">
+  </emoji-mart>
+</div>

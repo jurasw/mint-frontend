@@ -1,0 +1,12 @@
+<div [appLoader]="isLoading" class="container">
+    <div class="back-button">
+        <button class="btn btn-link" routerLink="../">Powrót</button>
+    </div>
+    <div *ngFor="let forum of forums$ | async; let i = index" class="list-item"
+        (click)="navigateToSubpage(component, forum.id)">
+        <div> {{forum.title}} </div>
+        <div *ngIf="counter" class="counter">
+            <span *ngIf="counter[i] > 0" class="badge badge-danger">{{ counter[i] }}</span>
+        </div>
+    </div>
+</div>

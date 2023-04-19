@@ -1,0 +1,84 @@
+@import "../../../../_theme/helpers/variables";
+
+hr {
+  height: 2px;
+}
+
+.image-section {
+  display: flex;
+  justify-content: center;
+
+  .profile-image {
+    margin-top: 2rem;
+    position: relative;
+    align-items: center;
+
+    .edit-image-button {
+      position: absolute;
+      bottom: 0.1rem;
+      right: 0.1rem;
+      min-width: 2rem;
+      min-height: 2rem;
+      border-radius: 50%;
+      background-image: url("../../../../../../src/assets/images/pen.jpg");
+      background-size: cover;
+      border-radius: 50%;
+    }
+  }
+}
+
+.edit-profile-container {
+  width: 100%;
+  border-radius: 0.5rem;
+  color: $dark-gray;
+  box-shadow: 0px 0px 9px 1px rgba($dark-gray, 0.3);
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .date-picker {
+    width: 100%;
+  }
+
+  .form-section {
+    padding: 2rem 20%;
+    width: 100%;
+
+    @media only screen and (max-width: 768px) {
+      padding: 1rem;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid black;
+    }
+
+    .form-section-title {
+      font-size: 0.9rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    ::ng-deep {
+      .mat-form-field.ng-valid .mat-form-field-flex {
+        box-shadow: 0px 0px 9px 1px rgba($primary, 0.5);
+      }
+
+      input.ng-touched.ng-valid,
+      textarea.ng-touched.ng-valid {
+        box-shadow: 0px 0px 9px 1px rgba($primary, 0.5);
+      }
+
+      .form-section-date {
+        input.ng-touched.ng-valid {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  button {
+    display: flex;
+    margin: 1rem auto;
+    float: right;
+  }
+}

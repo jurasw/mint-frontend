@@ -1,0 +1,22 @@
+<div class="blocked-users-container">
+  <div [appLoader]="isLoading" [background]="true">
+    <h4 *ngIf="!isUserWorker">Zablokowani użytkownicy</h4>
+    <h4 *ngIf="isUserWorker">Zablokowane konwersacje</h4>
+    <div *ngIf="!users?.length && !isLoading" class="text-center font-weight-bold p-5">Brak zablokowanych {{
+      isUserWorker ? 'konwersacji' : 'użytkowników' }}
+    </div>
+    <div *ngFor="
+            let user of users
+          " class="blocked-users" [id]="user.id">
+      <div class="section-cell">
+        <div class="nick-name">
+          {{ user.nickName }}
+        </div>
+        <div class="button-div">
+          <button class="btn btn-primary" (click)="_unblockUser(user.id)" [disabled]="isSending">Odblokuj
+            {{ isUserWorker ? 'konwersację' : 'użytkownika' }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

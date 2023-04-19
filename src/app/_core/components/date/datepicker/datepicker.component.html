@@ -1,0 +1,33 @@
+<div class="datepicker-container">
+  <mat-form-field *ngIf="!range" appearance="fill" [class.add-margin]="addMargin" [class.hide-picker]="hidden">
+    <mat-label>{{ placeholder }}</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="control" [name]="name" [disabled]="control.disabled"
+      [max]="maxDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker [startAt]="control.value ? control.value :  startAt " [startView]="startView"
+      (monthSelected)="monthSelected($event)">
+    </mat-datepicker>
+  </mat-form-field>
+  <mat-form-field *ngIf="range" appearance="fill" [class.add-margin]="addMargin" [class.hide-picker]="hidden">
+    <mat-label>{{ placeholder }}</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate [(ngModel)]="control.value[0]" (ngModelChange)="onRangeModelChange($event, 'start')"
+        name="first-picker" [disabled]="control.disabled" [max]="maxDate">
+      <input matEndDate [(ngModel)]="control.value[1]" (ngModelChange)="onRangeModelChange($event, 'end')"
+        name="second-picker" [disabled]="control.disabled" [max]="maxDate">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker [startAt]="control.value ? control.value :  startAt " [startView]="startView">
+    </mat-date-range-picker>
+  </mat-form-field>
+</div>
+
+<div class="validation-error" *ngIf="showErrors && control.invalid && control.touched">
+  <div *ngFor="let error of control.errors | keyvalue">
+    <div [ngSwitch]="error.key">
+      <div *ngSwitchCase="'pattern'">
+        <span></span>{{ error.value | validationInfo }}
+      </div>
+    </div>
+  </div>
+</div>

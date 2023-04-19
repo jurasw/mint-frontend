@@ -1,0 +1,10 @@
+<div *ngIf="recipient" class="bubble" [class.active]="active">
+  <div class="recipient-image" data-toggle="tooltip" data-placement="left"
+    [title]="room.isGroup ? room.name : recipient.nickName">
+    <app-user-image *ngIf="!room.isGroup" [user]="recipient"></app-user-image>
+    <img *ngIf="room.isGroup" class="group-chat-image" src="assets/images/group-chat.svg" alt="group-chat">
+    <div *ngIf="recipient.status && !room.isGroup" class="recipient-status" [class.active]="recipient.status.status">
+    </div>
+    <div *ngIf="room.unseenMessagesCount > 0" class="recipient-message-count">{{ room.unseenMessagesCount }}</div>
+  </div>
+</div>

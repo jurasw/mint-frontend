@@ -1,0 +1,44 @@
+<app-navbar [sticky]="stickyNavbar"></app-navbar>
+
+<div class="layout-container" [class.add-margin]="stickyNavbar">
+
+  <div *ngIf="headerPanel" class="header-panel">
+    <app-header-panel></app-header-panel>
+  </div>
+
+  <app-notifications *ngIf="authService.currentUser && !router.url.includes('home')" class="notifications">
+  </app-notifications>
+
+  <div class="layout">
+    <div class="content"
+      [class.full-content]="router.url.includes('user-profile/delete-account') || router.url.includes('user-profile/deactivate-account') ||router.url.includes('home') || router.url.includes('auth/register/confirm-account')">
+
+      <div *ngIf="sidePanel" class="side-panel">
+        <app-survey-required
+          *ngIf="!router.url.includes('forums') && !router.url.includes('survey') && !router.url.includes('user-profile/delete-account') && !router.url.includes('user-profile/deactivate-account') && authService.currentUser && authService.currentUser.groups.length === 0">
+        </app-survey-required>
+      </div>
+
+      <ng-container *ngIf="authService.currentUser || !loginRequired">
+        <router-outlet></router-outlet>
+      </ng-container>
+      <ng-container *ngIf="!authService.currentUser && loginRequired">
+        <app-login-required></app-login-required>
+      </ng-container>
+
+    </div>
+
+    <div [ngSwitch]="router.url.includes('')">
+      <div *ngSwitchCase="infoPanel" class="info-panel">
+        <app-info-panel *ngIf="!(router.url.includes('user-profile/delete-account') || router.url.includes('user-profile/deactivate-account')) && authService.currentUser">
+        </app-info-panel>
+      </div>
+      <div *ngSwitchCase="registrationPanel" class="registration-panel">
+        <app-registration-panel *ngIf="!router.url.includes('auth/register/confirm-account') && !authService.currentUser">
+        </app-registration-panel>
+      </div>
+      <div *ngSwitchDefault></div>
+    </div>
+
+    <app-footer></app-footer>
+  </div>

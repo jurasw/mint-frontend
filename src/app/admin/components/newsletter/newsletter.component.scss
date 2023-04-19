@@ -1,0 +1,37 @@
+@import "../../../_theme/helpers/variables";
+
+.container {
+    width: 75%;
+}
+
+.box {
+    background-color: $light;
+    padding: 1rem;
+    min-height: 10rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.close {
+    &-btn {
+        background: 0;
+        border:0;
+    }
+}
+
+.list-item {
+    text-align: left;
+    width: 100%;
+    background-color: $white;
+    border: 1px solid $black;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+}

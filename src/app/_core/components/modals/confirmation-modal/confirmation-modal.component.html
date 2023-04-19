@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>
+  <span>Potwierdzenie</span>
+</h1>
+<mat-dialog-content>
+  <p [innerText]="data.label"></p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" class="btn btn-ghost" mat-button mat-dialog-close>Anuluj</button>
+  <button type="submit" class="btn" [class]="data.confirmButtonClass" mat-button cdkFocusInitial
+    (click)="confirm()">Tak</button>
+</mat-dialog-actions>

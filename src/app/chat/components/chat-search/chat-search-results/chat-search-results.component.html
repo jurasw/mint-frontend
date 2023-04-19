@@ -1,0 +1,18 @@
+<div #results class="chat-results" (scroll)="onScrollBottom($event)">
+  <div *ngFor="let recipient of chatRecipients" class="chat-result" (click)="searchResultClick(recipient)">
+    <div class="chat-recipient">
+      <app-user-image [user]="recipient.user"></app-user-image>
+      <div class="recipient-info mx-2">
+        {{ recipient.user.nickName }} <span *ngIf="recipient.user.firstName && recipient.user.lastName">({{
+          recipient.user.firstName + ' ' + recipient.user.lastName }})</span>
+      </div>
+    </div>
+    <div>
+      <button *ngIf="recipient.hasConversation" class="btn btn-primary">Przejdź do czatu</button>
+      <button *ngIf="!recipient.hasConversation" class="btn btn-primary">Utwórz czat</button>
+    </div>
+  </div>
+  <div *ngIf="moreResultsLoading" [appLoader]="moreResultsLoading" [minHeight]="50">
+    <div></div>
+  </div>
+</div>

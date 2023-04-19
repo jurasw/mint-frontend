@@ -1,0 +1,9 @@
+{
+  "/abalin": {
+    "target": "https://nameday.abalin.net/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {"^/abalin" : ""}
+  }
+}

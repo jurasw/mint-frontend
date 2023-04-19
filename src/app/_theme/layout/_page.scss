@@ -1,0 +1,17 @@
+.centerize {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.page-background {
+  // background-color: lighten($light-green, 15);
+  padding: 2rem;
+}

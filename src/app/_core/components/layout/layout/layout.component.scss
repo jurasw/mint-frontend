@@ -1,0 +1,51 @@
+.content {
+  min-height: 20rem;
+  padding: 2rem 0;
+  width: 75%;
+  margin: auto;
+  align-items: center;
+
+  &.full-content {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+.notifications {
+  padding: 0 1rem;
+}
+
+.layout-container {
+  width: 100%;
+
+  &.add-margin {
+    margin-top: 8rem;
+  }
+}
+
+.layout {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.info-panel {
+  flex-direction: row;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .side-panel {
+    display: none;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+    padding: 5px 0;
+  }
+}

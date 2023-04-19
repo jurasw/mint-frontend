@@ -1,0 +1,66 @@
+<section class="d-flex justify-content-center justify-content-lg-between bg-white logos-section">
+  <div class="eu-logos-div">
+    <ul class="eu-logos">
+      <li><img src="../../../assets/images/eu-logos/1.png" alt="logo eu" /></li>
+      <li><img src="../../../assets/images/eu-logos/2.png" alt="logo eu" /></li>
+      <li><img src="../../../assets/images/eu-logos/3.png" alt="logo eu" /></li>
+      <li><img src="../../../assets/images/eu-logos/4.png" alt="logo eu" /></li>
+    </ul>
+  </div>
+</section>
+<footer class="footer">
+
+  <section class="footer-content">
+    <div class="footer-content-up block">
+      <div class="block-left">
+        <div class="block-left-logo">
+          <img class="logoFooter" src="../../../assets/images/mint_logo_cut.png" alt="logoFooter" routerLink="/" />
+        </div>
+        <div class="block-left-mailto">
+          <p>Umów się na psychoterapię</p>
+          <a href="mailto:gabinet@mintmint.pl" class="block-left-link link">gabinet@mintmint.pl</a>
+        </div>
+      </div>
+      <div class="block-right">
+        <ul class="block-right-smedia">
+          <li class="icon" *ngFor="let element of socialMedia">
+            <a href="{{ element.url }}"><img src="../../../assets/sm-logo/{{ element.picUrl }}" alt="{{ element.url }}"
+                class="icon-img" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-content-down block">
+      <div class="block-bottom links">
+        <ul class="links-column">
+          <li class="links-column-li">
+            <a class="routingElement text" routerLink="/landing-page/contact" (click)="toTheTop()">Kontakt</a>
+          </li>
+          <li class="links-column-li">
+            <a class="routingElement text" routerLink="/landing-page/aboutPsych" (click)="toTheTop()">O
+              psychoterapii</a>
+          </li>
+          <li class="links-column-li">
+            <a class="routingElement text"
+              (click)='btnClick("../../../../assets/files/terms_and_conditions.pdf")'>Regulamin</a>
+          </li>
+          <li class="links-column-li">
+            <a class="routingElement text" routerLink="/landing-page/priceList" (click)="toTheTop()">Cennik</a>
+          </li>
+          <li class="links-column-li">
+            <a class="routingElement text" (click)='btnClick("../../../../assets/files/privacy_policy.pdf")'>RODO</a>
+          </li>
+          <li class="links-column-li">
+            <a class="routingElement text"
+              (click)='btnClick("../../../../assets/files/privacy-policy-cookies.pdf")'>Cookie</a>
+          </li>
+        </ul>
+      </div>
+      <hr>
+      <div class="block-copy">
+        <span class="text">Copyright © 2021 Mint App Sp. z o.o. All rights reserved.</span>
+      </div>
+    </div>
+  </section>
+</footer>

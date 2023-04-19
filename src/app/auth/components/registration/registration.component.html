@@ -1,0 +1,70 @@
+<div class="register-container">
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-alert-message></app-alert-message>
+    <app-radio formControlName="loginType" [id]="'mail-radio'" [name]="'loginType'" [value]="'mail'"
+      [message]="'Adres e-mail'"></app-radio>
+    <app-radio formControlName="loginType" [id]="'phone-radio'" [name]="'loginType'" [value]="'phoneNumber'"
+      [message]="'Numer telefonu'"></app-radio>
+    <app-input-text *ngIf="loginType === 'mail'" formControlName="mail" [type]="'text'" [placeholder]="'E-MAIL'"
+      autocomplete="new-password"></app-input-text>
+    <app-input-text *ngIf="loginType === 'phoneNumber'" formControlName="phoneNumber" [type]="'text'"
+      [placeholder]="'NUMER TELEFONU'" autocomplete="new-password">
+    </app-input-text>
+    <app-input-text formControlName="login" [type]="'text'" [placeholder]="'NAZWA UŻYTKOWNIKA'"
+      autocomplete="new-password" [customValidationText]="'Nie może zawierać spacji i/lub znaków specjalnych'">
+    </app-input-text>
+    <app-input-text formControlName="password" [type]="hideFirstPassword ? 'password' : 'text'"
+      [icon]="hideFirstPassword ? 'fas fa-eye-slash' : 'fas fa-eye'" [placeholder]="'HASŁO'" autocomplete="new-password"
+      (iconClicked$)="hideFirstPassword = !hideFirstPassword"></app-input-text>
+    <app-input-text formControlName="confirmPassword" [type]="hideSecondPassword ? 'password' : 'text'"
+      [icon]="hideSecondPassword ? 'fas fa-eye-slash' : 'fas fa-eye'" [placeholder]="'POWTÓRZ HASŁO'"
+      autocomplete="new-password" (iconClicked$)="hideSecondPassword = !hideSecondPassword">
+    </app-input-text>
+
+    <div class="checkboxes">
+      <div class="div-agreements ">
+        <app-checkbox class="div-agreements" (click)="checkAllBoxes()" formControlName="checkAllAgreements"
+          name="checkAllAgreements">
+        </app-checkbox>
+        <label for="checkAllAgreements">
+          Zaznacz i wyraź zgodę na wszystkie pola poniżej.
+        </label>
+      </div>
+      <div class="div-agreements">
+        <app-checkbox formControlName="rodo" name="rodo" class="checkbox"></app-checkbox>
+        <label for="rodo">
+          <span>* Oświadczam, że zapoznałam/em się z treścią </span>
+          <a (click)="clickItem('../../../../assets/files/terms_and_conditions.pdf')">Regulaminu</a>
+          oraz 
+          <a (click)="clickItem('../../../../assets/files/privacy_policy.pdf')">Polityki Prywatności</a> i akceptuję ich
+          treść. *
+        </label>
+      </div>
+      <div class="div-agreements">
+        <app-checkbox formControlName="regulations" name="regulations" class="checkbox"></app-checkbox><label
+          for="regulations">* Wyrażam
+          zgodę na przetwarzanie moich danych osobowych przez Mint App Sp. z o.o. w celu świadczenia usług oferowanych
+          przez Serwis.* </label>
+      </div>
+      <div class="div-agreements">
+        <app-checkbox formControlName="marketingAgreement" name="marketingAgreement" class="checkbox">
+        </app-checkbox><label for="marketingAgreement" matTooltipShowDelay="500"
+          matTooltip="Wyrażam zgodę na otrzymywanie od Mint App sp. z o.o. drogą elektroniczną na wskazany przeze mnie w formularzu adres e-mail informacji handlowych, dotyczących produktów i usług oferowanych przez Mint App Sp. z o.o. w rozumieniu ustawy o świadczeniu usług drogą elektroniczną z dnia 18 lipca 2002 r. Wyrażam zgodę na otrzymywanie od Mint App Sp. z o.o. treści, dotyczących oferty Mint App Sp. z o.o. na podany przeze mnie numer telefonu, w tym przy użyciu automatycznych systemów wywołujących w rozumieniu ustawy z dnia 16 lipca 2004 r. Prawo telekomunikacyjne. ">Wyrażam
+          zgodę na otrzymywanie od Mint App Sp. z o.o. treści, dotyczących oferty Mint App
+          Sp. z o.o. na podany przeze mnie numer telefonu lub/i adres e-mail. </label>
+      </div>
+    </div>
+    <div class="submit-button">
+      <button [disabled]="form.invalid || isSending" type="submit" class="btn btn-primary btn-block">
+        Utwórz konto
+      </button>
+    </div>
+    <hr>
+    <p>
+      MASZ KONTO?
+      <a type="button" [routerLink]="'/auth/login'">
+        ZALOGUJ SIĘ
+      </a>
+    </p>
+  </form>
+</div>

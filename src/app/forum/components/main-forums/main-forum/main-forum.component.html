@@ -1,0 +1,160 @@
+<div *ngIf="forum">
+  <div class="forum-title">{{ forum.title }}</div>
+  <div class="reported-posts">
+    <button *ngIf="isUserModerator || isUserAdmin" class="btn btn-link" [routerLink]="['reported-posts']">
+      Zgłoszone posty
+    </button>
+  </div>
+  <div class="header">
+    <button class="btn btn-link" routerLink="/forums"><i class="fa-solid fa-chevron-left"></i>
+      Powrót do listy forum</button>
+    <button class="btn btn-primary" (click)="openDialog()">
+      Dodaj nowy wątek
+    </button>
+  </div>
+  <hr>
+  <div [appLoader]="isForumLoading" [minHeight]="400" class="main-forum">
+    <div class="main-forum-content">
+      <div>
+        <button *ngIf="
+          !isUserModerator &&
+          !isUserAdmin &&
+          forum.moderators.length < 100 &&
+          ((forum.title !== 'Psychologiczne' && userPostCount >= 50) ||
+            isUserSpecialist)
+        " class="btn btn-link" (click)="openModeratorModalRequest()">
+          Zostań moderatorem
+        </button>
+      </div>
+
+      <div class="forum-watched-threads">
+        <div class="forum-actions">
+          <h2>{{ allWatchedThreads.length }}</h2>
+          <button class="btn btn-link showButton" (click)="showWatchedThreads=!showWatchedThreads">
+            Obserwowane
+            <i *ngIf="showWatchedThreads; else hideWatchedThreads" class="fa-solid fa-angle-down"></i>
+            <ng-template #hideWatchedThreads><i class="fa-solid fa-angle-left"></i></ng-template>
+          </button>
+        </div>
+        <div class="forum-threads" *ngIf="showWatchedThreads">
+          <div [appLoader]="isThreadLoading" [background]="true">
+            <div *ngFor="let thread of allWatchedThreads">
+              <div class="forum-thread" [id]="thread.id" [routerLink]="[thread.id]">
+                <div class="section-cell section-cell-left">
+                  <div class="forum-thread-content">
+                    <div class="forum-thread-general">
+                      <img [src]="'/assets/images/forum-images/' + (thread.isRead ? 'email.png' : 'email-2.png')"
+                        alt="ikona wątku">
+                      <div class="forum-thread-title" [class.forum-thread-new]="!thread.isRead">{{ thread.title }}</div>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <div class="forum-thread-author">
+                      <b>Autor wątku:</b><br>{{thread.author.nickName}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="vertical-line"></div>
+
+                <div class="section-cell section-cell-right">
+                  <div class="section-cell section-cell-small">
+                    <div class="number-of-threads">
+                      Posty: <p>{{ thread.postCount }}</p>
+                    </div>
+                  </div>
+                  <div class="section-cell section-cell-medium">
+                    <div class="section-container" *ngIf="thread.latestPost">
+                      <div class="section-comment">
+
+                        <b>Ostatni komentarz:</b><br>
+                        {{ thread.latestPost.body | isQuotePost | slice: 0:10
+                        }}{{ thread.latestPost.body.length < 9 ? "" : "..." }} <div *ngIf="!thread.latestPost">Brak
+                          postów
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="forum-all-threads">
+      <div class="forum-actions">
+        <h2>{{ forum.threadCount }}</h2>
+        <button class="btn btn-link showButton" (click)="showAllThreads=!showAllThreads">
+          Wszystkie wątki
+          <i *ngIf="showAllThreads; else hideAllThreads" class="fa-solid fa-angle-down"></i>
+          <ng-template #hideAllThreads><i class="fa-solid fa-angle-left"></i></ng-template>
+        </button>
+      </div>
+      <div class="forum-threads" *ngIf="showAllThreads">
+        <div [appLoader]="isThreadLoading" [minHeight]="pagination.limit * 65" [background]="true">
+          <div *ngFor="
+            let thread of threads
+              | paginate
+                : {
+                    itemsPerPage: pagination.limit,
+                    currentPage: pagination.page,
+                    totalItems: paginationData?.totalCount
+                  }
+          " class="forum-thread" [id]="thread.id" [routerLink]="[thread.id]">
+            <div class="section-cell section-cell-left">
+              <div class="forum-thread-content">
+                <div class="forum-thread-general">
+                  <img [src]="'/assets/images/forum-images/' + (thread.isRead ? 'email.png' : 'email-2.png')"
+                    alt="ikona wątku">
+                  <div class="forum-thread-title" [class.forum-thread-new]="!thread.isRead">{{ thread.title }}</div>
+                  <i *ngIf="thread.isSubscribed" class="fas fa-star"></i>
+                </div>
+                <div class="forum-thread-author">
+                  <b>Autor wątku:</b><br>{{thread.author.nickName}}
+                </div>
+              </div>
+            </div>
+
+            <div class="vertical-line"></div>
+
+            <div class="section-cell section-cell-right">
+              <div class="section-cell section-cell-small">
+                <div class="number-of-threads">
+                  Posty: <p>{{ thread.postCount }}</p>
+                </div>
+              </div>
+              <div class="section-cell section-cell-medium">
+                <div class="section-container" *ngIf="thread.latestPost">
+                  <div class="section-comment">
+                    <b>Ostatni komentarz:</b><br>
+                    {{ thread.latestPost.body | isQuotePost | slice: 0:10
+                    }}{{ thread.latestPost.body.length < 9 ? "" : "..." }} </div>
+                  </div>
+                  <div *ngIf="!thread.latestPost">Brak postów</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="threads.length === 0 && !isThreadLoading" class="text-center p-3">
+            Brak wątków w tym forum.
+          </div>
+          <app-pagination *ngIf="paginationData" class="my-2" (pageChanged$)="onPageChange($event)"></app-pagination>
+        </div>
+
+      </div>
+    </div>
+    <div *ngIf="!forum && forumNotFound" class="forum-not-found">
+      Nie znaleziono takiego forum.
+    </div>
+  </div>
+
+  <div class="back-button">
+    <button class="btn btn-link" routerLink="/forums"><i class="fa-solid fa-chevron-left"></i>
+      Powrót do listy forum</button>
+  </div>
+
+  <app-moderators *ngIf="currentUser" [userId]="currentUser.id" [forum]="forum" [isUserAdmin]="isUserAdmin"
+    [isUserModerator]="isUserModerator" [moderators]="forum.moderators"></app-moderators>
+
+</div>

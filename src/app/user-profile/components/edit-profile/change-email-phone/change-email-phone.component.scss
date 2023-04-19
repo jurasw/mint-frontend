@@ -1,0 +1,38 @@
+@import '../../../../_theme/helpers/variables';
+
+hr {
+  height: 2px;
+}
+
+.edit-profile-container {
+  width: 100%;
+  padding: 2rem 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+  }
+
+  .form-title {
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  button {
+    display: flex;
+    margin: 1rem auto;
+    float: right;
+  }
+
+  ::ng-deep {
+
+    input.ng-touched.ng-valid,
+    textarea.ng-touched.ng-valid {
+      box-shadow: 0px 0px 9px 1px rgba($primary, 0.5);
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<select [formControl]="control" class="form-select dropdown-bar" [attr.disabled]="control.disabled ? '' : null"
+  [ngClass]="{
+    'form-control-lg': large,
+    'no-border': hideBorder,
+    'add-margin': addMargin,
+    'disabled': control.disabled
+  }" aria-label="Filter select">
+  <option [ngValue]="null" disabled>{{ placeholder }}</option>
+  <option *ngFor="let option of options" [ngValue]="option.value">
+    {{ option.displayName }}
+  </option>
+</select>

@@ -1,0 +1,17 @@
+<div class="search">
+  <div class="search-panel">
+    <form [formGroup]="searchForm" class="search-panel-form">
+      <app-input-text class="searchControl" formControlName="searchControl" [hideBorder]="true" [addMargin]="false" [showErrors]="false"
+        [placeholder]="'Wpisz szukaną frazę...'">
+      </app-input-text>
+      <app-dropdown class="filter-dropdown" formControlName="filterDropdown" [options]="searchOptions"
+        [hideBorder]="true" [addMargin]="false" [placeholder]="'Kategorie'"></app-dropdown>
+      <button type="button" class="search-button btn btn-primary btn-lg">WYSZUKAJ</button>
+    </form>
+  </div>
+  <app-search-results *ngIf="searchForm.controls.searchControl.value.length >= 3" appClickOutside
+    [parentElement]="elementRef" (clickOutside)="onClickOutside()" [searchResults]="searchResults"
+    [moreResultsLoading]="moreResultsLoading" [searchValue]="searchForm.controls.searchControl.value"
+    [isLoading]="isLoading" (resultClick$)="onResultClick($event)" (scrollBottom$)="onScrollBottom()"
+    class="search-results"></app-search-results>
+</div>

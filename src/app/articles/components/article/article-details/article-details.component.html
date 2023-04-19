@@ -1,0 +1,66 @@
+<div [appLoader]="isLoading">
+  <button *ngIf="isUserAdmin" class="btn btn-link" [routerLink]="'/make-dreams/article-reports/' + articleId">Zgłoszone
+    komentarze</button>
+  <div *ngIf="article$ | async as article">
+    <div class="article-details">
+      <div class="article-thumbnail center-background-image" title="{{article.imageDescription}}">
+        <video [src]="article.thumbnail.filePath" *ngIf="format==='video'" alt="thumbnail video" controls
+          controlslist="nodownload" width="250" height="150" #videoPlayer></video>
+      </div>
+      <div class="article-info">
+        <div>{{ article.createdAt | date: 'dd.MM.YYYY HH:mm'}}</div>
+        <div class="article-info-title">"{{ article.title }}"</div>
+        <quill-editor class="article-info-body" [(ngModel)]="article.body" [readOnly]="true"
+          [modules]="{toolbar:false}"></quill-editor>
+        <hr>
+      </div>
+    </div>
+    <app-alert-message></app-alert-message>
+
+    <div class="article-buttons">
+      <button class="btn btn-link" routerLink="/make-dreams"><i class="fa-solid fa-chevron-left"></i>
+        Powrót do listy artykułów</button>
+      <p>{{article.user.nickName}}</p>
+    </div>
+
+    <app-pagination *ngIf="paginationData && paginationData.totalCount > pagination.limit"
+      (pageChanged$)="onPageChange($event)"></app-pagination>
+
+    <div [appLoader]="!isLoading && isCommentsLoading">
+      <div *ngIf="comments$ | async as comments; else noData">
+        <ng-container *ngIf="comments.items.length > 0; else noData">
+          <div #comment *ngFor="let comment of comments.items | paginate
+          : {
+              itemsPerPage: pagination.limit,
+              currentPage: pagination.page,
+              totalItems: paginationData?.totalCount
+            };">
+            <app-article-comment [article]="article" [comment]="comment" [isUserAdmin]="isUserAdmin"
+              (quoteButtonClicked)="onQuoteButtonClick($event)" (refreshComments$)="refreshComments()">
+            </app-article-comment>
+            <app-add-article-comment class="add-article-comment" *ngIf="quoteIdComment === comment.id && showQuoteForm"
+              [articleId]="articleId" [quoteComment]="comment" (commentAdded$)="onAddComment()">
+            </app-add-article-comment>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div *ngIf="showAddCommentPanel; else hideAddCommentPanel">
+      <app-add-article-comment class="add-article-comment" *ngIf="!showQuoteForm" [articleId]="articleId"
+        (commentAdded$)="onAddComment()"></app-add-article-comment>
+    </div>
+    <ng-template #hideAddCommentPanel>
+      <div class="button-container">
+        <button mat-raised-button class="btn btn-link-add" name="logIn" routerLink="/auth/login">
+          Musisz być zalogowanym aby komentować
+        </button>
+      </div>
+    </ng-template>
+    <app-pagination *ngIf="paginationData && paginationData.totalCount > pagination.limit"
+      (pageChanged$)="onPageChange($event)"></app-pagination>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div *ngIf="!isCommentsLoading" class="text-center my-2"> Brak komentarzy.</div>
+</ng-template>

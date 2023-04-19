@@ -1,0 +1,51 @@
+@import "../../../../_theme/helpers/variables";
+
+:host {
+  width: 100%;
+}
+
+.panel-item {
+  font-size: 1rem;
+  padding: 1rem;
+  border: 1px solid $mint-900;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  background-color: $mint-900;
+  color: $white;
+  transition: background-color 0.2s;
+  cursor: pointer;
+
+  &.active {
+    color: $mint-900;
+    background-color: $white;
+  }
+
+  &:hover:not(.active) {
+    background-color: darken($mint-900, 10);
+  }
+}
+
+.deactivate-acc,
+.delete-acc {
+  margin: 0.5rem 0;
+}
+
+.delete-account-container {
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  width: 60%;
+  text-align: center;
+  margin-top: 2rem;
+  padding-bottom: 1rem;
+
+  .form-title {
+    font-size: 0.9rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+hr {
+  height: 2px;
+}

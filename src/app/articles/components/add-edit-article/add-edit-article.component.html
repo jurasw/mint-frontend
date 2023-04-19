@@ -1,0 +1,47 @@
+<button class="btn btn-link" routerLink="/make-dreams"><i class="fa-solid fa-chevron-left"></i> Powrót do listy
+  artykułów</button>
+<div class="add-edit-article">
+  <h1 class="add-edit-article-title">
+    <span *ngIf="!article">Utwórz nowy artykuł</span>
+    <span *ngIf="article">Edytuj artykuł</span>
+  </h1>
+  <form [formGroup]="form" class="form" (ngSubmit)="submit()">
+    <app-alert-message></app-alert-message>
+    <div class="article-thumbnail center-background-image centerize" [appLoader]="isLoading">
+      <img [src]="'../../../../../assets/images/default-image.jpg'" *ngIf="!this.thumbnailUrl" alt="default image">
+      <img [src]="thumbnailUrl" *ngIf="format==='image'" alt="thumbnail image">
+      <video [src]="thumbnailUrl" *ngIf="format==='video'" alt="thumbnail video" controls width="250" height="150" #videoPlayer></video>
+    </div>
+    <div class="article-thumbnail-action">
+      <div class="uploadFile" (click)="file.click()">
+        {{ !this.thumbnailUrl ? 'Dodaj zdjęcie/nagranie' : 'Zmień zdjęcie/nagranie' }}
+      </div>
+      <input class="d-none" type="file" accept="image/jpeg, image/png, video/mp4" (change)="onInputFileChange($event)" #file>
+    </div>
+    <div class="text-center text-small">
+      Wymagany format obrazka to PNG/JPG. Rozmiar nie powinien przekraczać 4MB. Proporcje 5:3 (np. 500x300).<br>
+      Wymagany format video to MP4. Rozmiar nie powinien przekraczać 300MB.
+    </div>
+    <div class="add-article">
+      <app-input-text formControlName="imageDescription" [placeholder]="'Opis obrazka'"></app-input-text>
+      <app-input-text formControlName="title" [placeholder]="'Tytuł artykułu'"></app-input-text>
+      <app-chat-emoticons *ngIf="showEmoticons" class="chat-emoticons" appClickOutside
+        [parentElement]="emoticonButtonElement" (clickOutside)="clickOutsideEmoticons()"
+        (emojiSelect$)="onEmojiSelect($event)"></app-chat-emoticons>
+      <div class="container-textarea">
+        <div class="container-texteditor">
+          <quill-editor class="content-editor" [placeholder]="'Opis artykułu'" [modules]="quillConfiguration"
+            formControlName="body" maxlength="50000"></quill-editor>
+        </div>
+        <div class="emoticon-button">
+          <span #emoticonButton (click)="showEmoticons = !showEmoticons" class="emoticon-button-icon">😀</span>
+        </div>
+      </div>
+    </div>
+    <div class="container-button">
+      <button [disabled]="form.invalid || isSending" class="btn btn-primary" type="submit">
+        {{ this.article ? 'Zapisz' : 'Dodaj artykuł' }}
+      </button>
+    </div>
+  </form>
+</div>

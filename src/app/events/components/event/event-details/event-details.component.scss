@@ -1,0 +1,40 @@
+@import '../../../../_theme/helpers/variables';
+.event-details {
+  display: flex;
+  text-align: left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  .event-thumbnail {
+    width: 10rem;
+    min-width: 10rem;
+    height: 12.5rem;
+    margin-bottom: 1rem;
+  }
+  .event-title {
+    font-weight: 300;
+    padding-bottom: 0.5rem;
+  }
+  .event-info {
+    width: 100%;
+  }
+
+  .event-info-title {
+    font-weight: 500;
+    padding: 1rem 0;
+  }
+
+  .event-info-description {
+    border: 1px solid $black;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    word-break: break-all;
+  }
+}
+
+.event-actions {
+  display: flex;
+  justify-content: center;
+}

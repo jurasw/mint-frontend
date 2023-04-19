@@ -1,0 +1,32 @@
+<div *ngIf="event" class="event" [class.past-event]="isPastEvent">
+  <div class="event-options">
+    <app-event-options [eventId]="event.id" [isPastOrActiveEvent]="isPastEvent || isEventTimeActive"
+      (eventDeleted$)="onEventDelete()">
+    </app-event-options>
+  </div>
+  <div class="centerize h-100">
+    <div class="event-thumbnail center-background-image"
+      [style.background-image]="event.thumbnail && event.thumbnailUrl ? event.thumbnailUrl : 'url(../../../../../assets/images/default-image.jpg)'">
+    </div>
+    <div class="event-info">
+      <div class="event-title"><span *ngIf="isOwnEvent">(Twoje) </span>Wydarzenie</div>
+      <div>Data rozpoczęcia: {{ event.startDate | date: 'dd.MM.YYYY HH:mm'}} </div>
+      <div>Data zakończenia: {{ event.endDate | date: 'dd.MM.YYYY HH:mm'}}</div>
+      <div>Organizator: {{ event.organizer.nickName }}</div>
+      <div>Pozostali organizatorzy: <span *ngFor="let suborganizer of event.suborganizers; let i = index">{{
+          suborganizer.nickName
+          }}<span *ngIf="i !== event.suborganizers.length - 1">, </span></span> <span
+          *ngIf="!event.suborganizers.length">brak</span></div>
+      <div>Wydarzenie cykliczne: {{ recurrenceOptions[event.recurrence][0].displayName}}</div>
+      <div class="event-info-title">"{{ event.title }}"</div>
+    </div>
+  </div>
+
+  <div class="event-action">
+    <app-event-actions [event]="event" [isEventTimeActive]="isEventTimeActive" [isOwnEvent]="isOwnEvent"
+      [isPastEvent]="isPastEvent" [isUserAdmin]="isUserAdmin" [isUserRegistered]="isUserRegistered"
+      [eventStateAlignment]="'right'" (addSession$)="addSession()" (closeEvent$)="closeEvent()"
+      (startEvent$)="startEvent()" (joinToEvent$)="joinToEvent()" (registerToEvent$)="registerToEvent()"
+      (showEventDetails$)="showEventDetails()" (unregisterFromEvent$)="unregisterFromEvent()"></app-event-actions>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="add-thread">
+  <div class="row close-button-div">
+    <button class="close-button" mat-button (click)="close(false)">
+      Zamknij
+    </button>
+  </div>
+  <h2 class="text-center">Dodaj nowy wątek</h2>
+  <mat-dialog-content>
+    <form [formGroup]="addThread" class="form-add-thread-reason">
+      <app-alert-message></app-alert-message>
+      <app-input-text type="text" formControlName="title" name="add-title-input" placeholder="Tytuł wątku">
+      </app-input-text>
+      <app-textarea formControlName="description" [name]="'add-description-input'" [wordsLimit]="2200"
+        placeholder="Treść posta"></app-textarea>
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <input *ngIf="authenticationService.currentUser && authenticationService.currentUser.role === 'Admin'"
+      class="input-file" type="file" multiple #file />
+    <button class="btn btn-primary" type="button" [disabled]="addThread.invalid || isSending" (click)="createThread()">
+      Dodaj wątek
+    </button>
+  </mat-dialog-actions>
+</div>

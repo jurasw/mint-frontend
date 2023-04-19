@@ -1,0 +1,11 @@
+<form [formGroup]="addCommentForm">
+  <div class="add-comment">
+    <app-textarea class="app-textarea" formControlName="answer" [name]="'comment-description'"
+      [placeholder]="placeholder" [wordsLimit]="2200" [showErrors]="false"></app-textarea>
+    <div class="submit-button">
+      <button class="btn btn-outline-success" (click)="sendAnswer()" [disabled]="addCommentForm.invalid || isSending">
+        Opublikuj
+      </button>
+    </div>
+  </div>
+</form>

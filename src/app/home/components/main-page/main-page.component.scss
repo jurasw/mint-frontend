@@ -1,0 +1,45 @@
+@import "../../../../app/_theme/helpers/variables";
+
+.banner-container {
+  width: 100%;
+  position: relative;
+
+  .banner {
+    background: url("../../../../assets/images/home-page/voting_banner.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 100%;
+    position: relative;
+    height: 70vh;
+    background-size: cover;
+    margin-top: -2rem;
+
+    @media only screen and (max-width: 700px) {
+      margin-top: 0rem;
+    }
+
+    .button-container {
+      display: flex;
+      float: right;
+      padding-top: 59vh;
+      padding-right: 49vh;
+
+      button {
+        font-size: 5vh;
+        height: 9vh;
+        width: 37vh;
+        border-radius: 4vh;
+        color: #2f3f4f;
+        margin-top: 10px;
+        margin-right: 20px;
+        box-shadow: none;
+        font-family: 'Covered By Your Grace', cursive;
+
+        &:hover {
+          background-color: #2f3f4f;
+          color: $white;
+        }
+      }
+    }
+  }
+}

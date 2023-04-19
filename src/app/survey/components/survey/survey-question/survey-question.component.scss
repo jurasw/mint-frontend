@@ -1,0 +1,14 @@
+:host {
+  width: 100%;
+  padding: auto;
+  display: block;
+  text-align: center;
+}
+
+.question {
+  margin: 2rem;
+  font-size: 1.1rem;
+  .question-title {
+    margin-bottom: 1rem;
+  }
+}

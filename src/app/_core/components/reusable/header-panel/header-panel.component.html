@@ -1,0 +1,51 @@
+<div [ngSwitch]="router.url.includes('')">
+    <div *ngSwitchCase="router.url.includes('user-profile/my-profile')">
+        <app-profile-main-view-header></app-profile-main-view-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('user-profile/edit-profile/general')">
+        <app-profile-main-view-header></app-profile-main-view-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('user-profile/edit-profile/user-pictures')">
+        <app-profile-main-view-header></app-profile-main-view-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('user-profile/delete-account')">
+        <app-profile-main-view-header></app-profile-main-view-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('user-profile/deactivate-account')">
+        <app-profile-main-view-header></app-profile-main-view-header>
+    </div>
+    <div
+        *ngSwitchCase="router.url.includes('user-profile') && !(router.url.includes('user-profile/my-profile') || router.url.includes('user-profile/edit-profile/general') || router.url.includes('user-profile/edit-profile/user-pictures') || router.url.includes('user-profile/delete-account') || router.url.includes('user-profile/deactivate-account'))">
+        <app-user-profile-header></app-user-profile-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('forums')">
+        <app-forum-header></app-forum-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('calendar')">
+        <app-calendar-header></app-calendar-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('messages')">
+        <app-communicator-header></app-communicator-header>
+    </div>
+    <div
+        *ngSwitchCase="router.url.includes('survey') && !router.url.includes('forums/survey-required') && !router.url.includes('survey-retest')">
+        <app-survey-header></app-survey-header>
+    </div>
+    <div
+        *ngSwitchCase="router.url.includes('make-dreams') && !router.url.includes('auth/login?returnUrl=%2Fmake-dreams')">
+        <app-blog-header></app-blog-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('auth/login') || router.url.includes('auth/forgot-password')">
+        <app-login-header></app-login-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('about-us')">
+        <app-about-us-header></app-about-us-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('about-project')">
+        <app-about-project-header></app-about-project-header>
+    </div>
+    <div *ngSwitchCase="router.url.includes('auth/register/form')">
+        <app-registration-header></app-registration-header>
+    </div>
+    <div *ngSwitchDefault></div>
+</div>

@@ -1,0 +1,14 @@
+.fa-star {
+color: #d3d3d3;
+font-size: 2em;
+margin: 0 .075em;
+cursor: pointer;
+transition: .3s;
+}
+.fa-star.gold {
+    color: #6DCCA2;
+}
+
+input {
+    display: none;
+}

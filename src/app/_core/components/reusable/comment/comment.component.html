@@ -1,0 +1,75 @@
+<div class="comment" [class.first-comment]="isFirstComment" [class.own-comment]="isOwnComment">
+  <div class="author">
+    <app-user-image class="photo" [user]="comment.author" [isRounded]="true"
+      (click)="showUserProfile(comment.author.id)">
+    </app-user-image>
+
+    <div class="name">
+      <span (click)="showUserProfile(comment.author.id)">{{ comment.author.nickName }}</span>
+    </div>
+
+    <div class="forum-role">
+      <span> {{ comment.author.forumRole }} </span>
+    </div>
+  </div>
+  <div class="vertical-line"></div>
+  <div class="content-container">
+    <div class="content">
+      <div class="publish-date">
+        {{ comment.createdAt | date: "dd.MM.YYYY HH:mm" }}
+      </div>
+
+      <div class="description">
+        <div class="answer" [innerText]="comment.body"></div>
+        <div *ngIf="quoteData" class="quote-answer">
+          {{ quoteData.quoteAuthorName }} napisał(a):
+          <blockquote [innerText]="quoteData.quoteBody"></blockquote>
+        </div>
+      </div>
+      <div *ngIf="comment.attachments && comment.attachments.length > 0" class="attachments">
+        <div *ngFor="let file of comment.attachments">
+          <div class="attachment-image" *ngIf="file.type==='image/jpeg' || file.type==='image/png'">
+            <img src="{{file.filePath}}">
+          </div>
+        </div>
+        <span>Załączniki: </span>
+        <button *ngFor="let file of comment.attachments" class="btn-file btn btn-link" (click)="downloadFile(file)">
+          {{ file.type | fileType }}
+        </button>
+      </div>
+
+      <div class="actions" *ngIf="isLoggedUser">
+        <div class="buttons">
+          <div *ngIf="showQuoteButton" class="quote-button btn btn-secondary" (click)="quoteButtonClick()">
+            <span *ngIf="isQuoteFormOpen; else isQuoteFormClosed" class="fas fa-chevron-down"></span>
+            <ng-template #isQuoteFormClosed><span>Cytuj</span></ng-template>
+          </div>
+          <ng-container *ngIf="!isOwnComment">
+            <button *ngIf="!isReported; postReported" class="btn btn-link report-button" (click)="reportButtonClick()">
+              Zgłoś nadużycie
+            </button>
+          </ng-container>
+        </div>
+
+        <div class="reactions">
+          <ng-container *ngIf="comment.reactions">
+            <div *ngFor="let reaction of reactions; let i = index" class="reaction">
+              <i [class]="reaction.icon" [class.active]="reactionState[i].state" (click)="reactionClick(reaction)"></i>
+              <div class="number">
+                {{ reactionNumbers[reaction.reactionType] }}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="options">
+      <ng-content select="[options]"></ng-content>
+      <div class="comment-number">{{ comment.refNumber }}</div>
+    </div>
+  </div>
+</div>
+
+<ng-template #postReported>
+  <div class="text-bold">Zgłosiłeś ten post</div>
+</ng-template>

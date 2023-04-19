@@ -1,0 +1,13 @@
+<div class="registration-panel">
+    <h1>DLACZEGO WARTO SIĘ ZAREJESTROWAĆ?</h1>
+    <p>W MINT zarejestrowani użytkownicy są pod opieką wykwalifikowanych psychologów i psychoterapetów,
+        otrzymują w konkretny sposób wsparcie oraz pomoc dopasowaną do swoich potrzeb m.in. w postaci merytorycznych artykułów. </p>
+    <button *ngIf="router.url != '/auth/login'" mat-raised-button class="btn-secondary" name="logIn"
+        routerLink="/auth/login">
+        Zaloguj się
+    </button>
+    <button *ngIf="router.url != '/auth/register/form'" mat-raised-button class="btn-outline-success" name="logIn"
+        routerLink="/auth/register/form">
+        Utwórz konto
+    </button>
+</div>

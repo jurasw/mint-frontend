@@ -1,0 +1,15 @@
+<div #conversation class="conversation" (scroll)="onScrollTop($event)">
+  <div *ngIf="moreResultsLoading" [appLoader]="moreResultsLoading" [minHeight]="50">
+    <div></div>
+  </div>
+  <ng-container *ngIf="messages && messages.length > 0; else noMessages">
+    <app-chat-message *ngFor="let message of messages | reverse" class="message" [message]="message" [room]="room"
+      [ownMessage]="authenticationService.currentUser ?  message.sender.id === +authenticationService.currentUser.id : false"
+      [class.own-message]="authenticationService.currentUser ? message.sender.id === +authenticationService.currentUser.id : false">
+    </app-chat-message>
+  </ng-container>
+</div>
+
+<ng-template #noMessages>
+  <div class="no-messages-info">Brak wiadomości. Napisz pierwszą wiadomość.</div>
+</ng-template>

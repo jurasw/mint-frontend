@@ -1,0 +1,17 @@
+<div *ngIf="showCookieInfo" class="cookie-info">
+  <div class="cookie-info-actions">
+    <button class="btn btn-primary" (click)="closeCookieInfo()">Zamknij</button>
+  </div>
+  <div class="cookie-info-content">
+    Korzystając ze strony zgadzasz się na używanie plików cookie, które są instalowane na Twoim urządzeniu. Za ich
+    pomocą
+    zbieramy informacje, które wykorzystujemy w celach analitycznych, marketingowych oraz aby dostosować treści do
+    Twoich
+    preferencji i zainteresowań. Więcej o tym oraz o możliwościach zmiany ich ustawień dowiesz się w <a
+      class="btn-link cursor-pointer" (click)="openFile('../../../../assets/files/privacy-policy-cookies.pdf')">Polityce
+      Cookies</a>.
+  </div>
+  <div class="cookie-info-images">
+    <img class="cookies-image" [src]="'../../../assets/images/cookie.svg'">
+  </div>
+</div>

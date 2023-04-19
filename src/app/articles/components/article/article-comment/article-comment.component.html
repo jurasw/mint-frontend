@@ -1,0 +1,7 @@
+<app-comment *ngIf="comment" [articleComment]="comment" [reactionNumbers]="reactionNumbers" [reactions]="reactions"
+  [isQuoteFormOpen]="isQuoteFormOpen" [reactionState]="reactionState" [commentTitle]="article.title"
+  (quoteButtonClicked$)="quoteButtonClick()" (reactionClicked$)="reactionClick($event)"
+  (reportButtonClicked$)="reportButtonClick()">
+  <app-article-comment-options [comment]="comment" options *ngIf="isUserAdmin" (refresh$)="refreshComments()">
+  </app-article-comment-options>
+</app-comment>

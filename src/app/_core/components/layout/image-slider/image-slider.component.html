@@ -1,0 +1,13 @@
+<div class="slider">
+  <div class="image center-background-image fade" [style.background-image]="'url(' + images[slideIndex] + ')'"></div>
+  <div class="image-title-container">
+    <img src="assets/images/mint-logo-white-edit.png" alt="mint logo">
+    <div class="image-title">
+      <h1>{{ imageTitles[slideIndex]}}</h1>
+    </div>
+  </div>
+  <div class="dots">
+    <div *ngFor="let dot of images; let i = index" class="dot" [class.active]="i === slideIndex"
+      (click)="changeSlideIndex(i)"></div>
+  </div>
+</div>

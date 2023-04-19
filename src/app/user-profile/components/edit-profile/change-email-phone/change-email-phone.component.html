@@ -1,0 +1,25 @@
+<div class="edit-profile-container">
+  <div class="form-title">
+    Zmień adres e-mail lub numer telefonu <br>
+    będą służyć do logowania lub przypomnienia hasła.<br>
+    Nie będą wyświelane pozostałym użytkownikom MINT.
+  </div>
+  <hr>
+  <app-alert-message></app-alert-message>
+  <div class="form-type">
+    <app-radio [formControl]="formType" [id]="'mail-radio'" [name]="'loginType'" [value]="'mail'"
+      [message]="'Adres e-mail'"></app-radio>
+    <app-radio [formControl]="formType" [id]="'phone-radio'" [name]="'loginType'" [value]="'phoneNumber'"
+      [message]="'Numer telefonu'"></app-radio>
+  </div>
+  <app-input-text *ngIf="formType.value === 'mail'" [formControl]="mail" [type]="'text'" [placeholder]="'Adres e-mail'"
+    autocomplete="new-password"></app-input-text>
+  <app-input-text *ngIf="formType.value === 'phoneNumber'" [formControl]="phoneNumber" [type]="'text'"
+    [placeholder]="'Numer telefonu komórkowego'" autocomplete="new-password">
+  </app-input-text>
+  <div>
+    <button class="btn btn-primary" (click)="onSubmit()"
+      [disabled]="formType.value === 'mail' ? mail.invalid : phoneNumber.invalid">Zapisz
+      zmiany</button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+@import "../../../../_theme/helpers/variables";
+:host {
+  width: 100%;
+}
+
+.moderators {
+  padding: 1rem;
+  box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}

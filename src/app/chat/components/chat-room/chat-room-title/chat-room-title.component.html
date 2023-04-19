@@ -1,0 +1,54 @@
+<div class="chat-room-title">
+  <div *ngIf="recipient && !room.isGroup" class="single-chat-room">
+    <div class="recipient">
+      <div class="recipient-info">
+        <div class="user-image">
+          <app-user-image [user]="recipient" (click)="showUserProfile(recipient.id)">
+          </app-user-image>
+        </div>
+        <div class="recipient-nickname">
+          <div class="d-flex align-items-center cursor-pointer user-info">
+            <div class="me-2" (click)="showUserProfile(recipient.id)">{{ recipient.nickName }}</div>
+            <div *ngIf="recipient.status" class="recipient-status" [class.active]="recipient.status.status"></div>
+          </div>
+          <ng-container *ngIf="recipient.status">
+            <div *ngIf="recipient.status.status" class="recipient-last-seen">
+              Dostępny
+            </div>
+            <ng-container *ngIf="!recipient.status.status">
+              <div class="recipient-last-seen">Ostatnio dostępny:</div>
+              <div class="recipient-last-seen">{{ recipient.status.lastSeen | dateTime}}</div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div *ngIf="!room.isGroup">
+        <button *ngIf="!isMeetingStarted" class="btn btn-primary btn-sm my-2 me-2"
+          (click)="addSession()">Wideorozmowa</button>
+        <button *ngIf="isMeetingStarted" class="btn btn-secondary btn-sm my-2" (click)="connectToSession()">Dołącz do
+          rozmowy</button>
+      </div>
+    </div>
+    <div *ngIf="authenticationService.currentUser && recipient.id !== +authenticationService.currentUser.id "
+      class="recipient-options">
+      <app-chat-options [room]="room" [recipient]="recipient"></app-chat-options>
+    </div>
+  </div>
+  <div *ngIf="room.isGroup" class="group-chat-room">
+    <img *ngIf="room.isGroup" class="group-chat-image" src="assets/images/group-chat.svg" alt="group-chat">
+    <div>
+      <div class="group-chat-room-title">
+        Czat grupowy: {{ room.name}}
+      </div>
+      <div class="group-chat-users">
+        Uczestnicy:
+        <div *ngFor="let user of room.users" class="group-chat-user">
+          <div class="d-flex align-items-center">
+            <div class="me-1">{{ user.nickName }}</div>
+            <div *ngIf="user.status" class="recipient-status" [class.active]="user.status.status"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

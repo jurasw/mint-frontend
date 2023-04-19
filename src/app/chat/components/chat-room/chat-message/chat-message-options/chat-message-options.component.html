@@ -1,0 +1,2 @@
+<app-menu *ngIf="!isActionLoading" [menuItems]="options" [isLoading]="isLoading"
+  (menuItemClicked$)="onOptionClick($event)" (menuIconClicked$)="onOptionsIconClick()"></app-menu>

@@ -1,0 +1,18 @@
+<div class="close d-flex justify-content-end mb-3">
+    <button type="button" mat-button mat-dialog-close>Zamknij</button>
+</div>
+
+<mat-dialog-content>
+    <div class="title">
+        <p> {{ data.article.title }} </p>
+    </div>
+    <div class="content">
+        <p>{{ data.article.body }}</p>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="buttons">
+        <button type="submit" class="btn btn-danger" mat-button (click)="remove()">Usuń artykuł z newslettera</button>
+    </div>
+</mat-dialog-actions>

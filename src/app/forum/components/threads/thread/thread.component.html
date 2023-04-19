@@ -1,0 +1,138 @@
+<div [appLoader]="isThreadLoading" [background]="true" class="thread">
+  <div *ngIf="thread">
+    <div class="thread-title">
+      <span class="thread-title-forum">{{ thread.subforum.title || "" }}</span><br>
+      <span class="thread-title-post">{{thread.title}}</span>
+    </div>
+
+    <app-alert-message></app-alert-message>
+
+    <div class="buttons">
+      <button class="btn btn-link" routerLink="../"><i class="fa-solid fa-chevron-left"></i>
+        Powrót do listy wpisów</button>
+
+          <button
+            class="btn btn-primary text-decoration-none"
+            (click)="onWatchedThread()"
+          >
+            {{
+              isThreadSubscribed
+                ? "Usuń wątek z obserwowanych"
+                : "Dodaj do obserwowanych wątków"
+            }}
+          </button>
+    </div>
+    <app-pagination
+      *ngIf="paginationData"
+      (pageChanged$)="onPageChange($event)"
+    ></app-pagination>
+    <div
+      [appLoader]="isPostLoading && !isThreadLoading"
+      [background]="true"
+      [minHeight]="pagination.limit * 100"
+    >
+      <div
+        *ngIf="(posts && posts.length > 0) || !isPostLoading; else noPosts"
+        class="posts"
+      >
+        <div
+          *ngFor="
+            let post of posts
+              | paginate
+                : {
+                    itemsPerPage: pagination.limit,
+                    currentPage: pagination.page,
+                    totalItems: paginationData?.totalCount
+                  };
+            let i = index
+          "
+        >
+          <div class="comments">
+            <app-post-report-badge
+              *ngIf="post.reports"
+              [postReports]="post.reports"
+              [postAuthor]="post.author"
+            ></app-post-report-badge>
+            <app-post
+              #post
+              [id]="post.id"
+              [post]="post"
+              [threadId]="thread.id"
+              [forumId]="thread.subforumId"
+              [title]="
+                post.postRef === 1
+                  ? thread.title
+                  : 'Dotyczy tematu: ' + thread.title
+              "
+              [isQuoteFormOpen]="
+                post.postRef !== 1 && showQuoteForm && quoteIdPost === post.id
+              "
+              [isFirstPost]="post.postRef === 1"
+              [isUserAdmin]="isUserAdmin"
+              [isUserModerator]="isUserModerator"
+              [showQuoteButton]="post.postRef !== 1"
+              (quoteButtonClicked)="onQuoteButtonClick($event)"
+              (refreshThread$)="refreshThread()"
+            >
+            </app-post>
+
+            <app-add-post
+              *ngIf="
+                quoteIdPost === post.id && showQuoteForm && post.postRef !== 1
+              "
+              [forumId]="thread.subforum.id"
+              [threadId]="thread.id"
+              [quotePost]="post"
+              (postAdded)="onAddPost($event)"
+            >
+            </app-add-post>
+          </div>
+        </div>
+
+        <div
+          *ngIf="
+            posts.length === 1 &&
+            posts[0].postRef === 1 &&
+            paginationData.totalPages === 1 &&
+            !isThreadLoading &&
+            !isPostLoading
+          "
+          class="text-center p-3"
+        >
+          Brak odpowiedzi pod tym postem.
+        </div>
+        <app-add-post
+          *ngIf="
+            !showQuoteForm &&
+            paginationData?.totalPages === paginationData?.currentPage
+          "
+          [forumId]="thread.subforum.id"
+          [threadId]="thread.id"
+          (postAdded)="onAddPost($event)"
+        ></app-add-post>
+      </div>
+    </div>
+    <app-pagination
+      *ngIf="paginationData"
+      class="my-2"
+      (pageChanged$)="onPageChange($event)"
+    ></app-pagination>
+
+    <div class="back-button">
+      <button class="btn btn-link" routerLink="../"><i class="fa-solid fa-chevron-left"></i>
+        Powrót do listy wpisów</button>
+    </div>
+
+  </div>
+</div>
+
+<div
+  *ngIf="!thread && threadNotFound && !isThreadLoading"
+  class="thread-not-found"
+>
+  Nie znaleziono takiego tematu.
+</div>
+
+<ng-template #noPosts>
+  <div class="text-center p-3">Brak dodanych postów w tym wątku.</div>
+</ng-template>

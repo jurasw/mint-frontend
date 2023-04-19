@@ -1,0 +1,4 @@
+<app-datepicker *ngIf="rangeControl && rangeControl.value.length > 0" [formControl]="rangeControl"
+  [addMargin]="addMargin" [name]="name" [range]="true" [showErrors]="showErrors" [startAt]="startAt" [hidden]="hidden"
+  [startView]="startView" [triggerCalendar]="triggerCalendar" (rangeDateChanged$)="onDateChange($event)">
+</app-datepicker>

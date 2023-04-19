@@ -1,0 +1,29 @@
+@import "../../../../../app/_theme/helpers/variables";
+
+.answer-button-container {
+  display: inline-block;
+  margin: 0 1rem;
+
+  input {
+    display: none;
+  }
+
+  label {
+    &.btn.btn-outline-success {
+      padding: 0.5rem 2rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: $dark-gray;
+      font-weight: 500;
+
+      &.active,
+      &:active,
+      &:focus,
+      &:hover {
+        color: $white;
+        border: 2px solid $white;
+        background-color: $dark-gray;
+      }
+    }
+  }
+}

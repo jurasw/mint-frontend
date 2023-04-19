@@ -1,0 +1,41 @@
+<div class="chat-bubbles-view">
+  <div class="chat-bubbles-container">
+    <div class="chat-view" [class.d-none]="!showBubbles || !showChatWindow">
+      <div class="chat-view-topbar">
+        <div>
+          <div *ngIf="currentRecipient && isChatMinimalized" class="d-flex align-items-center">
+            <div class="me-2">{{ currentRecipient.nickName }}</div>
+            <div *ngIf="currentRecipient.status" class="recipient-status"
+              [class.active]="currentRecipient.status.status"></div>
+          </div>
+        </div>
+        <div>
+          <i *ngIf="!isChatMinimalized" class="fas fa-window-minimize"
+            (click)="isChatMinimalized = !isChatMinimalized"></i>
+          <i *ngIf="isChatMinimalized" class="fas fa-window-maximize"
+            (click)="isChatMinimalized = !isChatMinimalized"></i>
+          <i class="fas fa-times" (click)="closeChatWindow()"></i>
+        </div>
+      </div>
+      <app-chat-view [isBubble]="true" [showPanel]="false" [showErrors]="false" class="chat-view-small"
+        [class.d-none]="isChatMinimalized">
+      </app-chat-view>
+    </div>
+    <div *ngIf="chatRooms.length > 0" class="chat-actions">
+      <i [class.hidden]="!actionState[0] || !showBubbles" class="chat-bubble-action fas fa-chevron-up"
+        (click)="scrollBubbles(true)"></i>
+      <div #chatBubbles class="chat-bubbles" (scroll)="onChatBubblesScroll($event)">
+        <app-chat-bubble *ngFor="let room of chatRooms" [class.hidden]="!showBubbles" class="chat-bubble" [room]="room"
+          [active]="currentChatRoom && currentChatRoom.id === room.id" (messageRead$)="onMessageRead($event)"
+          (messageReceived$)="onMessageReceived($event)" (click)="clickBubble(room)"></app-chat-bubble>
+      </div>
+      <i [class.hidden]="!actionState[1] || !showBubbles" class="chat-bubble-action fas fa-chevron-down"
+        (click)="scrollBubbles(false)"></i>
+      <div class="chat-icon-container">
+        <i class="chat-icon fas fa-comment-dots visible" [class.active]="showBubbles" (click)="chatIconClicked()">
+          <div *ngIf="allUnseenMessages > 0" class="chat-icon-message-count">{{ allUnseenMessages }}</div>
+        </i>
+      </div>
+    </div>
+  </div>
+</div>

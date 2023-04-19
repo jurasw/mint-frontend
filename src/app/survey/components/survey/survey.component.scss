@@ -1,0 +1,10 @@
+@import "../../../../app/_theme/helpers/variables";
+
+.page-background {
+  padding: 0rem;
+  margin: auto -1rem;
+}
+
+::ng-deep .mat-horizontal-stepper-header.mat-horizontal-stepper-header {
+  pointer-events: none;
+}

@@ -1,0 +1,31 @@
+<div [appLoader]="isLoading" [background]="true" class="container">
+  <button class="btn btn-link" routerLink="../">Powrót</button>
+  <div *ngIf="usersTemp && usersTemp.items" class="text-center">
+    <div class="user-counter">
+      Liczba zarejestrowanych kont: {{ usersTemp.items.length}}
+    </div>
+    <app-input-text [placeholder]="'Wyszukaj użytkownika'" [formControl]="searchUserControl"></app-input-text>
+    <div *ngIf="users.items && users.items.length > 0; else noData">
+      <div class="users">
+        <app-pagination (pageChanged$)="onPageChange($event)"></app-pagination>
+        <div *ngFor="let user of users.items  | paginate
+        : {
+            itemsPerPage: pagination.limit,
+            currentPage: pagination.page,
+            totalItems: users.items.length
+          }" class="user">
+          <div>
+            id {{ user.id }}: {{ user.nickName }} <span *ngIf="user.firstName && user.lastName "> ({{user.firstName}} {{
+              user.lastName }})</span>
+          </div>
+          <button class="btn btn-primary show-profile" (click)="showUserProfile(user.id)">Zobacz profil</button>
+        </div>
+        <app-pagination (pageChanged$)="onPageChange($event)"></app-pagination>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    Brak wyników
+  </ng-template>
+</div>

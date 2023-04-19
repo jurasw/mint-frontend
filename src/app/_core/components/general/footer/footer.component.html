@@ -1,0 +1,61 @@
+<section class="d-flex justify-content-center justify-content-lg-between bg-white logos-section">
+  <div class="eu-logos-div">
+    <ul class="eu-logos">
+      <li><img src="../../../assets/images/eu-logos/1.png" alt="logo eu" /></li>
+      <li><img src="../../../assets/images/eu-logos/2.png" alt="logo eu" /></li>
+      <li><img src="../../../assets/images/eu-logos/3.png" alt="logo eu" /></li>
+      <li><img src="../../../assets/images/eu-logos/4.png" alt="logo eu" /></li>
+    </ul>
+  </div>
+</section>
+<footer class="footer">
+  <div class="footer-content">
+
+    <div class="footer-content-up block">
+
+      <div class="block-left">
+
+        <div class="block-left-logo">
+          <img src="../../../assets/images/mint_logo_cut.png" alt="" class="img" />
+        </div>
+
+        <div class="block-left-mailto">
+          <p>Napisz do nas:</p>
+          <a href="mailto:e-mail@mintmint.pl" class="block-left-link link">portal@mintmint.pl</a>
+        </div>
+      </div>
+
+      <div class="block-right">
+
+        <ul class="block-right-smedia">
+          <li class="icon" *ngFor="let element of socialMedia">
+            <a href="{{ element.url }}"><img src="../../../assets/sm-logo/{{ element.picUrl }}" alt="{{ element.url }}"
+                class="icon-img" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-content-down block">
+
+      <div class="block-bottom links">
+        <ul class="links-column">
+          <li *ngFor="let element of footerLinks" class="links-column-li">
+            <a [routerLink]="element.url" (click)="clickFooterItem(element)">
+              {{ element.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="block-copy">
+        <span>Copyright © {{ currentYear }} Mint App Sp. z o.o. All rights
+          reserved.</span>
+      </div>
+
+    </div>
+  </div>
+</footer>

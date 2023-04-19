@@ -1,0 +1,56 @@
+@import '../../../_theme/helpers/variables';
+.event {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $black;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  &.past-event {
+    color: $gray;
+    .event-thumbnail {
+      filter: grayscale(1)
+    }
+  }
+  .event-options {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+  .event-thumbnail {
+    width: 10rem;
+    min-width: 10rem;
+    height: 12.5rem;
+    border-radius: 1rem 0 0 1rem;
+  }
+  .event-info {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    word-break: break-word;
+    margin: 0.5rem 1rem;
+    .event-title {
+      font-weight: 300;
+      padding-bottom: 0.5rem;
+    }
+
+    .event-info-title {
+      font-weight: 500;
+      padding: 1rem 0;
+    }
+  }
+
+  .event-action {
+    margin: 1rem 2rem;
+    text-align: right;
+    max-width: 20rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .event-thumbnail {
+    display: none;
+  }
+}

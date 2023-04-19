@@ -1,0 +1,35 @@
+@import "../../../../_theme/helpers/variables";
+select {
+  padding: 1rem;
+  &.dropdown-bar {
+    background-color: $white;
+    min-width: 14rem;
+  }
+  &.no-border {
+    border: none;
+  }
+  &.add-margin {
+    margin: 1rem 0;
+  }
+  &.disabled {
+    color: $gray;
+    background-color: $disabled;
+  }
+}
+
+select::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #fff;
+  background-image: -webkit-gradient(
+    linear,
+    40% 0%,
+    75% 84%,
+    from(#6dcca2),
+    to(#6dcca2),
+    color-stop(0.6, #6dcca2) !important
+  );
+}
+select::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f5f5f5 !important;
+}

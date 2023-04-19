@@ -1,0 +1,26 @@
+.btn {
+  margin-top: 15px;
+  border: 1px solid rgb(33, 69, 13, 0.95);
+  color: rgb(33, 69, 13, 0.95);
+  background-color: rgb(255, 255, 255);
+
+  &:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(33, 69, 13, 0.95);
+  }
+}
+
+p,
+a {
+  letter-spacing: 1px;
+  text-align: justify;
+  font-size: 14px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h2 {
+  font-size: 23px;
+}

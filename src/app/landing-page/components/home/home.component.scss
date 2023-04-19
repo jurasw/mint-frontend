@@ -1,0 +1,35 @@
+@import "../../../_theme/helpers/variables";
+
+.home-section {
+  margin-top: 10rem;
+
+  @media only screen and (max-width: 900px) {
+    margin: 17rem 0 0 0;
+  }
+
+  .baner-div {
+    .showbox {
+      z-index: -2;
+      padding-top: 1rem;
+      .bcgImage {
+        margin: 2em 0;
+        box-shadow: 0px 0px 5em 7px rgba(66, 68, 90, 1);
+      }
+    }
+  }
+}
+
+p,
+a {
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.info {
+  margin-top: 3rem;
+  color: $dark-gray;
+
+  @media only screen and (max-width: 900px) {
+    margin-top: 1rem;
+  }
+}

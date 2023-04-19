@@ -1,0 +1,60 @@
+@import "../../../_theme/helpers/variables";
+
+.bubble {
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  opacity: 0.6;
+
+  &.active {
+    opacity: 1;
+  }
+
+  cursor: pointer;
+
+  .recipient-image {
+    position: relative;
+
+    ::ng-deep .user-image {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .group-chat-image {
+      border: 1px solid $mint-700;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .recipient-status,
+    .recipient-message-count {
+      position: absolute;
+      background-color: $red;
+      border-radius: 50%;
+    }
+
+    .recipient-status {
+      bottom: 0;
+      right: 0;
+      min-width: 12px;
+      min-height: 12px;
+
+      &.active {
+        background-color: $green-status;
+      }
+    }
+
+    .recipient-message-count {
+      top: 0;
+      left: 0;
+      font-size: 10px;
+      min-width: 16px;
+      min-height: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $white;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import "../../../../_theme/helpers/variables";
+
+:host {
+  width: 100%;
+}
+
+.results {
+  max-height: 50vh;
+  overflow: auto;
+  border: 1px solid $light-gray;
+  border-radius: 5px;
+  background-color: $white;
+
+  .result-item {
+    padding: 1rem;
+    margin: 0.5rem 1rem;
+    border-radius: 1px;
+    word-break: break-all;
+    cursor: pointer;
+    background-color: $white;
+    border: 1px solid lighten($dark-green, 20);
+    .result-title {
+      font-weight: 500;
+    }
+    .forum-info {
+      font-style: italic;
+      font-size: 0.75rem;
+    }
+  }
+}

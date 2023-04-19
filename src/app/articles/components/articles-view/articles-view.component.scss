@@ -1,0 +1,71 @@
+@import '../../../_theme/helpers/variables';
+
+.button-container {
+  margin: auto;
+  justify-content: right;
+
+  button {
+    width: fit-content;
+  }
+}
+
+.articles {
+  width: 128vh;
+  display: flex;
+  flex-flow: row wrap;
+  margin: auto;
+
+  ::ng-deep {
+    .article {
+      width: 60vh;
+      margin: 0 2vh;
+    }
+  }
+}
+
+::ng-deep .ngx-pagination.ngx-pagination {
+  padding: 0;
+}
+
+.info-blog-panel {
+  width: 60vh;
+  margin: 1.3rem 2vh;
+  box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+  border-radius: 0.2rem;
+  padding: 5%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+
+  h1 {
+    color: $primary;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 25%;
+  }
+
+  button {
+    width: 220px;
+    margin: 2% 0;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .articles {
+    width: 100%;
+    flex-direction: column;
+
+    ::ng-deep {
+      .article {
+        width: auto;
+      }
+    }
+  }
+
+  .info-blog-panel {
+    width: fit-content;
+  }
+}

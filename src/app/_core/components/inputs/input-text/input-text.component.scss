@@ -1,0 +1,50 @@
+@import "../../../../_theme/helpers/variables";
+
+:host {
+  width: 100%;
+
+  .input-div {
+    position: relative;
+    width: 100%;
+    color: $gray;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 9px 1px rgba($dark-gray, 0.3);
+
+    .form-control {
+      height: calc(3.5rem - 2px);
+    }
+
+    input {
+      background-color: $white;
+      border: none;
+      border-radius: 0.5rem;
+
+      &.input-right-space {
+        padding-right: 3rem;
+      }
+
+      &.no-border {
+        border: none;
+      }
+
+      &.add-margin {
+        margin: 1rem 0;
+      }
+
+      &.hide-error-border {
+        border-color: $light-gray;
+      }
+    }
+
+    input:focus {
+      background-color: $white;
+    }
+
+    i {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

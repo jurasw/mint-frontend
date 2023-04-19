@@ -1,0 +1,39 @@
+<div class="user-recommends">
+  <div class="user-recommends-title">
+
+    <h1>POZNAJ SIEBIE Z MINT!</h1>
+    <p> Pokażemy Ci w jaki sposób myśli i emocje wpływają na nasze zachowanie, jak stawić czoła stresowi i stać się
+      swoim własnym terapeutą! Zapraszamy do nas wszystkich, którzy są otwarci na innych. W MINT łączymy pokolenia,
+      szukamy tego, co daje siłę i buduje trwałe relacje poprzez dialog i porozumienie.
+    </p>
+  </div>
+
+  <div class="user-recommends-content">
+    <ng-container *ngFor="let recommend of visibleUserRecommends; let i = index">
+      <ng-container *ngTemplateOutlet="userRecommend; context: {$implicit: visibleUserRecommends[i], active: i === 1 }">
+      </ng-container>
+    </ng-container>
+  </div>
+
+<ng-template #userRecommend let-user let-active="active">
+  <div class="user" [class.active]="active">
+    <div class="user-info">
+      <div class="slider">
+        <i class="fas fa-chevron-left" (click)="slide(false)"></i>
+        <div class="user-image">
+          <img [src]="user.photo" alt="zdjęcie użytkownika">
+        </div>
+        <i class="fas fa-chevron-right" (click)="slide(true)"></i>
+      </div>
+      <div class="user-name">{{ user.name }}</div>
+      <div class="user-age">{{ user.age }} lat(a)</div>
+    </div>
+    <div class="user-description"><q><i>{{ user.description }}</i></q></div>
+  </div>
+</ng-template>
+
+<button *ngIf="router.url != '/landing-page/contact'" mat-raised-button class="btn-primary-add" name="logIn"
+routerLink="/landing-page/contact">
+Dowiedz się więcej
+</button>
+</div>

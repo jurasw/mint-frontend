@@ -1,0 +1,205 @@
+.header {
+  justify-content: space-between;
+  max-width: 1767px;
+  margin: auto;
+  flex-flow: wrap;
+  @media (max-width: 768px) {
+    margin: 0 1em;
+    justify-content: center;
+  }
+  &__contact {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.logo {
+  max-width: 100%;
+  min-width: 50px;
+  max-width: 220px;
+  @media (max-width: 1130px) {
+    height: 150px;
+  }
+  .navbar {
+    max-width: 1767px;
+    margin: auto;
+    width: 100%;
+  }
+}
+
+.showbox {
+  z-index: -2;
+  .bcgImage {
+    margin: 2em 0;
+    box-shadow: 0px 0px 5em 7px rgba(66, 68, 90, 1);
+    @media (max-width: 768px) {
+      margin-top: 0;
+    }
+  }
+}
+.logoOnForum {
+  position: absolute;
+  height: 135px;
+  left: 75px;
+  top: -15px;
+
+  @media (max-width: 1130px) {
+    height: 150px;
+  }
+
+  @media (max-width: 977px) {
+    height: 145px;
+  }
+}
+
+.bcgImage {
+  width: 100%;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap;
+  @media (max-width: 768px) {
+    flex-flow: column;
+  }
+}
+
+.navDiv {
+  @media (max-width: 1130px) {
+    top: 130px;
+    left: 50%;
+  }
+
+  @media (max-width: 735px) {
+    width: 100%;
+  }
+}
+
+.wrapper {
+  margin: 10px 30px;
+  box-sizing: border-box;
+  @media (max-width: 1130px) {
+    margin: 0;
+  }
+}
+
+.navButton {
+  transition: all 0.5s;
+  height: 50px;
+  width: 140px;
+  padding: 0;
+  margin: 3px;
+  border-radius: 0px;
+  color: black;
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+
+  &:hover {
+    color: #6dcca2;
+    margin: 0px;
+    border-bottom: 1px solid #6dcca2;
+  }
+
+  @media (max-width: 977px) {
+    font-size: 14px;
+    width: 120px;
+  }
+}
+
+.focusButton {
+  height: 50px;
+  width: 140px;
+  padding: 0;
+  margin: 3px;
+  border-radius: 0px;
+  color: black;
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+  color: #6dcca2;
+  margin: 0px;
+  border-bottom: 1px solid #6dcca2;
+  font-size: 16px;
+
+  @media (max-width: 977px) {
+    font-size: 14px;
+    width: 120px;
+  }
+}
+
+.phonePar {
+  margin-top: 23px;
+  margin-right: 10px;
+}
+
+.contactButton {
+  background-image: linear-gradient(#38b6ff, #00c2cb);
+  height: 40px;
+  width: 140px;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  margin-top: 10px;
+  margin-right: 20px;
+
+  &:hover {
+    transition: 0.1s;
+    background-image: linear-gradient(white, white);
+    border: 3px solid #38b6ff;
+    color: #00c2cb;
+  }
+}
+
+.mintShort {
+  position: absolute;
+  height: 200px;
+  width: 450px;
+  top: 200px;
+  right: 400px;
+  border-radius: 25px;
+  border: 2px solid black;
+  margin: 0 auto;
+  padding: 10px 0 10px 180px;
+  display: inline-block;
+  line-height: 35px;
+  text-align: left;
+  z-index: 999;
+}
+
+.logIn {
+  margin-right: 30px;
+}
+
+.singIn {
+  margin-right: 60px;
+}
+
+.nav {
+  &-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    height: 65px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-form {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+p,
+a {
+  letter-spacing: 1px;
+  font-size: 16px;
+}

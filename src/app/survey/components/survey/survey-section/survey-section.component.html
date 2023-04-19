@@ -1,0 +1,28 @@
+<div class="survey-section">
+  <div class="title"> {{ descriptionData.title }} </div>
+  <div class="description"> {{ descriptionData.description }} </div>
+  <div *ngIf="descriptionData.legend" class="question-legend">
+    <div>Poszczególne punkty skali oznaczają:</div>
+    <div *ngFor="let legendItem of descriptionData.legend | keyvalue; let i = index" class="question-legend-item">
+      {{ legendItem.key }} - {{ legendItem.value }}
+    </div>
+  </div>
+  <div *ngIf="questions">
+    <app-survey-question *ngFor="let questionControl of sectionFormControls | keyvalue; let i = index"
+      [questionControl]="questionControl.value" [question]="survey.questions[i]"
+      [questionCounter]="survey.nameOfSurvey === 'SWLS' || survey.nameOfSurvey === 'SES'" [questionIndex]="i"
+      [answerCounter]="survey.nameOfSurvey === 'SES'"></app-survey-question>
+  </div>
+
+  <div *ngIf="descriptionData.footerInfo" class="footer-info">
+    {{ descriptionData.footerInfo }}
+  </div>
+
+  <div class="text-center">
+    <button *ngIf="!isFirstSection" class="btn btn-outline-success" matStepperPrevious>Wróć do poprzednich pytań</button>
+    <button *ngIf="!isLastSection" [disabled]="sectionFormGroup && sectionFormGroup.invalid" class="btn btn-primary-add"
+      matStepperNext (click)="scrollUp()">Przejdź dalej</button>
+    <button *ngIf="isLastSection" (click)="submit()" [disabled]="sectionFormGroup && sectionFormGroup.invalid"
+      class="btn btn-primary" matStepperNext>Zapisz</button>
+  </div>
+</div>

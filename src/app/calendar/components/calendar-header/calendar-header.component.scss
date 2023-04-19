@@ -1,0 +1,56 @@
+@import '../../../_theme/helpers/variables';
+
+.form {
+  width: 100%;
+  align-items: center;
+  margin: 0 1rem;
+  padding-bottom: 1rem;
+
+  .calendar-header-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    color: $dark-gray;
+
+    .calendar-icon-info {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    i {
+      padding: 0 1rem;
+      font-size: 1.5rem;
+      color: $gray;
+      transition: color 0.1s;
+      cursor: pointer;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  .date-picker {
+    width: 0;
+    height: 0;
+  }
+
+  .empty-box {
+    min-width: 15rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .form {
+    flex-direction: column;
+    justify-content: center;
+
+    .calendar-header-title {
+      padding: 1rem 0;
+    }
+  }
+}

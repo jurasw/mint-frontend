@@ -1,0 +1,23 @@
+<div class="close d-flex justify-content-between mb-3">
+    <div></div>
+    <h1 mat-dialog-title>Dodaj specjalistę</h1>
+    <button type="button" mat-button mat-dialog-close>Zamknij</button>
+</div>
+
+<mat-dialog-content>
+    <div [appLoader]="isLoading" [background]="true" class="content">
+        <form [formGroup]="specialistForm">
+            <app-input-text formControlName="mail" [addMargin]="true" [placeholder]="'Adres e-mail'"></app-input-text>
+            <app-input-text formControlName="login" [addMargin]="true" [placeholder]="'Login'"></app-input-text>
+            <select formControlName="specialization" class="form-select" aria-placeholder="Specjalizacja">
+                <option *ngFor="let specialization of specializations$ | async"> {{specialization}} </option>
+            </select>
+        </form>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="buttons">
+        <button type="submit" class="btn btn-primary" (click)="submit()">Wyślij zaproszenie</button>
+    </div>
+</mat-dialog-actions>

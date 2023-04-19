@@ -1,0 +1,37 @@
+<div class="chat-response">
+  <form class="chat-response-form" [formGroup]="form" (keyup.enter)="submit()">
+    <app-chat-emoticons *ngIf="showEmoticons" class="chat-emoticons" appClickOutside
+      [parentElement]="emoticonButtonElement" (clickOutside)="clickOutsideEmoticons()"
+      (emojiSelect$)="onEmojiSelect($event)"></app-chat-emoticons>
+    <ng-container *ngIf="isBubble">
+      <div class="centerize">
+        <div class="emoticon-button"> <span #emoticonButton (click)="showEmoticons = !showEmoticons"
+            class="emoticon-button-icon">😀</span> </div>
+        <app-input-text *ngIf="isBubble" formControlName="message" [showErrors]="false"
+          [placeholder]="'Napisz wiadomość...'">
+        </app-input-text>
+        <button [disabled]="!form.controls.message.value" (click)="submit()" class="btn btn-icon btn-ghost">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+      <input
+        *ngIf="authenticationService.currentUser && authenticationService.currentUser.role === 'Admin' && enableAttachments"
+        class="input-file" #file type="file" multiple />
+    </ng-container>
+    <ng-container *ngIf="!isBubble">
+      <div class="chat-response-container">
+        <div class="d-flex w-100 align-items-center">
+          <div class="emoticon-button"> <span #emoticonButton (click)="showEmoticons = !showEmoticons"
+              class="emoticon-button-icon">😀</span> </div>
+          <app-textarea class="textarea" formControlName="message" [wordsLimit]="5000" [showErrors]="false"
+            [preventNewLineOnEnter]="true" [placeholder]="'Napisz wiadomość...'">
+          </app-textarea>
+        </div>
+        <input *ngIf="authenticationService.currentUser && authenticationService.currentUser.role === 'Admin'"
+          class="input-file" #file type="file" multiple />
+        <button [disabled]="!form.controls.message.value" class="btn btn-primary text-right"
+          (click)="submit()">WYŚLIJ</button>
+      </div>
+    </ng-container>
+  </form>
+</div>

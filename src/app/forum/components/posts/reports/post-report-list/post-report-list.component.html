@@ -1,0 +1,38 @@
+<div class="back-button">
+  <button class="btn btn-link" routerLink="../">Powrót</button>
+</div>
+<div class="reported-posts">
+  <h2 class="text-center">Zgłoszone posty</h2>
+  <app-alert-message></app-alert-message>
+  <app-pagination *ngIf="paginationData" (pageChanged$)="onPageChange($event)"></app-pagination>
+  <div [appLoader]="isLoading" [background]="true" class="loader-container">
+    <div *ngFor="
+        let message of messages
+          | paginate
+            : {
+                itemsPerPage: pagination.limit,
+                currentPage: pagination.page,
+                totalItems: paginationData?.totalCount
+              };
+        let i = index
+      " class="report" [class.clickable]="message.status !== 1">
+      <div class="message" (click)="navigateToPost(message)">
+        <span class="status">
+          <span [ngSwitch]="message.status">
+            <span *ngSwitchCase="0" class="badge bg-warning">W toku</span>
+            <span *ngSwitchCase="1" class="badge bg-success">Zaakceptowany</span>
+            <span *ngSwitchCase="2" class="badge bg-danger">Odrzucony</span>
+          </span>
+        </span>
+        Wątek #{{ message.post.forumThreadId }} - {{ message.messageWithCounter ? message.messageWithCounter :
+        message.message }}
+      </div>
+      <app-post-options class="me-2" [post]="message.post" [report]="reports[i]" [forumId]="forumId"
+        (refresh$)="refresh()" [isFirstPost]="message.post.postRef === 1"></app-post-options>
+    </div>
+    <div *ngIf="messages.length === 0" class="p-2 text-center">
+      Brak zgłoszonych postów
+    </div>
+  </div>
+  <app-pagination *ngIf="paginationData" (pageChanged$)="onPageChange($event)"></app-pagination>
+</div>

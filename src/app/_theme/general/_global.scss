@@ -1,0 +1,74 @@
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.actions {
+  i {
+    cursor: pointer;
+  }
+}
+
+.primary {
+  color: $primary;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.reactions {
+  display: flex;
+  align-items: center;
+  .reaction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    i {
+      color: $dark-gray;
+      font-size: 1.5rem;
+      margin: 0.5rem;
+      margin-top: 0;
+      transition: color 0.2s;
+      cursor: pointer;
+      &.active {
+        color: $green;
+      }
+
+      &:hover:not(.active) {
+        color: darken($gray, 10);
+      }
+    }
+  }
+}
+
+.form-control:focus+.form-label {
+  color: $primary;
+}
+
+.form-floating {
+  color: $gray;
+
+  > .form-control:focus,
+  > .form-control:not(:placeholder-shown),
+  > .form-select {
+    ~ label {
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+  }
+}

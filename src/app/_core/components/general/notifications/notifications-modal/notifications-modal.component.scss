@@ -1,0 +1,47 @@
+@import '../../../../../_theme/helpers/variables';
+
+.notification-type-text {
+ color: $primary;
+}
+
+.notification {
+  width: 100%;
+  box-shadow: 0px 0px 11px 1px rgba($dark-gray, 0.3);
+  border-radius: 0.5rem;
+  display: flex;
+  margin: 2rem 0;
+  cursor: pointer;
+  &.is-read {
+    color: $gray;
+  }
+  .notification-image {
+    border-right: 1px solid $light-gray;
+    width: 10rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .notification-info {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .notification-message {
+      font-weight: 500;
+      user-select: none;
+      word-break: break-word;
+    }
+  
+    .notification-action {
+      button {
+        padding: 0.5rem 2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .notification-image {
+    display: none;
+  }
+}

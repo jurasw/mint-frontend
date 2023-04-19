@@ -1,0 +1,42 @@
+<form class="container" [formGroup]="form">
+  <mat-stepper [@.disabled]="true" [linear]="true" #stepper>
+    <mat-step>
+      <ng-template matStepLabel>
+        Rozpocznij
+      </ng-template>
+      <div class="page-background">
+        <app-survey-welcome [isRetest]="isRetest"></app-survey-welcome>
+      </div>
+    </mat-step>
+    <mat-step *ngFor="let control of formControls | keyvalue; let i = index" [formGroupName]="control.key"
+      [stepControl]="control.value">
+      <ng-template matStepLabel>
+        <span [ngSwitch]="surveys[i].nameOfSurvey">
+          <span *ngSwitchCase="'General'">Ogólne</span>
+          <span *ngSwitchCase="'Statistical'">Statystyczne</span>
+          <span *ngSwitchCase="'SWLS'">Skala SWLS</span>
+          <span *ngSwitchCase="'SES'">Skala SES</span>
+        </span>
+      </ng-template>
+      <div class="page-background">
+        <form [formGroup]="control.value">
+          <app-survey-section [descriptionData]="surveyDescriptions[i]" [survey]="surveys[i]"
+            [sectionFormGroup]="control.value" [questions]="true" [isLastSection]="formControlLength - 1 === i"
+            (submitSurvey$)="onSurveyConfirm()"></app-survey-section>
+        </form>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>
+        Podsumowanie
+      </ng-template>
+      <div *ngIf="surveyConfirmed" class="page-background">
+        <app-survey-summary [isRetest]="isRetest" [form]="form">
+        </app-survey-summary>
+      </div>
+    </mat-step>
+    <ng-template matStepperIcon="edit">
+      <mat-icon>done</mat-icon>
+    </ng-template>
+  </mat-stepper>
+</form>

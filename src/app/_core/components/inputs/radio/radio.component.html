@@ -1,0 +1,5 @@
+<div class="radio-container" [class.disabled]="disabled">
+  <input [attr.disabled]="disabled" [formControl]="control" [value]="value" class="form-check-input" type="radio"
+    [name]="name" [id]="id">
+  <label [for]="id" name="label">{{message}}</label>
+</div>

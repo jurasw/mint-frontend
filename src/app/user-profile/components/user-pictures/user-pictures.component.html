@@ -1,0 +1,14 @@
+<div class="user-picture-container">
+  <app-alert-message></app-alert-message>
+  <div class="pictures" [appLoader]="isLoading" [background]="true">
+    <app-user-picture *ngFor="let i of [0,1,2]" [picture]="user ? user.profilesPictures[i] : undefined"
+      [editable]="editable" [index]="i"
+      [isMain]="user && user.profilePicture && user.profilesPictures[i] && user.profilePicture.id === user.profilesPictures[i].id"
+      [pictureUrl]="userPictureFiles[i]" class="picture" (imageUploaded$)="onImageUpload($event)"
+      (imageDeleted$)="onImageDelete($event)" (mainImageSet$)="onMainImageSet($event)">
+    </app-user-picture>
+  </div>
+  <div *ngIf="editable" class="text-center text-small">Wymagany format obrazka to PNG/JPG. Rozmiar nie powinien
+    przekraczać 4MB.
+    Proporcje 1:1 (np. 500x500).</div>
+</div>

@@ -1,0 +1,32 @@
+<div class="row close-button-div">
+  <button class="close-button" mat-button (click)="close(false)">
+    Zamknij
+  </button>
+</div>
+
+<h2 class="text-center">Historia wydarzeń użytkownika</h2>
+
+<div class="events">
+  <div [appLoader]="isLoading" [background]="true">
+    <div #thread *ngFor="let event of events" class="event" [id]="thread.id">
+      <div class="section-cell section-cell-small">
+        <div class="date-time">
+          <strong>Data rozpoczęcia:</strong>
+          {{ event.startDate | dateTime }}
+          <br />
+          <strong>Data zakończenia:</strong>
+          {{ event.endDate | dateTime }}
+          <br />
+          <strong>Organizator:</strong>
+          {{ event.organizer.nickName }}
+        </div>
+      </div>
+      <div class="section-cell section-cell-large">
+        {{ event.title }}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="events.length === 0 && !isLoading" class="text-center warn-not-found">
+    Użytkownik nie jest zapisany na żadne wydarzenie.
+  </div>
+</div>

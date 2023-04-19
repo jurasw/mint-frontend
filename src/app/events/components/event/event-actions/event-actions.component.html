@@ -1,0 +1,26 @@
+<div>
+  <button *ngIf="showDetailsAction" class="event-action-button btn btn-secondary my-2"
+    (click)="showEventDetails()">Szczegóły</button>
+  <ng-container *ngIf="(!isPastEvent && event.isStarted && !event.isPendingClose) || !event.isPendingClose">
+    <button *ngIf="!event.isStarted && (isOwnEvent || isUserAdmin) && isEventTimeActive"
+      class="event-action-button btn btn-primary my-2" (click)="startEvent()">Rozpocznij wydarzenie</button>
+    <button *ngIf="event.isStarted && (isOwnEvent || isUserAdmin)" class="event-action-button btn btn-danger my-2"
+      (click)="closeEvent()">Zakończ
+      wydarzenie</button>
+    <button *ngIf="event.isSession && (isOwnEvent || isUserAdmin || isUserRegistered)"
+      class="event-action-button btn btn-info my-2" (click)="joinToEvent()">Dołącz</button>
+    <button *ngIf="!event.isSession && event.isStarted && (isOwnEvent || isUserAdmin)"
+      class="event-action-button btn btn-info my-2" (click)="addSession()">Rozpocznij spotkanie</button>
+    <ng-container *ngIf="!isUserAdmin && !isOwnEvent">
+      <button *ngIf="!isUserRegistered && !event.isStarted" class="event-action-button btn btn-primary my-2"
+        (click)="registerToEvent()">Zapisz się</button>
+      <button *ngIf="!event.isStarted && isUserRegistered" class="event-action-button btn btn-warning my-2"
+        (click)="unregisterFromEvent()">Wypisz się</button>
+    </ng-container>
+  </ng-container>
+</div>
+<div [class]="'text-' + eventStateAlignment">
+  <div *ngIf="isPastEvent && event.isStarted">Termin wydarzenia zakończył się</div>
+  <div *ngIf="isPastEvent && !event.isStarted">Wydarzenie zakończyło się</div>
+  <div *ngIf="event.isPendingClose">Wydarzenie oczekuje na zamknięcie</div>
+</div>

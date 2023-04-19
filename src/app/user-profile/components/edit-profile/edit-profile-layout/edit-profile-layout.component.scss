@@ -1,0 +1,36 @@
+@import "../../../../_theme/helpers/variables";
+
+.profile-layout {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.btn-link {
+  margin: 1rem 0;
+  padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+ .profile-layout {
+  width: 90%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .profile-panel, .profile-content {
+   width: 100%;
+ }
+ .profile-panel {
+   display: flex;
+   align-items: center;
+   text-align: center;
+   justify-content: center;
+ }
+}
+
+.elements-body {
+  margin-top: 4rem;
+}

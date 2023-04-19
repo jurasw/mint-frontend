@@ -1,0 +1,10 @@
+<div class="deactivate-account">
+    <h1>DEZAKTYWUJ KONTO</h1>
+    <p>Czy na pewno chcesz dezaktywować konto? Jeśli dezaktywujesz konto,<br> nie będziesz mógł/mogła korzystać z portalu Mint. <br>Ta decyzja jest odwracalna. </p>
+    <button mat-raised-button class="btn-secondary" name="logIn" routerLink="/user-profile/edit-profile/general">
+        Nie, anuluj
+    </button>
+    <button mat-raised-button class="btn-outline-success" name="logIn" (click)="deactivateAccount()">
+        Tak, chcę dezaktywować konto
+    </button>
+</div>

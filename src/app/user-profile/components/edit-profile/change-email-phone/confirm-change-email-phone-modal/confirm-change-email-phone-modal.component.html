@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>
+  <span>{{ data.title }}</span>
+</h1>
+<mat-dialog-content>
+  <p>{{data.label}}</p>
+  <app-input-text [formControl]="code" [type]="'text'" [placeholder]="'4-cyfrowy kod'" autocomplete="new-password">
+  </app-input-text>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" class="btn btn-ghost" mat-button mat-dialog-close>Anuluj</button>
+  <button type="submit" class="btn-primary" mat-button cdkFocusInitial (click)="confirm()">Potwierdź kod</button>
+</mat-dialog-actions>

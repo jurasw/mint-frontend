@@ -1,0 +1,39 @@
+<div class="back-button">
+  <button class="btn btn-link" [routerLink]="'/make-dreams/article-details/' + articleId">Powrót do artykułu</button>
+</div>
+<div class="reported-posts">
+  <div class="title">Zgłoszone komentarze</div>
+  <app-alert-message></app-alert-message>
+  <app-pagination (pageChanged$)="onPageChange($event)"></app-pagination>
+  <div [appLoader]="isLoading" [background]="true">
+    <div *ngFor="
+        let report of filteredReports | keyvalue
+          | paginate
+            : {
+                itemsPerPage: pagination.limit,
+                currentPage: pagination.page,
+                totalItems: reports.length
+              };
+        let i = index
+      " class="report" [class.clickable]="report.value[0].status !== 1">
+      <div class="message">
+        <span class="status">
+          <span [ngSwitch]="report.value[0].status">
+            <span *ngSwitchCase="0" class="badge bg-warning">W toku</span>
+            <span *ngSwitchCase="1" class="badge bg-success">Zaakceptowany</span>
+            <span *ngSwitchCase="2" class="badge bg-danger">Odrzucony</span>
+          </span>
+        </span>
+        Komentarz "{{report.value[0].comment.body | slice:0:100}}..." został zgłoszony przez następującą liczbę osób: {{
+        report.value.length }}
+      </div>
+      <app-article-comment-options [showDeleteReportOption]="report.value[0].status === 0" [report]="report.value[0]"
+        [comment]="report.value[0].comment" (refresh$)="refresh()">
+      </app-article-comment-options>
+    </div>
+    <div *ngIf="(filteredReports | keyvalue).length === 0" class="p-2 text-center">
+      Brak zgłoszonych komentarzy
+    </div>
+  </div>
+  <app-pagination (pageChanged$)="onPageChange($event)"></app-pagination>
+</div>

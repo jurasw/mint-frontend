@@ -1,0 +1,33 @@
+<div>
+  <div *ngIf="showAddArticleButton" class="text-center mb-5 button-container">
+    <button class="btn btn-primary" [routerLink]="'/make-dreams/add-article'">+ Utwórz nowy artykuł</button>
+  </div>
+  <app-alert-message></app-alert-message>
+  <div [appLoader]="isLoading" [background]="true">
+    <div *ngIf="articles && articles.items && articles.items.length > 0; else noData" class="articles">
+      <div *ngFor="let article of articles.items | paginate
+      : {
+          itemsPerPage: pagination.limit,
+          currentPage: pagination.page,
+          totalItems: paginationData?.totalCount
+        }">
+        <app-article class="article" [article]="article" (articleDeleted$)="onArticleDelete($event)"></app-article>
+      </div>
+      <div *ngIf="!isLoggedUser" class="info-blog-panel">
+        <h1>Aby zyskać dostęp do wszystkich artykułów - zarejestruj się lub zaloguj.</h1>
+        <button *ngIf="router.url != '/auth/login'" mat-raised-button class="btn-secondary" name="logIn"
+          routerLink="/auth/login">
+          Zaloguj się
+        </button>
+        <button *ngIf="router.url != '/auth/register/form'" mat-raised-button class="btn-outline-success" name="logIn"
+          routerLink="/auth/register/form">
+          Utwórz konto
+        </button>
+      </div>
+    </div>
+    <app-pagination *ngIf="paginationData" class="my-2" (pageChanged$)="onPageChange($event)"></app-pagination>
+  </div>
+</div>
+<ng-template #noData>
+  <div *ngIf="!isLoading" class="text-center"> Brak artykułów.</div>
+</ng-template>

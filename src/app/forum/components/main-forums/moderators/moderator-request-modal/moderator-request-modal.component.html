@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>
+  <span>Zostań moderatorem</span>
+</h1>
+<mat-dialog-content>
+  <app-alert-message></app-alert-message>
+  <p>Aby zostać moderatorem uzasadnij dlaczego chcesz nim zostać.</p>
+  <button class="btn btn-link"
+    (click)="clickItem('../../../../../../assets/files/regulations_moderator_forum.pdf')">Przeczytaj regulamin</button>
+  <div *ngIf="isError" class="badge bg-danger">
+    Jako użytkownik nie masz jeszcze 50 postów, aby moć ubiegać się o rolę
+    moderatora.
+  </div>
+  <form class="form" [formGroup]="form">
+    <app-checkbox class="my-2" formControlName="acceptRegulations" name="acceptRegulations"
+      [label]="'Akceptuję regulamin'"></app-checkbox>
+    <app-textarea [wordsLimit]="500" formControlName="description" name="description"
+      [placeholder]="'Napisz uzasadnienie'"></app-textarea>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button type="button" class="btn" mat-button mat-dialog-close>Anuluj</button>
+  <button type="submit" class="btn btn-secondary" mat-button cdkFocusInitial [disabled]="form.invalid" (click)="send()">
+    Wyślij
+  </button>
+</mat-dialog-actions>
